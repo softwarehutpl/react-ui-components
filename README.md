@@ -1,2 +1,2 @@
-# react-ui-components
+# React UI Components
 Easy to use UI components
