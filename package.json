@@ -17,6 +17,11 @@
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2"
   },
+  "lint-staged": {
+     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+        "prettier --write"
+      ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -24,12 +29,11 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "lint": "eslint ./src/**/**.{js,ts,tsx}"
+    "lint": "eslint ./src/**/*.{js,ts,tsx}"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix",
-      "pre-push": "npm run lint"
+      "pre-commit": "lint-staged"
     }
   },
   "eslintConfig": {
