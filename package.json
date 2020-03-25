@@ -18,8 +18,8 @@
     "typescript": "~3.7.2"
   },
   "lint-staged": {
-     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-        "prettier --write"
+     "src/**/*.{js,jsx,ts,tsx}": [
+        "eslint", "git add"
       ]
   },
   "scripts": {
