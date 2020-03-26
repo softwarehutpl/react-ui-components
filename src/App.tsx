@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.scss';
-import { ThemeProvider } from 'emotion-theming';
-import Button from './components/atoms/Button/Button';
+import { ThemeProvider } from 'styled-components';
 import { theme } from './common/theme';
+import Button from './components/atoms/Button/Button';
 
 function App() {
   return (
@@ -11,8 +11,12 @@ function App() {
         <Button
           buttonTitle="some button"
           onClick={() => {console.log('clicked!')}}
-          color="secondary"
-          className='test-class'
+          // color="secondary"
+          // className='test-class'
+          // disabled
+          // noBorder
+          // border="1px solid gray"
+          // fontColor="darkblue"
         />
       </div>
     </ThemeProvider>
