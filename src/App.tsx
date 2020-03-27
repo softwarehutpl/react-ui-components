@@ -11,12 +11,8 @@ function App() {
         <Button
           buttonTitle="some button"
           onClick={() => {console.log('clicked!')}}
-          // color="secondary"
-          // className='test-class'
-          // disabled
-          // noBorder
-          // border="1px solid gray"
-          // fontColor="darkblue"
+          color="secondary"
+          className='test-class'
         />
       </div>
     </ThemeProvider>

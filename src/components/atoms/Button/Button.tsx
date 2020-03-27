@@ -8,9 +8,11 @@ type Props = {
   color: string,
   className: string,
   disabled: boolean,
-  fontColor: string,
+  fontColor?: string,
   noBorder: boolean,
-  border: string,
+  borderColor?: string,
+  borderWidth: number,
+  backgroundColor?: string,
 }
 
 const Button = (
@@ -32,33 +34,43 @@ const Button = (
 
 const defaultProps = {
   color: 'primary',
-  fontColor: 'black',
   noBorder: false,
-  border: '2px solid black',
   disabled: false,
   className: '',
+  borderWidth: 2,
 };
 
 Button.defaultProps = defaultProps;
 
-export default styled(Button)`
-  border: ${({ noBorder = defaultProps.noBorder, border = defaultProps.border }) => noBorder ? 'none' : border};
-  border-radius: 10px;
-  outline: none;
-  padding: 15px;
-  background-color: ${({ color = defaultProps.color, theme }) => theme.colors[color]};
-  text-transform: uppercase;
-  font-weight: bold;
-  color: ${({ fontColor = defaultProps.fontColor }) => fontColor};
-  &:hover {
-    cursor: pointer;
-  }
-  &[disabled] {
-    background-color: ${({ theme }) => theme.colors.disabled };
-    border-color: ${ ({ theme }) => theme.colors.disabled };
-    color: #a6a6a6;
-    &:hover {
-      cursor: auto;
+export default styled(Button)`${({ 
+  theme,
+  color = defaultProps.color,
+  backgroundColor,
+  fontColor,
+  noBorder = defaultProps.noBorder,
+  borderColor,
+  borderWidth = defaultProps.borderWidth,
+}) => ({
+  'background-color': backgroundColor || theme.colors[color].base,
+  'color': fontColor || theme.colors[color].dark,
+  'border': noBorder ? 'none' : 'solid',
+  'border-color': borderColor || theme.colors[color].dark,
+  'border-width': borderWidth + 'px',
+  'border-radius': '10px',
+  'outline': 'none',
+  'padding': '15px',
+  'text-transform': 'uppercase',
+  'font-weight': 'bold',
+  '&:hover': {
+    'cursor': 'pointer',
+    'background-color': theme.colors[color].light,
+  },
+  '&[disabled]': {
+    'background-color': theme.colors.disabled.base,
+    'border-color': theme.colors.disabled.dark,
+    'color': '#a6a6a6',
+    '&:hover': {
+      'cursor': 'auto',
     }
   }
-`
+})}`

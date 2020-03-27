@@ -1,11 +1,39 @@
-export const theme: { [key: string]: { [key: string]: string } } = {
+export const theme: { [key: string]: { [key: string]: { [key: string]: string} } } = {
   colors: {
-    primary: '#ffffff',
-    secondary: '#4d94ff',
-    error: '#f44336',
-    warning: '#ff9800',
-    info: '#8585e0',
-    success: '#4caf50',
-    disabled: '#d9d9d9'
+    primary: {
+      base: '#ffffff',
+      light: '#e1e5ed',
+      dark: '#000000',
+    },
+    secondary: {
+      base: '#3690e3',
+      light: '#75b0e6',
+      dark: '#034d91',
+    },
+    error: {
+      base: '#f44336',
+      light: '#f56c62',
+      dark: '#a1140a',
+    },
+    warning: {
+      base: '#faa72d',
+      light: '#ffc36b',
+      dark: '#995b00',
+    },
+    info: {
+      base: '#7979d4',
+      light: '#9797d1',
+      dark: '#4c4cc7',
+    },
+    success: {
+      base: '#4caf50',
+      light: '#88c28a',
+      dark: '#124f14',
+    },
+    disabled: {
+      base: '#d9d9d9',
+      light: '#f0eded',
+      dark: '#8c8989',
+    },
   }
 };
