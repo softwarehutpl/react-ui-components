@@ -1,9 +1,9 @@
 export const theme: { [key: string]: { [key: string]: { [key: string]: string} } } = {
   colors: {
     primary: {
-      base: '#ffffff',
-      light: '#e1e5ed',
-      dark: '#000000',
+      base: '#000000',
+      light: '#ffffff',
+     	dark: '#a8b3bd',
     },
     secondary: {
       base: '#3690e3',
