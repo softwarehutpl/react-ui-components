@@ -3,8 +3,6 @@ import { addDecorator } from '@storybook/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './../src/common/theme';
 
-console.log('it works')
-
 addDecorator(storyFn => (
   <ThemeProvider theme={theme}>
     {storyFn()}
