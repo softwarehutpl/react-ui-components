@@ -20,7 +20,7 @@ module.exports = {
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "emotion/jsx-import": "error"
+    "emotion/jsx-import": "error",
   },
-  "plugins": ["prettier", "react-hooks", "emotion"]
+  "plugins": ["prettier", "react-hooks", "emotion", "jest"]
 }
