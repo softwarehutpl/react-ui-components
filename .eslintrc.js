@@ -22,5 +22,5 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn",
     "emotion/jsx-import": "error"
   },
-  "plugins": ["prettier", "react-hooks", "emotion"]
+  "plugins": ["prettier", "react-hooks", "emotion", "jest"]
 }

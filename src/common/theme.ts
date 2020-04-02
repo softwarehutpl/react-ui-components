@@ -1,4 +1,4 @@
-export const theme: { [key: string]: { [key: string]: { [key: string]: string} } } = {
+const theme: { [key: string]: { [key: string]: { [key: string]: string} } } = {
   colors: {
     primary: {
       base: '#ffffff',
@@ -37,3 +37,5 @@ export const theme: { [key: string]: { [key: string]: { [key: string]: string} }
     },
   }
 };
+
+export default theme;
