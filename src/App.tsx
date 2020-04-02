@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './common/theme';
+import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
-import Button from './components/atoms/Button/Button';
+import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
+import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 
 function App() {
   useEffect(() => {
@@ -12,14 +13,17 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <Button
-          buttonTitle="some button"
-          onClick={() => {console.log('clicked!')}}
-          // color="secondary"
-          // className='test-class'
-        />
-      </div>
+      <Dropdown>
+        <DropdownItem heading disabled>item</DropdownItem>
+        <DropdownItem divider dividerColor="blue" />
+        <DropdownItem
+          onClick={() => {
+            console.log('dropdown item clicked');
+          }}
+        >
+          abc
+        </DropdownItem>
+      </Dropdown>
     </ThemeProvider>
   );
 }

@@ -20,7 +20,8 @@ module.exports = {
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "emotion/jsx-import": "error"
+    "emotion/jsx-import": "error",
+    "jsx-a11y/click-events-have-key-events": 0,
   },
   "plugins": ["prettier", "react-hooks", "emotion"]
 }
