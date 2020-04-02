@@ -1,9 +1,9 @@
-const theme: { [key: string]: { [key: string]: { [key: string]: string} } } = {
+const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
   colors: {
     primary: {
-      base: '#ffffff',
-      light: '#e1e5ed',
-      dark: '#000000',
+      base: '#000000',
+      light: '#ffffff',
+      dark: '#a8b3bd',
     },
     secondary: {
       base: '#3690e3',
@@ -35,6 +35,24 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string} } } = {
       light: '#f0eded',
       dark: '#8c8989',
     },
+  },
+  // TODO: change it in dedicated task for that (change ease-out for example and add more options)
+  transitions: {
+    all: {
+      fast: 'all 0.5s ease-out',
+      mid: 'all 2s ease-out',
+      slow: 'all 4s ease-out',
+    },
+    background: {
+      fast: 'background-color 0.5s ease-out',
+      mid: 'background-color 2s ease-out',
+      slow: 'background-color 4s ease-out',
+    },
+    fontColor: {
+      fast: 'color 0.5s ease-out',
+      mid: 'color 2s ease-out',
+      slow: 'color 4s ease-out',
+    }
   }
 };
 

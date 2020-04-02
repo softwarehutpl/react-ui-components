@@ -20,6 +20,7 @@ type Props = {
   hoverBackgroundColor?: string;
   focusBackgroundColor?: string;
   transitionEffect?: string;
+  showPlaceholderOnFocus?: boolean;
   margin?: number;
   padding?: number;
 }
@@ -42,13 +43,16 @@ const Input = (
 
 const defaultProps = {
   color: 'primary',
+  fontColor: '#000',
   noBorder: false,
   disabled: false,
   className: '',
   borderWidth: 2,
   margin: 0,
   padding: 15,
-  borderRadius: 10,
+  borderRadius: 0,
+  borderColor: '#000',
+  showPlaceholderOnFocus: false,
 };
 
 Input.defaultProps = defaultProps;
@@ -57,9 +61,9 @@ export default styled(Input)`${({
   theme,
   color = defaultProps.color,
   backgroundColor,
-  fontColor,
+  fontColor = defaultProps.fontColor,
   noBorder = defaultProps.noBorder,
-  borderColor,
+  borderColor = defaultProps.borderColor,
   borderWidth = defaultProps.borderWidth,
   borderRadius = defaultProps.borderRadius,
   margin = defaultProps.margin,
@@ -69,8 +73,9 @@ export default styled(Input)`${({
   focusBackgroundColor,
   focusBorderColor,
   transitionEffect,
+  showPlaceholderOnFocus,
 }) => ({
-  'background-color': backgroundColor || theme.colors[color].base,
+  'background-color': backgroundColor || theme.colors[color].light,
   'color': fontColor || theme.colors[color].dark,
   'border': noBorder ? 'none' : 'solid',
   'border-color': borderColor || theme.colors[color].dark,
@@ -81,21 +86,27 @@ export default styled(Input)`${({
   '&:hover': {
     'cursor': 'pointer',
     'background-color': hoverBackgroundColor || focusBackgroundColor || theme.colors[color].light,
-    'border-color': hoverBorderColor || focusBorderColor,
+    'border-color': hoverBorderColor || focusBorderColor || theme.colors[color].dark,
   },
-  'transition': transitionEffect || 'none',
   '&:focus': {
     'cursor': 'pointer',
     'background-color': focusBackgroundColor || theme.colors[color].light,
-    'border-color': focusBorderColor,
+    'border-color': focusBorderColor || theme.colors[color].dark,
   },
+  '&:focus::-webkit-input-placeholder': showPlaceholderOnFocus ? {
+    'font-size': '.75em',
+    'position': 'relative',
+    'top': '-15px',
+    'transition': transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out',
+  } : '',
   'outline': 'none',
+  'transition': transitionEffect ? theme.transitions.all[transitionEffect] : 'none',
   '&[disabled]': {
     'background-color': theme.colors.disabled.base,
     'border-color': theme.colors.disabled.dark,
     'color': '#a6a6a6',
     '&:hover': {
       'cursor': 'auto',
-    }
-  }
+    },
+  },
 })}`

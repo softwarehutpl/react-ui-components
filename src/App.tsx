@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
@@ -13,19 +13,20 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className='App'>
         <Button
-          buttonTitle="some button"
-          onClick={() => {console.log('clicked!')}}
-          // color="secondary"
-          // className='test-class'
+          buttonTitle='some button'
+          onClick={() => {
+            console.log('clicked!');
+          }}
         />
         <Input
-          placeholder="test"
+          placeholder='test'
+          showPlaceholderOnFocus
           onChange={() => console.log('some-change')}
-          borderRadius={7}
-          // color="secondary"
-          // className='test-class'
+          hoverBackgroundColor='#EEE'
+          focusBackgroundColor='#EEE'
+          transitionEffect='mid'
         />
       </div>
     </ThemeProvider>
