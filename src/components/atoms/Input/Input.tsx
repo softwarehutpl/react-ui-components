@@ -99,6 +99,9 @@ export default styled(Input)`${({
     'top': '-15px',
     'transition': transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out',
   } : '',
+  '&::-webkit-input-placeholder': showPlaceholderOnFocus ? {
+    'transition': transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out',
+  } : '',
   'outline': 'none',
   'transition': transitionEffect ? theme.transitions.all[transitionEffect] : 'none',
   '&[disabled]': {
