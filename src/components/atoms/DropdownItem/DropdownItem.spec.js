@@ -44,7 +44,7 @@ describe('DropdownItem component', () => {
   it('should render dropdown item with custom padding', () => {
     const component = create(<DropdownItem theme={theme} padding={30}>item</DropdownItem>);
     const dropdownItem = component.toJSON();
-    expect(dropdownItem).toHaveStyleRule('padding', '30px');
+    expect(dropdownItem).toHaveStyleRule('padding', '0 30px');
   });
 
   it('should render dropdown item with given text placement', () => {

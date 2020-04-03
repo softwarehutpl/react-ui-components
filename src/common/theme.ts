@@ -3,7 +3,7 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
     primary: {
       base: '#000000',
       light: '#ffffff',
-      dark: '#a8b3bd',
+      dark: '#f6f6f6',
     },
     secondary: {
       base: '#2196f3',

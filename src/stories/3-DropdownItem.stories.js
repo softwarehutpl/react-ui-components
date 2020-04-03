@@ -8,7 +8,7 @@ stories.addDecorator(withKnobs);
 
 stories.add('common', () => {
   return (
-    <div style={{ width: '250px' }}>
+    <div style={{ width: '250px', 'font-family': 'sans-serif' }}>
       <DropdownItem
         disabled={boolean('Disabled', false)}
         heading={boolean('Heading', false)}
