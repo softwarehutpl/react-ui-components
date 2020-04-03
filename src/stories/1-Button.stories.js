@@ -1,18 +1,28 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
-import { Button } from '@storybook/react/demo';
+import { storiesOf } from '@storybook/react';
+import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
+import Button from '../components/atoms/Button/Button';
 
-export default {
-  title: 'Button',
-  component: Button,
-};
+const stories = storiesOf('Button', module);
+stories.addDecorator(withKnobs);
 
-export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
-
-export const Emoji = () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-  </Button>
-);
+stories.add('common', () => {
+  return (
+    <Button
+      buttonTitle={text('Button title', 'Button')}
+      disabled={boolean('Disabled', false)}
+      color={select(
+        'Color',
+        {
+          primary: 'primary',
+          secondary: 'secondary',
+          error: 'error',
+          warning: 'warning',
+          info: 'info',
+          success: 'success',
+        },
+        'primary'
+      )}
+    />
+  );
+});
