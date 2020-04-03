@@ -9,21 +9,20 @@ exports[`Button component should render correctly 1`] = `
   border-width: 2px;
   border-radius: 4px;
   margin: 0px;
-  padding: 15px;
-  text-transform: uppercase;
+  padding: 10px 20px;
   font-weight: bold;
   outline: none;
 }
 
 .c0:hover {
   cursor: pointer;
-  background-color: #a8b3bd;
+  color: #a8b3bd;
 }
 
 .c0[disabled] {
   background-color: #d9d9d9;
   border-color: #8c8989;
-  color: #a6a6a6;
+  color: #f0eded;
 }
 
 .c0[disabled]:hover {

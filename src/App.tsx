@@ -14,7 +14,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Button
-          buttonTitle="some button"
+          buttonTitle="Some button"
           onClick={() => {
             console.log('clicked!');
           }}
