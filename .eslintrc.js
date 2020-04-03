@@ -23,5 +23,5 @@ module.exports = {
     "emotion/jsx-import": "error",
     "jsx-a11y/click-events-have-key-events": 0,
   },
-  "plugins": ["prettier", "react-hooks", "emotion"]
+  "plugins": ["prettier", "react-hooks", "emotion", "jest"]
 }

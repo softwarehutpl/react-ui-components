@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { mapTextPositionToFlexJustify } from '../../../helpers/styleHelperMethods';
 import DropdownContext from '../../../context/dropdownContext';
@@ -6,7 +6,6 @@ import DropdownContext from '../../../context/dropdownContext';
 interface IDropdownItemProps {
   children?: React.ReactNode;
   className?: string;
-  disabledClassName?: string;
   divider?: boolean;
   onClick?: () => void;
 }
@@ -23,12 +22,7 @@ interface IDropdownItemStyleProps {
   disabled?: boolean;
 }
 
-const DropdownItem = ({
-  children,
-  className,
-  divider,
-  onClick,
-}: IDropdownItemProps) => {
+const DropdownItem = ({ children, className, divider, onClick }: IDropdownItemProps) => {
   if (divider) {
     return <div className={className} />;
   }
@@ -43,14 +37,13 @@ const defaultProps = {
   children: null,
   className: '',
   onClick: () => {},
-  disabledClassName: '',
   height: 50,
   padding: 15,
   textAlignment: 'left',
   heading: false,
   divider: false,
   dividerColor: '#a6a6a6',
-  color: 'primary',
+  color: 'error',
   disabled: false,
 };
 
@@ -77,8 +70,8 @@ const StyledDropdownItem = styled(DropdownItem)<IDropdownItemStyleProps>`
       };
     }
     return {
-      color: fontColor || theme.colors[color].light,
-      'background-color': backgroundColor || theme.colors[color].base,
+      color: fontColor || theme.colors[color].base,
+      'background-color': backgroundColor || theme.colors[color].light,
       width: '100%',
       height: `${height}px`,
       padding: `${padding}px`,
@@ -86,8 +79,8 @@ const StyledDropdownItem = styled(DropdownItem)<IDropdownItemStyleProps>`
       display: 'flex',
       'align-items': 'center',
       'justify-content': mapTextPositionToFlexJustify(textAlignment),
-      'font-weight': heading ? 'bold' : 'normal',
-      'text-transform': heading ? 'uppercase' : 'none',
+      'font-weight': heading ? 'bold' : 'bolder',
+      'text-transform': heading ? 'uppercase' : 'capitalize',
       '&:hover': {
         cursor: 'pointer',
         'background-color': theme.colors[color].dark,
@@ -103,7 +96,9 @@ const withDropdownContext = (WrappedComponent: React.ComponentType<DropdownItemP
   props: DropdownItemProps
 ) => {
   const { dropdownColor } = useContext(DropdownContext);
-  return <WrappedComponent {...props} color={dropdownColor} />;
-}
+  const { color } = props;
+  // if color is passed to item, render item with given color, if not, take color from dropdown
+  return <WrappedComponent {...props} color={color || dropdownColor} />;
+};
 
 export default withDropdownContext(StyledDropdownItem);

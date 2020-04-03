@@ -4,14 +4,20 @@
   "private": true,
   "dependencies": {
     "@emotion/styled": "^10.0.27",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/styled-components": "^5.0.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint-plugin-jest": "^23.8.2",
     "jest-styled-components": "^7.0.0",
     "node-sass": "^4.13.1",
     "react": "^16.13.1",
@@ -76,6 +82,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "husky": "^0.14.3",
     "lint-staged": "^10.0.9",
-    "prettier": "^2.0.2"
+    "prettier": "^2.0.2",
+    "react-test-renderer": "^16.13.1"
   }
 }

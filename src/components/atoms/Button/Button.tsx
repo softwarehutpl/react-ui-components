@@ -28,13 +28,13 @@ const Button = ({ buttonTitle, onClick, className, disabled }: Props) => (
 
 const defaultProps = {
   color: 'primary',
-  noBorder: false,
+  noBorder: true,
   disabled: false,
   className: '',
   borderWidth: 2,
   margin: 0,
   padding: 15,
-  borderRadius: 10,
+  borderRadius: 4,
 };
 
 Button.defaultProps = defaultProps;
@@ -55,9 +55,9 @@ export default styled(Button)`
     padding = defaultProps.padding,
   }) => ({
     'background-color': backgroundColor || theme.colors[color].base,
-    color: fontColor || theme.colors[color].dark,
+    color: fontColor || theme.colors[color].light,
     border: noBorder ? 'none' : 'solid',
-    'border-color': borderColor || theme.colors[color].dark,
+    'border-color': borderColor || theme.colors[color].light,
     'border-width': `${borderWidth}px`,
     'border-radius': `${borderRadius}px`,
     margin: `${margin}px`,
@@ -66,7 +66,7 @@ export default styled(Button)`
     'font-weight': 'bold',
     '&:hover': {
       cursor: 'pointer',
-      'background-color': hoverBackgroundColor || theme.colors[color].light,
+      'background-color': hoverBackgroundColor || theme.colors[color].dark,
       'border-color': hoverBorderColor,
     },
     outline: 'none',
