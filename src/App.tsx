@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Button from './components/atoms/Button/Button';
+import Input from './components/atoms/Input/Input';
 
 function App() {
   useEffect(() => {
@@ -12,14 +13,20 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
+      <div className='App'>
         <Button
-          buttonTitle="some button"
+          buttonTitle='some button'
           onClick={() => {
             console.log('clicked!');
           }}
-          // color="secondary"
-          // className='test-class'
+        />
+        <Input
+          placeholder='test'
+          showPlaceholderOnFocus
+          onChange={() => console.log('some-change')}
+          hoverBackgroundColor='#EEE'
+          focusBackgroundColor='#EEE'
+          transitionEffect='mid'
         />
       </div>
     </ThemeProvider>

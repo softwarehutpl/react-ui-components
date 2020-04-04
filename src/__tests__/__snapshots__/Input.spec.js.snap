@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should render correctly 1`] = `
+.c0 {
+  background-color: #ffffff;
+  color: #000000;
+  border: solid;
+  border-color: #000000;
+  border-width: 2px;
+  border-radius: 10px;
+  margin: 0px;
+  padding: 15px;
+  -webkit-transition: none;
+  transition: none;
+  outline: none;
+}
+
+.c0:hover {
+  cursor: pointer;
+  background-color: #e1e5ed;
+}
+
+.c0:focus {
+  cursor: pointer;
+  background-color: #e1e5ed;
+}
+
+.c0[disabled] {
+  background-color: #d9d9d9;
+  border-color: #8c8989;
+  color: #a6a6a6;
+}
+
+.c0[disabled]:hover {
+  cursor: auto;
+}
+
+<input
+  className="c0"
+  disabled={false}
+  placeholder="test"
+/>
+`;
