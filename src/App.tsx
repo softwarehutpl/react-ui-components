@@ -27,6 +27,8 @@ function App() {
           hoverBackgroundColor='#EEE'
           focusBackgroundColor='#EEE'
           transitionEffect='mid'
+          label='test12e'
+          width={250}
         />
       </div>
     </ThemeProvider>
