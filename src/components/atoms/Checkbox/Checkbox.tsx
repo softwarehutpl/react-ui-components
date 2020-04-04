@@ -7,7 +7,7 @@ export interface CheckboxContainerProps {
   padding?: number
 }
 
-export interface CheckboxProps  extends CheckboxContainerProps, CheckmarkProps { 
+export interface CheckboxProps extends CheckboxContainerProps, CheckmarkProps { 
   className?: string;
   checked: boolean;
   label?: string;
@@ -20,7 +20,7 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
   display: inline-block;
   margin: ${({ margin }) => margin + 'px'};
   padding: ${({ padding }) => padding + 'px'};
-`
+`;
 
 export const StyledLabel = styled.label`
   display: flex;
@@ -95,7 +95,7 @@ Checkbox.defaultProps = {
   padding: 15,
   noBorder: false,
   borderRadius: 4,
-  borderWidth: 1
+  borderWidth: 1,
 };
 
 export default Checkbox;
