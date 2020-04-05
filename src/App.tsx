@@ -22,6 +22,7 @@ function App() {
         />
         <Input
           placeholder='test'
+          value={'test'}
           showPlaceholderOnFocus
           onChange={() => console.log('some-change')}
           hoverBackgroundColor='#EEE'
