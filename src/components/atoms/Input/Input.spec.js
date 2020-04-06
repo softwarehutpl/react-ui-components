@@ -38,11 +38,10 @@ describe('Input Component', () => {
   it('should render input component with selected theme styling', () => {
     const component = create(<InputField theme={theme} color="secondary" />);
     const input = component.toJSON();
-    expect(input).toHaveStyleRule('background-color', '#75b0e6');
-    expect(input).toHaveStyleRule('color', '#034d91');
-    expect(input).toHaveStyleRule('border-color', '#034d91');
-    expect(input).toHaveStyleRule('background-color', '#75b0e6', { modifier: ':hover' });
-    expect(input).toHaveStyleRule('background-color', '#75b0e6', { modifier: ':focus' });
+    expect(input).toHaveStyleRule('color', '#0d47a1');
+    expect(input).toHaveStyleRule('border-color', '#0d47a1');
+    expect(input).toHaveStyleRule('background-color', '#bbdefb', { modifier: ':hover' });
+    expect(input).toHaveStyleRule('background-color', '#bbdefb', { modifier: ':focus' });
   });
 
   it('should render disabled input', () => {
@@ -75,7 +74,6 @@ describe('Input Component', () => {
   it('should render input with custom hover and focus, when no focus parameters introduced, but focus are introduced',
     () => {
     const component = create(<InputField
-      // theme={theme}
       focusBackgroundColor='#C7C7C7C'
       focusBorderColor='#474747'
     />)
@@ -112,7 +110,6 @@ it('should render input with custom border', () => {
   it('should render input component with transitionEffect', () => {
     const component = create(<InputField theme={theme} transitionEffect='mid' />);
     const input = component.toJSON();
-    console.log(input);
     expect(input).toHaveStyleRule('transition', 'all 2s ease-out');
   });
 

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CloseIcon should render corectly 1`] = `
+<a
+  className="sc-AxjAm fhYvYx"
+  color="primary"
+/>
+`;
