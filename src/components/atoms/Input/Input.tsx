@@ -44,9 +44,7 @@ interface InputProps extends InputContainerProps, InputLabelProps {
 };
 
 export const InputField = styled.input<InputProps>`
-  background-color: ${({ backgroundColor, theme, color }) => {
-    return backgroundColor || (color && theme.colors[color].light);
-  }};
+  background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ fontColor, theme, color }) => fontColor || (color && theme.colors[color].dark)};
   border: ${({ noBorder }) => noBorder ? 'none' : 'solid'};
   border-color: ${({ borderColor, theme, color }) => borderColor || (color && theme.colors[color].dark) };
@@ -60,8 +58,10 @@ export const InputField = styled.input<InputProps>`
   :hover {
     border-color: ${({ hoverBorderColor, focusBorderColor, color, theme }) => hoverBorderColor || focusBorderColor || (color && theme.colors[color].dark)};
     background-color: ${({ hoverBackgroundColor, focusBackgroundColor, color, theme }) => hoverBackgroundColor || focusBackgroundColor || (color && theme.colors[color].light)};
+    border-width: 2px;
   };
   :focus {
+    border-width: 2px;
     border-color: ${({ focusBorderColor, color, theme }) => focusBorderColor || (color && theme.colors[color].dark)};
     background-color: ${({ focusBackgroundColor, color, theme }) => focusBackgroundColor || (color && theme.colors[color].light)};
   };
@@ -116,11 +116,11 @@ const defaultProps = {
   margin: 0,
   padding: 15,
   borderRadius: 5,
-  borderColor: '#000',
   showPlaceholderOnFocus: false,
   width: 200,
   direction: 'column',
   labelPosition: 'left',
+  backgroundColor: '#FFF',
 };
 
 Input.defaultProps = defaultProps;

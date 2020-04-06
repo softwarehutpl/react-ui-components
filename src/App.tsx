@@ -10,6 +10,7 @@ import Input from './components/atoms/Input/Input';
 
 function App() {
   const [value, setValue] = useState('');
+
   useEffect(() => {
     styleReorder();
   }, []);
