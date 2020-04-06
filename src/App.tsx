@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
@@ -9,6 +9,7 @@ import Button from './components/atoms/Button/Button';
 import Input from './components/atoms/Input/Input';
 
 function App() {
+  const [value, setValue] = useState('');
   useEffect(() => {
     styleReorder();
   }, []);
@@ -35,11 +36,14 @@ function App() {
         />
         <Input
           placeholder='test'
+          value={value}
           showPlaceholderOnFocus
-          onChange={() => console.log('some-change')}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
           hoverBackgroundColor='#EEE'
           focusBackgroundColor='#EEE'
           transitionEffect='mid'
+          label='test12e'
+          width={250}
         />
       </div>
     </ThemeProvider>

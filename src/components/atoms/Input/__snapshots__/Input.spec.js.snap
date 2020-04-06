@@ -2,44 +2,24 @@
 
 exports[`Input Component should render correctly 1`] = `
 .c0 {
-  background-color: #ffffff;
-  color: #000;
-  border: solid;
-  border-color: #000;
-  border-width: 2px;
-  border-radius: 0px;
-  margin: 0px;
-  padding: 15px;
-  outline: none;
-  -webkit-transition: none;
-  transition: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: undefinedpx;
 }
 
-.c0:hover {
-  cursor: pointer;
-  background-color: #ffffff;
-  border-color: #f6f6f6;
-}
-
-.c0:focus {
-  cursor: pointer;
-  background-color: #ffffff;
-  border-color: #f6f6f6;
-}
-
-.c0[disabled] {
-  background-color: #d9d9d9;
-  border-color: #8c8989;
-  color: #a6a6a6;
-}
-
-.c0[disabled]:hover {
-  cursor: auto;
-}
-
-<input
+<div
   className="c0"
-  disabled={false}
+  onChanege={[Function]}
   placeholder="test"
 />
 `;
