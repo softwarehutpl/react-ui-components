@@ -74,7 +74,6 @@ describe('Input Component', () => {
   it('should render input with custom hover and focus, when no focus parameters introduced, but focus are introduced',
     () => {
     const component = create(<InputField
-      // theme={theme}
       focusBackgroundColor='#C7C7C7C'
       focusBorderColor='#474747'
     />)
