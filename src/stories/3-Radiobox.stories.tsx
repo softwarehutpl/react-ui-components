@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import RadioBox from '../components/atoms/RadioBox/RadioBox';
-import Label from '../components/atoms/Label/Label';
 import { COLOR_OPTIONS } from '../common/colorOptions';
 
 const stories = storiesOf('Radio', module);
@@ -23,10 +22,11 @@ const RADIOBOXES = [
   },
 ];
 
+
 const DISPLAY = {
   horizontal: 'row',
   vertical: 'column'
-};
+} as any;
 
 stories.add('Default', () => {
   const [value, setValue] = React.useState('');
