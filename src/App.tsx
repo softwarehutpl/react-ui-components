@@ -6,6 +6,7 @@ import { styleReorder } from './helpers/styleReorder';
 import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
 import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
+import Input from './components/atoms/Input/Input';
 
 function App() {
   useEffect(() => {
@@ -27,12 +28,18 @@ function App() {
       </Dropdown>
       <div className="App">
         <Button
-          buttonTitle="some button"
+          buttonTitle='some button'
           onClick={() => {
             console.log('clicked!');
           }}
-          // color="secondary"
-          // className='test-class'
+        />
+        <Input
+          placeholder='test'
+          showPlaceholderOnFocus
+          onChange={() => console.log('some-change')}
+          hoverBackgroundColor='#EEE'
+          focusBackgroundColor='#EEE'
+          transitionEffect='mid'
         />
       </div>
     </ThemeProvider>
