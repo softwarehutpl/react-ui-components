@@ -1,26 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import './button.scss';
 
-type Props = {
+interface IButtonProps {
   buttonTitle: string;
   onClick: () => void;
-  color?: string;
   className?: string;
   disabled?: boolean;
+}
+
+interface IButtonStyleProps {
+  color?: string;
   fontColor?: string;
   noBorder?: boolean;
   borderColor?: string;
-  hoverBorderColor?: string;
   borderWidth?: number;
   borderRadius?: number;
   backgroundColor?: string;
-  hoverBackgroundColor?: string;
   margin?: number;
-  padding?: number;
-};
+  padding?: string;
+}
 
-const Button = ({ buttonTitle, onClick, className, disabled }: Props) => (
+const Button = ({ buttonTitle, onClick, className, disabled }: IButtonProps) => (
   <button type="button" className={className} onClick={onClick} disabled={disabled}>
     {buttonTitle}
   </button>
@@ -33,22 +33,20 @@ const defaultProps = {
   className: '',
   borderWidth: 2,
   margin: 0,
-  padding: 15,
+  padding: '10px 20px',
   borderRadius: 4,
 };
 
 Button.defaultProps = defaultProps;
 
-export default styled(Button)`
+export default styled(Button)<IButtonStyleProps>`
   ${({
     theme,
     color = defaultProps.color,
     backgroundColor,
-    hoverBackgroundColor,
     fontColor,
     noBorder = defaultProps.noBorder,
     borderColor,
-    hoverBorderColor,
     borderWidth = defaultProps.borderWidth,
     borderRadius = defaultProps.borderRadius,
     margin = defaultProps.margin,
@@ -61,19 +59,17 @@ export default styled(Button)`
     'border-width': `${borderWidth}px`,
     'border-radius': `${borderRadius}px`,
     margin: `${margin}px`,
-    padding: `${padding}px`,
-    'text-transform': 'uppercase',
+    padding,
     'font-weight': 'bold',
     '&:hover': {
       cursor: 'pointer',
-      'background-color': hoverBackgroundColor || theme.colors[color].dark,
-      'border-color': hoverBorderColor,
+      color: theme.colors[color].dark,
     },
     outline: 'none',
     '&[disabled]': {
       'background-color': theme.colors.disabled.base,
       'border-color': theme.colors.disabled.dark,
-      color: '#a6a6a6',
+      color: theme.colors.disabled.light,
       '&:hover': {
         cursor: 'auto',
       },

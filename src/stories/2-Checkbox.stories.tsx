@@ -13,8 +13,8 @@ stories
 		return (
 			<Checkbox 
 				checked={checked}
-				onChange={(e) => setChecked(e.target.checked)}
 				color={select('Color',COLOR_OPTIONS , 'primary')}
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked)}
 			/>
  		);
 	})
@@ -23,7 +23,7 @@ stories
 		return (
 			<Checkbox 
 				checked={checked}
-				onChange={(e) => setChecked(e.target.checked)}
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked)}
 			/>
 		);
 	})
@@ -32,7 +32,7 @@ stories
 		return (
 			<Checkbox 
 				checked={checked}
-				onChange={(e) => setChecked(e.target.checked)}
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked)}
 				disabled={boolean('Disabled', true)}
 			/>
 		);
@@ -42,7 +42,7 @@ stories
 		return (
 			<Checkbox 
 				checked={checked}
-				onChange={(e) => setChecked(e.target.checked)}
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked)}
 				required
 			/>
 		);
