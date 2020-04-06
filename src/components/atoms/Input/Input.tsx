@@ -16,8 +16,9 @@ interface InputLabelProps {
 };
 
 interface InputProps extends InputContainerProps, InputLabelProps {
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   color?: string;
+  value: string;
   className?: string;
   labelClassName?: string;
   placeholder?: string;
@@ -64,16 +65,17 @@ export const InputField = styled.input<InputProps>`
     border-color: ${({ focusBorderColor, color, theme }) => focusBorderColor || (color && theme.colors[color].dark)};
     background-color: ${({ focusBackgroundColor, color, theme }) => focusBackgroundColor || (color && theme.colors[color].light)};
   };
-  :focus::-webkit-input-placeholder {
+  ${({ showPlaceholderOnFocus, theme, transitionEffect }) => showPlaceholderOnFocus && `:focus::-webkit-input-placeholder {
     font-size: .75em;
+    display: none;
     position: relative;
     top: -15px;
-    transition: ${({ transitionEffect, showPlaceholderOnFocus, theme }) => showPlaceholderOnFocus &&
-      (transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out')}; 
+    transition: ${transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out'}; 
   };
-  &::-webkit-input-placeholder {
-    transition: ${({ transitionEffect, theme }) => transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out'};
-  };
+  `}
+  ${({ showPlaceholderOnFocus, theme, transitionEffect }) => showPlaceholderOnFocus && `::-webkit-input-placeholder {
+    transition: ${transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out'};
+  }`};
 `;
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -84,7 +86,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   width: ${({ width }) => `${width}px`};
 `;
 
-export const InputLabel = styled.span<InputLabelProps>`
+export const InputLabel = styled.label<InputLabelProps>`
   margin-bottom: 10px;
   width: ${({ width }) => `${width}px`};
   text-align: ${({ labelPosition }) => labelPosition};
@@ -100,26 +102,6 @@ const Input = (props: InputProps) => (
     </InputLabel>)}
     <InputField
       {...props}
-      // disabled={props.disabled}
-      // color={props.color}
-      // width={props.width}
-      // className={props.className}
-      // fontColor={props.fontColor}
-      // backgroundColor={props.backgroundColor}
-      // noBorder={props.noBorder}
-      // borderColor={props.borderColor}
-      // borderWidth={props.borderWidth}
-      // borderRadius={props.borderRadius}
-      // margin={props.margin}
-      // padding={props.padding}
-      // placeholder={props.placeholder}
-      // hoverBackgroundColor={props.hoverBackgroundColor}
-      // hoverBorderColor={props.hoverBorderColor}
-      // focusBackgroundColor={props.focusBackgroundColor}
-      // focusBorderColor={props.focusBorderColor}
-      // transitionEffect={props.transitionEffect}
-      // showPlaceholderOnFocus={props.showPlaceholderOnFocus}
-      // onChange={props.onChange}
     />
   </InputContainer>
 );
@@ -144,23 +126,3 @@ const defaultProps = {
 Input.defaultProps = defaultProps;
 
 export default Input;
-
-// export default styled(Input)`${({ 
-
-// }) => ({
-//   'background-color': backgroundColor || theme.colors[color].light,
-//   'color': fontColor || theme.colors[color].dark,
-//   'border': noBorder ? 'none' : 'solid',
-//   'border-color': borderColor || theme.colors[color].dark,
-//   'border-width': `${borderWidth}px`,
-//   'border-radius': `${borderRadius}px`,
-//   'margin': `${margin}px`,
-//   'padding': `${padding}px`,
-//   'width': '100%',
-//   
-//   
-//   
-//   'outline': 'none',
-//   'transition': transitionEffect ? theme.transitions.all[transitionEffect] : 'none',
-//   
-// })}`
