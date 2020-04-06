@@ -17,7 +17,7 @@ exports[`Button component should render correctly 1`] = `
 
 .c0:hover {
   cursor: pointer;
-  background-color: #a8b3bd;
+  background-color: #f6f6f6;
 }
 
 .c0[disabled] {

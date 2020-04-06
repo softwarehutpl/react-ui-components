@@ -38,11 +38,11 @@ describe('Input Component', () => {
   it('should render input component with selected theme styling', () => {
     const component = create(<Input theme={theme} color="secondary" />);
     const input = component.toJSON();
-    expect(input).toHaveStyleRule('background-color', '#75b0e6');
+    expect(input).toHaveStyleRule('background-color', '#bbdefb');
     expect(input).toHaveStyleRule('color', '#000');
     expect(input).toHaveStyleRule('border-color', '#000');
-    expect(input).toHaveStyleRule('background-color', '#75b0e6', { modifier: ':hover' });
-    expect(input).toHaveStyleRule('background-color', '#75b0e6', { modifier: ':focus' });
+    expect(input).toHaveStyleRule('background-color', '#bbdefb', { modifier: ':hover' });
+    expect(input).toHaveStyleRule('background-color', '#bbdefb', { modifier: ':focus' });
   });
 
   it('should render disabled input', () => {

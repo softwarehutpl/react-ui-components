@@ -37,10 +37,10 @@ describe('Button component', () => {
   it('should render button component with selected theme styling', () => {
     const component = create(<Button theme={theme} color="secondary" />);
     const button = component.toJSON();
-    expect(button).toHaveStyleRule('background-color', '#3690e3');
-    expect(button).toHaveStyleRule('color', '#75b0e6');
-    expect(button).toHaveStyleRule('border-color', '#75b0e6');
-    expect(button).toHaveStyleRule('background-color', '#034d91', { modifier: ':hover' });
+    expect(button).toHaveStyleRule('background-color', '#2196f3');
+    expect(button).toHaveStyleRule('color', '#bbdefb');
+    expect(button).toHaveStyleRule('border-color', '#bbdefb');
+    expect(button).toHaveStyleRule('background-color', '#0d47a1', { modifier: ':hover' });
   });
 
   it('should render disabled button', () => {
