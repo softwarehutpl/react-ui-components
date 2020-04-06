@@ -78,4 +78,4 @@ stories
 				label='label'
 			/>
 		);
-	})
+  })
