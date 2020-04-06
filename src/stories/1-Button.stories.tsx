@@ -11,6 +11,7 @@ stories.add('common', () => {
     <Button
       buttonTitle={text('Button title', 'Button')}
       disabled={boolean('Disabled', false)}
+      onClick={() => {}}
       color={select(
         'Color',
         {
