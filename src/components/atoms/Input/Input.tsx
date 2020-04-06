@@ -126,23 +126,3 @@ const defaultProps = {
 Input.defaultProps = defaultProps;
 
 export default Input;
-
-// export default styled(Input)`${({ 
-
-// }) => ({
-//   'background-color': backgroundColor || theme.colors[color].light,
-//   'color': fontColor || theme.colors[color].dark,
-//   'border': noBorder ? 'none' : 'solid',
-//   'border-color': borderColor || theme.colors[color].dark,
-//   'border-width': `${borderWidth}px`,
-//   'border-radius': `${borderRadius}px`,
-//   'margin': `${margin}px`,
-//   'padding': `${padding}px`,
-//   'width': '100%',
-//   
-//   
-//   
-//   'outline': 'none',
-//   'transition': transitionEffect ? theme.transitions.all[transitionEffect] : 'none',
-//   
-// })}`
