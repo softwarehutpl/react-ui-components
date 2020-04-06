@@ -37,7 +37,7 @@ stories
     const [value, setValue] = useState('');
      return (
        <Input 
-         placeholder='Test input'
+         placeholder='Casual input'
          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
          color={select('Color', colorOpions, 'primary')}
          value={value}
@@ -45,14 +45,26 @@ stories
        />
       );
    })
-	.add('ShowPlaceholderOnFocus', () => {
+   .add('Error input with own background on focus', () => {
+    const [value, setValue] = useState('');
+     return (
+       <Input 
+         placeholder='Warn input'
+         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+         color={select('Color', colorOpions, 'error')}
+         focusBackgroundColor='white'
+         value={value}
+       />
+      );
+   })
+	.add('Placeholder On Focus', () => {
     const [value, setValue] = useState('');
 		return (
 			<Input
         placeholder='Test input'
         value={value}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-				showPlaceholderOnFocus={boolean('showPlaceholderOnFocus', false)}
+				showPlaceholderOnFocus={boolean('showPlaceholderOnFocus', true)}
 			/>
 		);
   })
