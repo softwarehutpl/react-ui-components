@@ -32,10 +32,10 @@ const Checkmark = styled.span<CheckmarkProps>`
       transform: rotate(45deg);
     }
 
-  ${({ disabled, color }) =>
+  ${({ disabled }) =>
     disabled && 
       css`
-        border-color: ${({ theme }) => (theme.colors[color].light)};
+        border-color: ${({ theme }) => (theme.colors.disabled.base)};
         pointer-events: none;
         background-color: transparent;
     `
