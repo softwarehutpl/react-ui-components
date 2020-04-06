@@ -28,7 +28,7 @@ function App() {
       </Dropdown>
       <div className="App">
         <Button
-          buttonTitle='some button'
+          buttonTitle="some button"
           onClick={() => {
             console.log('clicked!');
           }}

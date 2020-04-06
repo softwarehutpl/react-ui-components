@@ -1,8 +1,8 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import 'jest-styled-components';
-import Button from '../components/atoms/Button/Button';
-import theme from '../common/theme';
+import Button from './Button';
+import theme from '../../../common/theme';
 
 describe('Button component', () => {
   it('should render correctly', () => {
@@ -40,7 +40,7 @@ describe('Button component', () => {
     expect(button).toHaveStyleRule('background-color', '#2196f3');
     expect(button).toHaveStyleRule('color', '#bbdefb');
     expect(button).toHaveStyleRule('border-color', '#bbdefb');
-    expect(button).toHaveStyleRule('background-color', '#0d47a1', { modifier: ':hover' });
+    expect(button).toHaveStyleRule('color', '#0d47a1', { modifier: ':hover' });
   });
 
   it('should render disabled button', () => {
@@ -53,13 +53,6 @@ describe('Button component', () => {
     const component = create(<Button theme={theme} fontColor="red" />);
     const button = component.toJSON();
     expect(button).toHaveStyleRule('color', 'red');
-  });
-
-  it('should render button with custom hover styles', () => {
-    const component = create(<Button theme={theme} hoverBackgroundColor="yellow" hoverBorderColor="red" />);
-    const button = component.toJSON();
-    expect(button).toHaveStyleRule('border-color', 'red', { modifier: ':hover' });
-    expect(button).toHaveStyleRule('background-color', 'yellow', { modifier: ':hover' });
   });
 
   it('should render button with custom border', () => {
@@ -89,7 +82,7 @@ describe('Button component', () => {
   });
 
   it('should render button component with custom padding and margin', () => {
-    const component = create(<Button theme={theme} padding={30} margin={10} />);
+    const component = create(<Button theme={theme} padding="30px" margin={10} />);
     const button = component.toJSON();
     expect(button).toHaveStyleRule('padding', '30px');
     expect(button).toHaveStyleRule('margin', '10px');
