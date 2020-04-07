@@ -10,6 +10,7 @@ export interface IBarValues {
 interface IInnerBar extends IBarValues {
   color?: string;
   barColor?: string;
+  transitionTime?: number;
 }
 
 interface IProgressBarProps extends IInnerBar, IBarLabel, IBarLabelStyle {
@@ -39,9 +40,16 @@ const ProgressBar = ({
   width,
   labelPosition,
   noLabel,
+  transitionTime,
 }: IProgressBarProps) => (
   <div className={className}>
-    <InnerBar maxValue={maxValue} progressValue={progressValue} color={color} barColor={barColor} />
+    <InnerBar
+      maxValue={maxValue}
+      progressValue={progressValue}
+      color={color}
+      barColor={barColor}
+      transitionTime={transitionTime}
+    />
     {!noLabel && (
       <ProgressBarLabel
         maxValue={maxValue}
@@ -64,15 +72,26 @@ const defaultProps = {
   margin: '0',
   labelType: 'percentage',
   noLabel: false,
+  transitionTime: 0.5,
 };
 
 ProgressBar.defaultProps = defaultProps;
 
 const InnerBar = styled.div<IInnerBar>`
-  ${({ theme, color = defaultProps.color, progressValue, maxValue, barColor }) => ({
+  ${({
+    theme,
+    color = defaultProps.color,
+    progressValue,
+    maxValue,
+    barColor,
+    transitionTime = defaultProps.transitionTime,
+  }) => ({
     width: `${(progressValue / maxValue) * 100}%`,
+    'max-width': '100%',
     height: '100%',
     'background-color': barColor || theme.colors[color].base,
+    'border-radius': '6px',
+    transition: `width ${transitionTime}s`,
   })}
 `;
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { IBarValues } from './ProgressBar';
-import { getProgressBarLabelTopPosition } from '../../../helpers/styleHelperMethods';
+import { getLabelColor, getProgressBarLabelTopPosition } from './helpers';
 
 export interface IBarLabel extends IBarValues {
   labelType?: 'percentage' | 'progressValue';
@@ -23,12 +23,11 @@ const BarLabel = ({ labelType, progressValue, maxValue, className }: IBarLabel) 
   if (labelType === 'progressValue') {
     labelText = `${progressValue} of ${maxValue}`;
   }
-  return <div className={className}>{labelText}</div>;
+  return <label className={className}>{labelText}</label>;
 };
 
 const defaultProps = {
   labelType: 'percentage',
-  labelColor: '#000',
   className: '',
   labelPosition: 'top',
 };
@@ -36,13 +35,20 @@ const defaultProps = {
 BarLabel.defaultProps = defaultProps;
 
 export default styled(BarLabel)<IBarLabelStyle>`
-  ${({ labelColor = defaultProps.labelColor, labelPosition = defaultProps.labelPosition, height, width }) => ({
-    color: labelColor,
+  ${({
+    labelColor,
+    labelPosition = defaultProps.labelPosition,
+    height,
+    width,
+  }) => ({
+    color: getLabelColor(labelPosition, labelColor),
     position: 'absolute',
     width: labelPosition === 'right' ? 'auto' : '100%',
     top: getProgressBarLabelTopPosition(labelPosition, height),
     left: labelPosition === 'right' ? width + 10 : 'auto',
     'font-size': labelPosition === 'center' ? '0.75em' : '1em',
     'line-height': `${height}px`,
+    'text-align': 'center',
+    display: 'block',
   })}
 `;

@@ -1,28 +1,65 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
+import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
+import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
+import Input from './components/atoms/Input/Input';
 
 function App() {
+  const [value, setValue] = useState('');
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
     styleReorder();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (progress !== 100) {
+        setProgress(progress + 10);
+      }
+    }, 500);
+    return () => {clearInterval(interval)};
+  }, [progress])
+
   return (
     <ThemeProvider theme={theme}>
+      <Dropdown>
+        <DropdownItem heading disabled>
+          item
+        </DropdownItem>
+        <DropdownItem divider dividerColor="blue" />
+        <DropdownItem
+          onClick={() => {
+            console.log('dropdown item clicked');
+          }}
+        >
+          abc
+        </DropdownItem>
+      </Dropdown>
       <div className="App">
         <Button
           buttonTitle="some button"
           onClick={() => {
             console.log('clicked!');
           }}
-          // color="secondary"
-          // className='test-class'
         />
-        <ProgressBar color="success" maxValue={100} progressValue={50} labelPosition="right" />
+        <Input
+          placeholder="test"
+          value={value}
+          showPlaceholderOnFocus
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+          hoverBackgroundColor="#EEE"
+          focusBackgroundColor="#EEE"
+          transitionEffect="mid"
+          label="test12e"
+          width={250}
+        />
+        <ProgressBar color="success" maxValue={100} progressValue={progress} />
       </div>
     </ThemeProvider>
   );

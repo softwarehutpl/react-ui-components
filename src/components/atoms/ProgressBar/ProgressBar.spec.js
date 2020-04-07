@@ -6,6 +6,15 @@ import ProgressBar from './ProgressBar';
 import theme from '../../../common/theme';
 
 describe('ProgressBar component', () => {
+  it('shoud render correctly', () => {
+    const tree = create(
+      <ThemeProvider theme={theme}>
+        <ProgressBar />
+      </ThemeProvider>
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render default size empty progress bar with default theme colors', () => {
     const component = create(
       <ThemeProvider theme={theme}>
@@ -32,8 +41,9 @@ describe('ProgressBar component', () => {
       </ThemeProvider>
     );
     const progressBar = component.toJSON();
+    const innerBar = progressBar.children.find((child) => child.type === 'div');
     expect(progressBar).toHaveStyleRule('background-color', 'yellow');
-    expect(progressBar.children[0]).toHaveStyleRule('background-color', 'green');
+    expect(innerBar).toHaveStyleRule('background-color', 'green');
     expect(progressBar).toHaveStyleRule('border', 'none');
     expect(progressBar).toHaveStyleRule('margin', '10px');
   });
@@ -45,7 +55,7 @@ describe('ProgressBar component', () => {
       </ThemeProvider>
     );
     const progressBar = component.toJSON();
-    const innerBar = progressBar.children[0];
+    const innerBar = progressBar.children.find((child) => child.type === 'div');
     expect(innerBar).toHaveStyleRule('width', '10%');
     expect(innerBar).toHaveStyleRule('background-color', '#000000');
   });
@@ -57,7 +67,7 @@ describe('ProgressBar component', () => {
       </ThemeProvider>
     );
     const progressBar = component.toJSON();
-    const label = progressBar.children[1];
+    const label = progressBar.children.find((child) => child.type === 'label');
     expect(label.children.join('')).toEqual('10%');
     expect(label).toHaveStyleRule('color', '#000');
     expect(label).toHaveStyleRule('top', '-25px');
@@ -78,7 +88,7 @@ describe('ProgressBar component', () => {
       </ThemeProvider>
     );
     const progressBar = component.toJSON();
-    const label = progressBar.children[1];
+    const label = progressBar.children.find((child) => child.type === 'label');
     expect(label.children.join(' ')).toEqual('10 of 100');
     expect(label).toHaveStyleRule('color', 'blue');
     expect(label).toHaveStyleRule('top', '0');
@@ -92,6 +102,7 @@ describe('ProgressBar component', () => {
       </ThemeProvider>
     );
     const progressBar = component.toJSON();
-    expect(progressBar.children.length).toEqual(1);
+    const label = progressBar.children.find((child) => child.type === 'label');
+    expect(label).toEqual(undefined);
   });
 });

@@ -1,11 +1,12 @@
-export const getProgressBarLabelTopPosition = (position: string, barHeight: number) => {
-  const offset = 5;
-  switch (position) {
-    case 'top':
-      return `${-barHeight - offset}px`;
-    case 'bottom':
-      return `${barHeight + offset}px`;
+export const mapTextPositionToFlexJustify = (textPosition: string) => {
+  switch (textPosition) {
+    case 'left':
+      return 'flex-start';
+    case 'right':
+      return 'flex-end';
+    case 'center':
+      return 'center';
     default:
-      return 0;
+      return 'center';
   }
 };
