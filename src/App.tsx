@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Button from './components/atoms/Button/Button';
+import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 
 function App() {
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
           // color="secondary"
           // className='test-class'
         />
+        <ProgressBar color="success" maxValue={100} progressValue={50} labelPosition="right" />
       </div>
     </ThemeProvider>
   );
