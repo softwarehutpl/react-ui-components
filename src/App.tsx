@@ -8,11 +8,13 @@ import Button from './components/atoms/Button/Button';
 import Input from './components/atoms/Input/Input';
 
 const items = [{
-  name: 'some name 1', link: 'link',
+  name: 'Home', link: 'link',
   }, {
-    name: 'some name 2', link: 'link-2',
+    name: 'Products', link: 'link-2',
   }, {
-    name: 'some name 3', link: 'link-3',
+    name: 'Collection', link: 'link-3',
+  }, {
+    name: 'Product Details', link: 'link-4',
   }];
 
 function App() {
@@ -42,7 +44,16 @@ function App() {
           label='test12e'
           width={250}
         />
-        <Breadcrumbs items={items} showOnlyBorderItems />
+        <Breadcrumbs
+          items={items}
+          showOnlyBorderItems
+          activeBreadcrumbClassName="active"
+          firstBreadcrumbClassName="active"
+          itemClassName='breadcrumbsItem'
+          wrapperClassName='breadcrumbsWrapper'
+          noBorder
+          showBoxShadow
+        />
       </div>
     </ThemeProvider>
   );
