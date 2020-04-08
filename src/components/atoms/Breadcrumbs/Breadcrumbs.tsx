@@ -100,7 +100,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
               ...
           </BreadcrumbsGap>
           );
-        }
+        } return null;
       })}
     </BreadcrumbsContainer>
   )};
