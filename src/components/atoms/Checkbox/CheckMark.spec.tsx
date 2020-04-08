@@ -30,7 +30,7 @@ describe('Checkmark', () => {
     const tree = renderer
       .create(<Checkmark {...props} theme={theme} disabled={true} />)
       .toJSON();
-      expect(tree).toHaveStyleRule('border-color', theme.colors.primary.light)
+      expect(tree).toHaveStyleRule('border-color', theme.colors.disabled.base)
   });
 
   it('should have error border color when input is required ', () => {
