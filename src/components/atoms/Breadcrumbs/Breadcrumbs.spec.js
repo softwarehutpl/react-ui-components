@@ -2,27 +2,18 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import 'jest-styled-components';
+import breadcrumbsItems from '../../../common/mocks/breadcrumbsItems';
 import Breadcrumbs, { BreadcrumbsContainer, BreadcrumbsGap } from './Breadcrumbs';
 import { BreadcrumbsItemContainer } from './BreadcrumbsItem';
 
-const items = [{
-  name: 'Home', link: 'link',
-  }, {
-    name: 'Products', link: 'link-2',
-  }, {
-    name: 'Collection', link: 'link-3',
-  }, {
-    name: 'Product Details', link: 'link-4',
-  }];
-
 describe('Breadcrumbs Component', () => {
   it('should render Breadcrumbs correctly', () => {
-    const tree = create(<Breadcrumbs items={items} />).toJSON();
+    const tree = create(<Breadcrumbs items={breadcrumbsItems} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('should render BreadcrumbsItemContainer correctly', () => {
-    const tree = create(<BreadcrumbsItemContainer items={items} />).toJSON();
+    const tree = create(<BreadcrumbsItemContainer items={breadcrumbsItems} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -60,7 +51,7 @@ describe('Breadcrumbs Component', () => {
   it('should render BreadcrumbsContainer with default padding and margin', () => {
     const component = create(<BreadcrumbsContainer />);
     const breadcrumbsContainer = component.toJSON();
-    expect(breadcrumbsContainer).toHaveStyleRule('padding', '15px');
+    expect(breadcrumbsContainer).toHaveStyleRule('padding', '0 15px');
     expect(breadcrumbsContainer).toHaveStyleRule('margin', '0px');
   });
 });

@@ -6,7 +6,7 @@ import BreadcrumbsItem from './BreadcrumbsItem';
 type Item = {
   name: string;
   link: string;
-}
+};
 
 interface BreadcrumbsContainerProps {
   noBorder?: boolean;
@@ -43,11 +43,14 @@ interface BreadcrumbsProps {
 
 export const BreadcrumbsContainer = styled.div<BreadcrumbsContainerProps>`
   display: flex;
+  flex: 0 0 50%;
   align-items: center;
+  margin: auto;
+  jusity-content: flex-start;
   border: ${({ noBorder }) => noBorder ? 'none' : 'solid'};
   border-width: ${({ borderWidth }) => `${borderWidth}px`};
   background-color: ${({ backgroundColor }) => backgroundColor};
-  padding: ${({ padding }) => padding ? `${padding}px` : '15px'};
+  padding: ${({ padding }) => padding ? `0 ${padding}px` : '0 15px'};
   margin: ${({ margin }) => margin ? `${margin}px` : '0px'};
   border-color: ${({ color }) => color};
   border-radius: ${({ borderRadius }) => `${borderRadius}px`};
@@ -118,4 +121,9 @@ const defaultProps = {
 
 Breadcrumbs.defaultProps = defaultProps;
 
-export default Breadcrumbs;
+export default styled(Breadcrumbs)`{
+  display: flex;
+  background-color: green;
+  flex-direction: column;
+  align-items: flex-start;
+}`;

@@ -1,6 +1,6 @@
 @import '../common/styles/variables.scss';
 
-.App {
+#root {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 .breadcrumbsWrapper {
-  padding: 0 $metric-s;
+  padding: 0 10px;
 }
 
 .breadcrumbsItem {

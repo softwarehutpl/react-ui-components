@@ -67,13 +67,7 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         height: 3px;
         width: 25%;
         background: #777;
-        -webkit-box-shadow: 0 18px 15px #486685;
-        -moz-box-shadow: 0 18px 15px #486685;
         box-shadow: 0 18px 15px #486685;
-        -webkit-transform: rotate(-4deg);
-        -moz-transform: rotate(-4deg);
-        -o-transform: rotate(-4deg);
-        -ms-transform: rotate(-4deg);
         transform: rotate(-4deg);
       }`,
       medium: `&::before {
@@ -82,17 +76,10 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         z-index: -1;
         bottom: 15px;
         left: 8px;
-        top: 80%;
+        top: 60%;
         height: 3px;
         width: 50%;
-        background: #777;
-        -webkit-box-shadow: 0 18px 15px #486685;
-        -moz-box-shadow: 0 18px 15px #486685;
         box-shadow: 0 18px 15px #486685;
-        -webkit-transform: rotate(-4deg);
-        -moz-transform: rotate(-4deg);
-        -o-transform: rotate(-4deg);
-        -ms-transform: rotate(-4deg);
         transform: rotate(-4deg);
       }`,
     },
@@ -102,15 +89,10 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         content: "";
         bottom: 15px;
         right: 8px;
-        top: 80%;
+        top: 60%;
+        height: 3px;
         width: 25%;
-        -webkit-box-shadow: 0 18px 15px #486685;
-        -moz-box-shadow: 0 18px 15px #486685;
         box-shadow: 0 18px 15px #486685;
-        -webkit-transform: rotate(4deg);
-        -moz-transform: rotate(4deg);
-        -o-transform: rotate(4deg);
-        -ms-transform: rotate(4deg);
         transform: rotate(4deg);
       }`,
       medium: `&::before {
@@ -118,16 +100,10 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         content: "";
         bottom: 15px;
         right: 8px;
-        top: 80%;
+        top: 60%;
         width: 50%;
         height: 3px;
-        -webkit-box-shadow: 0 18px 15px #486685;
-        -moz-box-shadow: 0 18px 15px #486685;
         box-shadow: 0 18px 15px #486685;
-        -webkit-transform: rotate(4deg);
-        -moz-transform: rotate(4deg);
-        -o-transform: rotate(4deg);
-        -ms-transform: rotate(4deg);
         transform: rotate(4deg);
       }`,
     },
@@ -141,13 +117,7 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         top: 70%;
         height: 3px;
         width: 25%;
-        -webkit-box-shadow: 0 18px 15px #cecece;
-        -moz-box-shadow: 0 18px 15px #cecece;
         box-shadow: 0 18px 15px #cecece;
-        -webkit-transform: rotate(-10deg);
-        -moz-transform: rotate(-10deg);
-        -o-transform: rotate(-10deg);
-        -ms-transform: rotate(-10deg);
         transform: rotate(-10deg);
       };
       &::after {
@@ -159,13 +129,7 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         top: 70%;
         height: 3px;
         width: 25%;
-        -webkit-box-shadow: 0 18px 15px #cecece;
-        -moz-box-shadow: 0 18px 15px #cecece;
         box-shadow: 0 18px 15px #cecece;
-        -webkit-transform: rotate(10deg);
-        -moz-transform: rotate(10deg);
-        -o-transform: rotate(10deg);
-        -ms-transform: rotate(10deg);
         transform: rotate(10deg);
       }`,
       medium: `&::before {
@@ -177,13 +141,7 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         top: 70%;
         height: 3px;
         width: 25%;
-        -webkit-box-shadow: 0 18px 15px #cecece;
-        -moz-box-shadow: 0 18px 15px #cecece;
         box-shadow: 0 18px 15px #cecece;
-        -webkit-transform: rotate(-10deg);
-        -moz-transform: rotate(-10deg);
-        -o-transform: rotate(-10deg);
-        -ms-transform: rotate(-10deg);
         transform: rotate(-10deg);
       };
       &::after {
@@ -195,13 +153,7 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
         top: 70%;
         height: 3px;
         width: 25%;
-        -webkit-box-shadow: 0 18px 15px #cecece;
-        -moz-box-shadow: 0 18px 15px #cecece;
         box-shadow: 0 18px 15px #cecece;
-        -webkit-transform: rotate(10deg);
-        -moz-transform: rotate(10deg);
-        -o-transform: rotate(10deg);
-        -ms-transform: rotate(10deg);
         transform: rotate(10deg);
       }`,
     }
