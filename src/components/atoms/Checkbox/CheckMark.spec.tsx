@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 import Checkmark from './CheckMark';
-import  theme  from '../../../common/theme';
+import theme from '../../../common/theme';
 
 const props = {
   checked: true, 

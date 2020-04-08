@@ -9,8 +9,8 @@ stories.addDecorator(withKnobs);
 
 const RADIOBOXES = [
   {
-  name: 'test 1',
-  label: 'Duis aute irure dolor',
+    name: 'test 1',
+    label: 'Duis aute irure dolor',
   },
   {
     name: 'test 1',
@@ -35,7 +35,7 @@ stories.add('Default', () => {
       name="test" 
       onChange={() => setValue('test')}
       checked={value === "test"}
-      color={select('Color',COLOR_OPTIONS , 'primary')}
+      color={select('Color', COLOR_OPTIONS , 'primary')}
     />
   );
 })
@@ -44,7 +44,7 @@ stories.add('Default', () => {
     <RadioBox 
       name="test" 
       checked
-      color={select('Color',COLOR_OPTIONS , 'primary')}
+      color={select('Color', COLOR_OPTIONS , 'primary')}
     >
       Duis aute irure dolor
     </RadioBox>
