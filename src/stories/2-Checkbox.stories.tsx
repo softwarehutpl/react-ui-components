@@ -2,21 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import Checkbox from '../components/atoms/Checkbox/Checkbox';
-
+import { COLOR_OPTIONS } from '../common/colorOptions';
 
 const stories = storiesOf('Checkbox', module);
 stories.addDecorator(withKnobs);
-
-const colorOpions = {
-	primary: 'primary',
-	secondary: 'secondary',
-	error: 'error',
-	warning: 'warning',
-	info: 'info',
-	success: 'success',
-	disabled: 'disabled'
-};
-
 
 stories
  .add('Checked', () => { 
@@ -24,8 +13,8 @@ stories
 		return (
 			<Checkbox 
 				checked={checked}
+				color={select('Color',COLOR_OPTIONS , 'primary')}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked(e.target.checked)}
-				color={select('Color', colorOpions, 'primary')}
 			/>
  		);
 	})
@@ -57,5 +46,5 @@ stories
 				required
 			/>
 		);
-	})
+	});
 	

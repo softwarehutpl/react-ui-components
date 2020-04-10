@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import breadcrumbsItems from '../common/mocks/breadcrumbsItems';
 import Breadcrumbs from '../components/atoms/Breadcrumbs/Breadcrumbs';
-import { BOX_SHADOW_OPTIONS } from '../common/constants/storybook_options';
+import { BOX_SHADOW_OPTIONS } from '../constants/storybook_options';
 import './styles.scss';
 
 const stories = storiesOf('Breadcrumbs', module);

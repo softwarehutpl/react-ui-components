@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../common/constants/storybook_options';
 import Input from '../components/atoms/Input/Input';
+import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../constants/storybook_options';
 
 const stories = storiesOf('Input', module);
 stories.addDecorator(withKnobs);
 
 stories
- .add('Custom', () => {
-   const [value, setValue] = useState('');
-		return (
-			<Input 
-				placeholder='Custom input'
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+  .add('Custom', () => {
+    const [value, setValue] = useState('');
+    return (
+      <Input
+        placeholder="Custom input"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         value={value}
-			/>
- 		);
+      />
+    );
   })
   .add('Casual', () => {
     const [value, setValue] = useState('');
@@ -44,9 +44,9 @@ stories
     })
 	.add('Placeholder On Focus', () => {
     const [value, setValue] = useState('');
-		return (
-			<Input
-        placeholder='Test input'
+    return (
+      <Input
+        placeholder="Test input"
         value={value}
 				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
 				showPlaceholderOnFocus={boolean('Show placeholder on focus', true)}
@@ -55,12 +55,12 @@ stories
   })
   .add('Show label', () => {
     const [value, setValue] = useState('');
-		return (
-			<Input
-        placeholder='Test input'
+    return (
+      <Input
+        placeholder="Test input"
         value={value}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-				label='label'
-			/>
-		);
-  })
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+        label="label"
+      />
+    );
+  });

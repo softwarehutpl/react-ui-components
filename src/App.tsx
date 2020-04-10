@@ -7,6 +7,7 @@ import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
 import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
 import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
+import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 
@@ -80,6 +81,7 @@ function App() {
           noBorder
           showBoxShadow
         />
+        <ProgressBar color="success" maxValue={100} progressValue={progress} />
       </div>
     </ThemeProvider>
   );
