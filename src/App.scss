@@ -6,19 +6,3 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
-.active {
-  font-weight: bold;
-  font-family: 'Amiri', serif;
-}
-
-.breadcrumbsWrapper {
-  padding: 0 $metric-s;
-}
-
-.breadcrumbsItem {
-  font-family: 'Amiri', serif;
-  &:hover {
-    color: $color-piper;
-  }
-}
