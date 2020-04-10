@@ -37,7 +37,7 @@ const items = [
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
     return (
-      <React.Fragment>
+      <>
         <Stepper 
             items={items}
             activeIndex={activeStep}
@@ -53,6 +53,6 @@ const items = [
           onClick={handleNext}
           disabled={activeStep === items.length - 1}
         />
-      </React.Fragment>
+      </>
     );
  });
