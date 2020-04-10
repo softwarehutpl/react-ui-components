@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import 'jest-styled-components';
-import Input, { InputContainer, InputLabel, InputField } from './Input';
+import { InputContainer, InputField } from './Input';
 import theme from '../../../common/theme';
 
 describe('Input Component', () => {

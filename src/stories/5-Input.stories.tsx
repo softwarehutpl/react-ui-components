@@ -7,8 +7,6 @@ import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../constants/storybook
 const stories = storiesOf('Input', module);
 stories.addDecorator(withKnobs);
 
-
-
 stories
   .add('Custom', () => {
     const [value, setValue] = useState('');
@@ -23,37 +21,37 @@ stories
   .add('Casual', () => {
     const [value, setValue] = useState('');
     return (
-      <Input
-        placeholder="Casual input"
+      <Input 
+        placeholder='Casual input'
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         color={select('Color', COLOR_OPTIONS, 'primary')}
         value={value}
-        transitionEffect={select('transitionEffect', TRANSITION_EFFECT_OPTIONS, 'slow')}
+        transitionEffect={select('Transition effect', TRANSITION_EFFECT_OPTIONS, 'slow')}
       />
     );
   })
   .add('Error input with own background on focus', () => {
     const [value, setValue] = useState('');
     return (
-      <Input
-        placeholder="Warn input"
+      <Input 
+        placeholder='Warn input'
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         color={select('Color', COLOR_OPTIONS, 'error')}
-        focusBackgroundColor="white"
+        focusBackgroundColor='white'
         value={value}
       />
-    );
-  })
-  .add('Placeholder On Focus', () => {
+      );
+    })
+	.add('Placeholder On Focus', () => {
     const [value, setValue] = useState('');
     return (
       <Input
         placeholder="Test input"
         value={value}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-        showPlaceholderOnFocus={boolean('showPlaceholderOnFocus', true)}
-      />
-    );
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+				showPlaceholderOnFocus={boolean('Show placeholder on focus', true)}
+			/>
+		);
   })
   .add('Show label', () => {
     const [value, setValue] = useState('');
