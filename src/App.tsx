@@ -7,6 +7,7 @@ import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
 import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import Input from './components/atoms/Input/Input';
+import Tooltip from './components/atoms/Tooltip/Tooltip';
 
 function App() {
   const [value, setValue] = useState('');
@@ -18,7 +19,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Dropdown>
-        <DropdownItem heading disabled>item</DropdownItem>
+        <DropdownItem heading disabled>
+          item
+        </DropdownItem>
         <DropdownItem divider dividerColor="blue" />
         <DropdownItem
           onClick={() => {
@@ -36,15 +39,22 @@ function App() {
           }}
         />
         <Input
-          placeholder='test'
+          placeholder="test"
           value={value}
           showPlaceholderOnFocus
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-          hoverBackgroundColor='#EEE'
-          focusBackgroundColor='#EEE'
-          transitionEffect='mid'
-          label='test12e'
+          hoverBackgroundColor="#EEE"
+          focusBackgroundColor="#EEE"
+          transitionEffect="mid"
+          label="test12e"
           width={250}
+        />
+        <span id="tooltip_target">Hover me, I am a tooltip target</span>
+        <Tooltip
+          targetElementId="tooltip_target"
+          tooltipText="tooltip"
+          color="secondary"
+          position="top"
         />
       </div>
     </ThemeProvider>

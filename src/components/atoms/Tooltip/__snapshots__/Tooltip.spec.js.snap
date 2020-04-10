@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip component should render correctly 1`] = `
+.c0 {
+  visibility: hidden;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: #000000;
+  color: #ffffff;
+  position: fixed;
+  top: NaNpx;
+  left: NaNpx;
+  font-size: 0.8em;
+  opacity: 1;
+}
+
+.c0::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-top-width: 8px;
+  border-top-color: #000000;
+  border-bottom-width: 0;
+  border-bottom-color: transparent;
+  border-right-width: 8px;
+  border-right-color: transparent;
+  border-left-width: 8px;
+  border-left-color: transparent;
+  position: absolute;
+  left: NaNpx;
+  top: undefinedpx;
+}
+
+<span
+  className="c0"
+>
+  tooltip text
+</span>
+`;
