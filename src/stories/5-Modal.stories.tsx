@@ -32,39 +32,4 @@ stories
       </>
  		);
   })
-  // .add('Only border items and no border', () => {
-	// 	return (
-	// 		<Modal
-  //       items={breadcrumbsItems}
-  //       showOnlyBorderItems
-  //       noBorder={boolean('No border', true)}
-	// 		/>
- 	// 	);
-  // })
-  // .add('Own classnames for items', () => {
-	// 	return (
-	// 		<Modal
-  //       items={breadcrumbsItems}
-  //       activeBreadcrumbClassName='active'
-  //       firstBreadcrumbClassName='active'
-  //       itemClassName='breadcrumbsItem'
-	// 		/>
- 	// 	);
-  // })
-  // .add('Box shadow effects', () => {
-	// 	return (
-  //     <Breadcrumbs 
-  //       items={breadcrumbsItems}
-  //       boxShadowEffect={select('Box Shadow Effect', BOX_SHADOW_OPTIONS, 'roundedShadow')}
-  //       noBorder
-	// 		/>
- 	// 	);
-  // })
-  // .add('Own separator', () => {
-	// 	return (
-  //     <Breadcrumbs 
-  //       items={breadcrumbsItems}
-  //       separator={text('Separator', '/')}
-	// 		/>
- 	// 	);
-  // })
+  

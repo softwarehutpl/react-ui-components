@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 import CloseIcon from '../../../common/icons/CloseIcon/CloseIcon';
-import './Modal.scss';
 
 interface ModalProps {
   onClose: () => void;
