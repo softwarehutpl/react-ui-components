@@ -2,7 +2,7 @@
 
 exports[`CloseIcon should render corectly 1`] = `
 <a
-  className="sc-AxjAm fhYvYx"
+  className="sc-AxjAm bvjSvu"
   color="primary"
 />
 `;

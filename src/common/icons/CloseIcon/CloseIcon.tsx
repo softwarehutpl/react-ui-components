@@ -4,12 +4,15 @@ export interface CloseIcon {
   height?: string;
   width?: string;
   color?: any;
+  topPosition?: number;
+  rightPosition?: number;
+  iconColor?: string;
 }
 
 const CloseIcon = styled.a<CloseIcon>`
   position: absolute;
-  right: 24px;
-  top: 24px;
+  right: ${({ rightPosition }) => `${rightPosition}px`};
+  top: ${({ topPosition }) => `${topPosition}px`};
   width: 24px;
   height: 24px;
   opacity: 1;
@@ -22,7 +25,7 @@ const CloseIcon = styled.a<CloseIcon>`
     content: ' ';
     height: ${({ height }) => (height || '12px')};
     width: ${({ width }) => (width || '2px')};
-    background-color: ${({ theme, color }) => (theme.colors[color].base)};
+    background-color: ${({ theme, color, iconColor }) => iconColor ? iconColor : (theme.colors[color].base)};
   }
   
   &:before {
@@ -33,5 +36,12 @@ const CloseIcon = styled.a<CloseIcon>`
     transform: rotate(-45deg);
   }
 `;
+
+const defaultProps = {
+  topPosition: 24,
+  rightPosition: 24,
+};
+
+CloseIcon.defaultProps = defaultProps;
 
 export default CloseIcon;

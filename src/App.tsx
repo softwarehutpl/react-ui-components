@@ -7,9 +7,13 @@ import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
 import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import Input from './components/atoms/Input/Input';
+import Modal from './components/molecules/Modal/Modal';
+import CloseIcon from './common/icons/CloseIcon/CloseIcon';
+// import closeIcon from './common/mocks/icons/close-iconn.svg';
 
 function App() {
   const [value, setValue] = useState('');
+  const [showModal, handleShowModal] = useState(false);
 
   useEffect(() => {
     styleReorder();
@@ -30,9 +34,9 @@ function App() {
       </Dropdown>
       <div className="App">
         <Button
-          buttonTitle="some button"
+          buttonTitle="Show modal"
           onClick={() => {
-            console.log('clicked!');
+            handleShowModal(!showModal);
           }}
         />
         <Input
@@ -46,6 +50,26 @@ function App() {
           label='test12e'
           width={250}
         />
+        <Modal
+          isOpen={showModal}
+          rootId="modal-root"
+          showTransitionEffect
+          ownCloseButtonIcon={<CloseIcon
+            color={'error'}
+            onClick={() => handleShowModal(false)}
+            topPosition={-70}
+            rightPosition={0}
+            iconColor='hotpink'
+          />}
+          closeButtonOutside
+          classicCloseButton
+          transitionEffect='mid'
+          onClose={() => handleShowModal(false)}
+        >
+          <>
+            Some modal here
+          </>
+        </Modal>
       </div>
     </ThemeProvider>
   );
