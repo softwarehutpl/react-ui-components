@@ -10,7 +10,7 @@ stories.addDecorator(withKnobs);
 stories
  .add('Common', () => {
    const [ showModal, handleShowModal ] = useState(false);
-		return (
+    return (
       <>
         <Modal
           isOpen={showModal}
@@ -30,6 +30,6 @@ stories
         <button onClick={() => handleShowModal(!showModal)}>Show Modal</button>
         <div id="modal-root"></div>
       </>
- 		);
+     );
   })
   

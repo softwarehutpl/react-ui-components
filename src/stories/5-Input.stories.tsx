@@ -42,16 +42,16 @@ stories
       />
       );
     })
-	.add('Placeholder On Focus', () => {
+  .add('Placeholder On Focus', () => {
     const [value, setValue] = useState('');
     return (
       <Input
         placeholder="Test input"
         value={value}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-				showPlaceholderOnFocus={boolean('Show placeholder on focus', true)}
-			/>
-		);
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+        showPlaceholderOnFocus={boolean('Show placeholder on focus', true)}
+      />
+    );
   })
   .add('Show label', () => {
     const [value, setValue] = useState('');

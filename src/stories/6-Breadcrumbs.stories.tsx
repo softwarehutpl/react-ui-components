@@ -11,45 +11,45 @@ stories.addDecorator(withKnobs);
 
 stories
  .add('Default', () => {
-		return (
-			<Breadcrumbs
+    return (
+      <Breadcrumbs
         items={breadcrumbsItems}
-			/>
- 		);
+      />
+     );
   })
   .add('Only border items and no border', () => {
-		return (
-			<Breadcrumbs 
+    return (
+      <Breadcrumbs 
         items={breadcrumbsItems}
         showOnlyBorderItems
         noBorder={boolean('No border', true)}
-			/>
- 		);
+      />
+     );
   })
   .add('Own classnames for items', () => {
-		return (
-			<Breadcrumbs 
+    return (
+      <Breadcrumbs 
         items={breadcrumbsItems}
         activeBreadcrumbClassName='active'
         firstBreadcrumbClassName='active'
         itemClassName='breadcrumbsItem'
-			/>
- 		);
+      />
+     );
   })
   .add('Box shadow effects', () => {
-		return (
+    return (
       <Breadcrumbs 
         items={breadcrumbsItems}
         boxShadowEffect={select('Box Shadow Effect', BOX_SHADOW_OPTIONS, 'roundedShadow')}
         noBorder
-			/>
- 		);
+      />
+     );
   })
   .add('Own separator', () => {
-		return (
+    return (
       <Breadcrumbs 
         items={breadcrumbsItems}
         separator={text('Separator', '/')}
-			/>
- 		);
+      />
+     );
   })
