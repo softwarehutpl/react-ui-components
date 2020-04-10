@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tab /> should render corectly 1`] = `
+.c0 {
+  width: 100%;
+  cursor: pointer;
+  color: #8c8989;
+  font-weight: 700;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+<div
+  className="c0"
+/>
+`;
