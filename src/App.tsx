@@ -3,26 +3,43 @@ import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
+import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
 import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
 import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
+import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
 import Modal from './components/molecules/Modal/Modal';
 import CloseIcon from './common/icons/CloseIcon/CloseIcon';
-// import closeIcon from './common/mocks/icons/close-iconn.svg';
+import items from './common/mocks/breadcrumbsItems';
+import { COLOR_RUBY } from './common/constants/colors';
+import fontSizes from './common/constants/font_sizes';
+import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 
 function App() {
   const [value, setValue] = useState('');
+  const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
 
   useEffect(() => {
     styleReorder();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (progress !== 100) {
+        setProgress(progress + 10);
+      }
+    }, 500);
+    return () => {clearInterval(interval)};
+  }, [progress])
+
   return (
     <ThemeProvider theme={theme}>
       <Dropdown>
-        <DropdownItem heading disabled>item</DropdownItem>
+        <DropdownItem heading disabled>
+          item
+        </DropdownItem>
         <DropdownItem divider dividerColor="blue" />
         <DropdownItem
           onClick={() => {
@@ -40,14 +57,14 @@ function App() {
           }}
         />
         <Input
-          placeholder='test'
+          placeholder="test"
           value={value}
           showPlaceholderOnFocus
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-          hoverBackgroundColor='#EEE'
-          focusBackgroundColor='#EEE'
-          transitionEffect='mid'
-          label='test12e'
+          hoverBackgroundColor="#EEE"
+          focusBackgroundColor="#EEE"
+          transitionEffect="mid"
+          label="test12e"
           width={250}
         />
         <Modal
@@ -57,12 +74,13 @@ function App() {
           ownCloseButtonIcon={<CloseIcon
             color={'error'}
             onClick={() => handleShowModal(false)}
-            topPosition={-70}
+            topPosition={0}
             rightPosition={0}
-            iconColor='hotpink'
+            visibility={showModal ? 'visible' : 'hidden'}
+            height={`${fontSizes.fontSizeLarge}px`}
+            iconColor={COLOR_RUBY}
           />}
           closeButtonOutside
-          classicCloseButton
           transitionEffect='mid'
           onClose={() => handleShowModal(false)}
         >
@@ -70,6 +88,17 @@ function App() {
             Some modal here
           </>
         </Modal>
+        <Breadcrumbs
+          items={items}
+          showOnlyBorderItems
+          activeBreadcrumbClassName="active"
+          firstBreadcrumbClassName="active"
+          itemClassName='breadcrumbsItem'
+          wrapperClassName='breadcrumbsWrapper'
+          noBorder
+          showBoxShadow
+        />
+        <ProgressBar color="success" maxValue={100} progressValue={progress} />
       </div>
     </ThemeProvider>
   );

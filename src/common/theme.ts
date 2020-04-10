@@ -53,6 +53,110 @@ const theme: { [key: string]: { [key: string]: { [key: string]: string } } } = {
       mid: 'color 2s ease-out',
       slow: 'color 4s ease-out',
     }
+  },
+  // TODO: just suggestions, change it in dedicated task for that
+  boxShadows: {
+    leftShadow: {
+      small: `&::before {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        bottom: 15px;
+        left: 8px;
+        top: 80%;
+        height: 3px;
+        width: 25%;
+        background: #777;
+        box-shadow: 0 18px 15px #486685;
+        transform: rotate(-4deg);
+      }`,
+      medium: `&::before {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        bottom: 15px;
+        left: 8px;
+        top: 60%;
+        height: 3px;
+        width: 50%;
+        box-shadow: 0 18px 15px #486685;
+        transform: rotate(-4deg);
+      }`,
+    },
+    rightShadow: {
+      small: `&::before {
+        position: absolute;
+        content: "";
+        bottom: 15px;
+        right: 8px;
+        top: 60%;
+        height: 3px;
+        width: 25%;
+        box-shadow: 0 18px 15px #486685;
+        transform: rotate(4deg);
+      }`,
+      medium: `&::before {
+        position: absolute;
+        content: "";
+        bottom: 15px;
+        right: 8px;
+        top: 60%;
+        width: 50%;
+        height: 3px;
+        box-shadow: 0 18px 15px #486685;
+        transform: rotate(4deg);
+      }`,
+    },
+    roundedShadow: {
+      small: `&::before {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        bottom: 15px;
+        left: 8px;
+        top: 70%;
+        height: 3px;
+        width: 25%;
+        box-shadow: 0 18px 15px #cecece;
+        transform: rotate(-10deg);
+      };
+      &::after {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        bottom: 15px;
+        right: 8px;
+        top: 70%;
+        height: 3px;
+        width: 25%;
+        box-shadow: 0 18px 15px #cecece;
+        transform: rotate(10deg);
+      }`,
+      medium: `&::before {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        bottom: 15px;
+        left: 8px;
+        top: 70%;
+        height: 3px;
+        width: 25%;
+        box-shadow: 0 18px 15px #cecece;
+        transform: rotate(-10deg);
+      };
+      &::after {
+        position: absolute;
+        content: "";
+        z-index: -1;
+        bottom: 15px;
+        right: 8px;
+        top: 70%;
+        height: 3px;
+        width: 25%;
+        box-shadow: 0 18px 15px #cecece;
+        transform: rotate(10deg);
+      }`,
+    }
   }
 };
 

@@ -7,6 +7,7 @@ export interface CloseIcon {
   topPosition?: number;
   rightPosition?: number;
   iconColor?: string;
+  visibility?: string;
 }
 
 const CloseIcon = styled.a<CloseIcon>`
@@ -16,8 +17,9 @@ const CloseIcon = styled.a<CloseIcon>`
   width: 24px;
   height: 24px;
   opacity: 1;
-  transition: opacity .3s;
+  transition: all .3s;
   cursor: pointer;
+  visibility: ${({ visibility }) => visibility};
   
   &:before, &:after {
     position: absolute;
@@ -40,6 +42,7 @@ const CloseIcon = styled.a<CloseIcon>`
 const defaultProps = {
   topPosition: 24,
   rightPosition: 24,
+  visibility: 'visible',
 };
 
 CloseIcon.defaultProps = defaultProps;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar component shoud render correctly 1`] = `
+.c2 {
+  color: #000;
+  position: absolute;
+  width: 100%;
+  top: -20px;
+  left: auto;
+  font-size: 1em;
+  line-height: 15px;
+  text-align: center;
+  display: block;
+}
+
+.c1 {
+  width: NaN%;
+  max-width: 100%;
+  height: 100%;
+  background-color: #000000;
+  border-radius: 6px;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+.c0 {
+  width: 250px;
+  height: 15px;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  background-color: #ffffff;
+  margin: 0;
+  position: relative;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+    color="primary"
+  />
+  <label
+    className="c2"
+  >
+    NaN%
+  </label>
+</div>
+`;

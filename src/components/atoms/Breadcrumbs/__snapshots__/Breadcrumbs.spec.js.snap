@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs Component should render Breadcrumbs correctly 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 15px 10px;
+  cursor: pointer;
+  margin: 0;
+  font-size: 16px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: auto;
+  jusity-content: flex-start;
+  border: solid;
+  border-width: 1px;
+  background-color: #fff;
+  padding: 0 15px;
+  margin: 0px;
+  border-color: #8e8e8e;
+  border-radius: 0px;
+  position: relative;
+}
+
+<div
+  className="c0"
+  color="#8e8e8e"
+  disabled={false}
+>
+  <div
+    className="c1"
+    color="#8a8a8a"
+    fontSize={16}
+    name="Home"
+  >
+    <button
+      className="c2 undefined undefined"
+      color="#8a8a8a"
+      fontSize={16}
+      name="Home"
+      onClick={[Function]}
+    >
+      Home
+    </button>
+    <span
+      className="c3"
+    >
+      /
+    </span>
+  </div>
+  <div
+    className="c1"
+    color="#8a8a8a"
+    fontSize={16}
+    name="Products"
+  >
+    <button
+      className="c2 undefined undefined"
+      color="#8a8a8a"
+      fontSize={16}
+      name="Products"
+      onClick={[Function]}
+    >
+      Products
+    </button>
+    <span
+      className="c3"
+    >
+      /
+    </span>
+  </div>
+  <div
+    className="c1"
+    color="#8a8a8a"
+    fontSize={16}
+    name="Collection"
+  >
+    <button
+      className="c2 undefined undefined"
+      color="#8a8a8a"
+      fontSize={16}
+      name="Collection"
+      onClick={[Function]}
+    >
+      Collection
+    </button>
+    <span
+      className="c3"
+    >
+      /
+    </span>
+  </div>
+  <div
+    className="c1"
+    color="#8a8a8a"
+    fontSize={16}
+    name="Product Details"
+  >
+    <button
+      className="c2 undefined undefined"
+      color="#8a8a8a"
+      fontSize={16}
+      name="Product Details"
+      onClick={[Function]}
+    >
+      Product Details
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumbs Component should render BreadcrumbsItemContainer correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+  className="c0"
+/>
+`;
