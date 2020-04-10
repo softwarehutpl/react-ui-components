@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import Alerts from '../components/atoms/Alerts/Alerts';
 
 const stories = storiesOf('Alerts', module);
@@ -22,11 +22,11 @@ const title = {
 };
 
 stories.add('Default', () => (
-  <Alerts 
-    type={select('Type', types, 'success')}
-    onClose={action('close')}
-    title={select('Title', title, 'Success')}
-    message='Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.'
-    isOpen={true}
-  />
+    <Alerts 
+      type={select('Type', types, 'success')}
+      onClose={action('close')}
+      title={select('Title', title, 'Success')}
+      message='Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.'
+      isOpen={true}
+    />
 ))
