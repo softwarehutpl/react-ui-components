@@ -5,10 +5,14 @@ import theme from '../../../common/theme';
 import Toast from './Toast';
 
 describe('Toast component', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
   it('should render correctly', () => {
     const tree = create(<Toast theme={theme} message="Lorem ipsum" />).toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 
   it('should render toast with given title and text', () => {
     const component = create(<Toast message="Lorem ipsum" title="title" theme={theme} />);
@@ -51,14 +55,24 @@ describe('Toast component', () => {
     const component = create(<Toast theme={theme} />);
     const toast = component.toJSON();
     expect(toast).toHaveStyleRule('bottom', '50px');
-  })
+  });
 
   it('should render toast in top position', () => {
     const component = create(<Toast theme={theme} position="top" />);
     const toast = component.toJSON();
     expect(toast).toHaveStyleRule('top', '50px');
     expect(toast).toHaveStyleRule('bottom', 'auto');
-  })
+  });
+
+  // TODO: fix this test - search more about jest.advanceTimersByTime and jest.runAllTimers and
+  // error: 'Cannot read property 'apply' of undefined'
+  it('should call onClose method with default delay', () => {
+    const mockOnClose = jest.fn();
+    const component = create(<Toast theme={theme} onClose={mockOnClose} />);
+    expect(mockOnClose).not.toBeCalled();
+    jest.advanceTimersByTime(3000);
+    expect(mockOnClose).toBeCalled();
+  });
 
   it('should call onClick method', () => {
     const mockOnClick = jest.fn();
@@ -69,5 +83,5 @@ describe('Toast component', () => {
       toast.props.onClick();
     });
     expect(mockOnClick.mock.calls.length).toEqual(1);
-  })
+  });
 });
