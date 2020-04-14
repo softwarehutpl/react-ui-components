@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
@@ -9,6 +9,7 @@ import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
+import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 
 const items = [{
@@ -82,6 +83,12 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
+        <span id="tooltip_target">Hover me, I am a tooltip target</span>
+        <Tooltip
+          targetElementId="tooltip_target"
+          tooltipText="tooltip"
+          position="right"
+        />
       </div>
     </ThemeProvider>
   );
