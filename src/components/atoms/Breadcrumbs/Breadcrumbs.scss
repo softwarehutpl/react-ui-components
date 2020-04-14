@@ -1,0 +1,19 @@
+@import '../../../common/styles/variables.scss';
+
+// TODO: remove this when remove example
+.active {
+  font-weight: bold;
+  font-family: 'Amiri', serif;
+}
+
+.breadcrumbsWrapper {
+  padding: 0 $metric-s;
+}
+
+.breadcrumbsItem {
+  font-family: 'Amiri', serif;
+  &:hover {
+    color: $color-piper;
+  }
+}
+  

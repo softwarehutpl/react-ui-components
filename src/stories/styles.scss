@@ -1,0 +1,24 @@
+@import '../common/styles/variables.scss';
+
+#root {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.active {
+  font-weight: bold;
+  font-family: 'Amiri', serif;
+}
+
+.breadcrumbsWrapper {
+  padding: 0 10px;
+}
+
+.breadcrumbsItem {
+  font-family: 'Amiri', serif;
+  &:hover {
+    color: $color-piper;
+  }
+}

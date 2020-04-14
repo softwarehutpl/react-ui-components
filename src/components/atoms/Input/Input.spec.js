@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { create, act } from 'react-test-renderer';
 import 'jest-styled-components';
-import Input, { InputContainer, InputLabel, InputField } from './Input';
+import { InputContainer, InputField } from './Input';
 import theme from '../../../common/theme';
 
 describe('Input Component', () => {
@@ -38,17 +37,10 @@ describe('Input Component', () => {
   it('should render input component with selected theme styling', () => {
     const component = create(<InputField theme={theme} color="secondary" />);
     const input = component.toJSON();
-<<<<<<< HEAD
-    expect(input).toHaveStyleRule('color', '#034d91');
-    expect(input).toHaveStyleRule('border-color', '#034d91');
-    expect(input).toHaveStyleRule('background-color', '#75b0e6', { modifier: ':hover' });
-    expect(input).toHaveStyleRule('background-color', '#75b0e6', { modifier: ':focus' });
-=======
     expect(input).toHaveStyleRule('color', '#0d47a1');
     expect(input).toHaveStyleRule('border-color', '#0d47a1');
     expect(input).toHaveStyleRule('background-color', '#bbdefb', { modifier: ':hover' });
     expect(input).toHaveStyleRule('background-color', '#bbdefb', { modifier: ':focus' });
->>>>>>> 8aae16351804fca1c2cf9ce307923523fb0973e7
   });
 
   it('should render disabled input', () => {

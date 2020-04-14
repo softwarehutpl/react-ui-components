@@ -64,7 +64,7 @@ describe('DropdownItem component', () => {
     const component = create(<DropdownItem theme={theme} divider />);
     const dropdownItem = component.toJSON();
     expect(dropdownItem).toHaveStyleRule('height', '1px');
-    expect(dropdownItem).toHaveStyleRule('background-color', '#a6a6a6');
+    expect(dropdownItem).toHaveStyleRule('background-color', '#d9d9d9');
   });
 
   it('should call dropdown item onClick', () => {
