@@ -8,17 +8,17 @@ const stories = storiesOf('Alerts', module);
 stories.addDecorator(withKnobs);
 
 const types = {
-	error: 'error',
-	warning: 'warning',
-	info: 'info',
-	success: 'success',
+  error: 'error',
+  warning: 'warning',
+  info: 'info',
+  success: 'success',
 };
 
 const title = {
   error: 'Error',
-	warning: 'Warning',
-	info: 'Info',
-	success: 'Success',
+  warning: 'Warning',
+  info: 'Info',
+  success: 'Success',
 };
 
 stories.add('Default', () => (
