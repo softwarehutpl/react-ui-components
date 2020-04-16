@@ -14,6 +14,7 @@ import CloseIcon from './common/icons/CloseIcon/CloseIcon';
 import items from './common/mocks/breadcrumbsItems';
 import { COLOR_RUBY } from './common/constants/colors';
 import fontSizes from './common/constants/font_sizes';
+import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 
 function App() {
@@ -99,6 +100,12 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
+        <span id="tooltip_target">Hover me, I am a tooltip target</span>
+        <Tooltip
+          targetElementId="tooltip_target"
+          tooltipText="tooltip"
+          position="right"
+        />
       </div>
     </ThemeProvider>
   );
