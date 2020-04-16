@@ -9,6 +9,8 @@ import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
+import Accordion from './components/molecules/Accordion/Accordion';
+import accordionItems from './common/mocks/accordionItems';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 
 const items = [{
@@ -82,6 +84,10 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
+        <Accordion
+          items={accordionItems}
+          width={500}
+        />
       </div>
     </ThemeProvider>
   );
