@@ -1,6 +1,8 @@
 import React from 'react';
 import styled  from 'styled-components';
 import { TRANSFORMS } from '../../../common/consts/consts';
+import CloseIcon from '../../../common/icons/CloseIcon/CloseIcon';
+import Button from '../../atoms/Button/Button';
 
 export interface DrawerOverlayProps {
   size?: string;
@@ -12,13 +14,18 @@ export interface DrawerContentProps {
   size?: string;
   color?: string;
   isOpen: boolean;
-  transitionDuration?: string;
+  transitionDuration?: number;
+  backgroundColor?: string;
+  fontColor?: string;
 };
 
 export interface DrawerProps extends DrawerOverlayProps, DrawerContentProps {
   className?: string;
   children?: any;
   onClose?: () => void;
+  withIcon?: boolean;
+  withButtons?: boolean;
+  confirmCallback?: () => void;
 };
 
 const sizes = {
@@ -63,17 +70,25 @@ export const DrawerOverlay = styled.div<DrawerOverlayProps>`
 `;
 
 export const DrawerContent = styled.div<DrawerContentProps>`
-  background-color: ${({ theme, color }) => (color && theme.colors[color].light)};
-  color: ${({ theme, color }) => (color && theme.colors[color].base)};
+  background-color: ${({ theme, backgroundColor }) => (backgroundColor || theme.colors.primary.light)};
+  color: ${({ theme, fontColor }) => (fontColor || theme.colors.primary.base)};
   position: fixed;
   ${({ placement }) => (placement && placements[placement])};
   width: ${({ placement, size }) => ((placement !== 'top' && placement !== 'bottom') && size) ? sizes[size] : size};
   height: ${({ placement, size }) => ((placement === 'top' || placement === 'bottom') && size) ? sizes[size] : size};
   transform: ${({ isOpen, placement }) => ((!isOpen && placement) ? TRANSFORMS[placement] : null)};
-  transition:${({ transitionDuration }) => (`transform ${transitionDuration} ease-out`)};
+  transition:${({ transitionDuration }) => (`transform ${transitionDuration}s ease-out`)};
   overflow-x: hidden;
   overflow-y: scroll;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.12);
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `;
 
 const Drawer: React.StatelessComponent<DrawerProps> = ({
@@ -84,32 +99,74 @@ const Drawer: React.StatelessComponent<DrawerProps> = ({
   color,
   isOpen,
   onClose,
-  transitionDuration
-}) => (
-  <>
-    <DrawerOverlay 
-      isOpen={isOpen}
-      onClick={onClose}
-    />
-    <DrawerContent
-      className={className}
-      placement={placement}
-      size={size}
-      color={color}
-      isOpen={isOpen}
-      transitionDuration={transitionDuration}
-    >
-      {children}
-    </DrawerContent>
-  </>
-);
+  transitionDuration,
+  withIcon,
+  withButtons,
+  backgroundColor,
+  fontColor,
+  confirmCallback,
+}) => {
+
+  const onConfirmClick = () => {
+    if (confirmCallback) {
+      confirmCallback();
+    }
+
+    if (onClose) {
+      onClose();
+    }
+  };
+
+    return (
+      <>
+        <DrawerOverlay 
+          isOpen={isOpen}
+          onClick={onClose}
+        />
+        <DrawerContent
+          className={className}
+          placement={placement}
+          size={size}
+          color={color}
+          isOpen={isOpen}
+          transitionDuration={transitionDuration}
+          backgroundColor={backgroundColor}
+          fontColor={fontColor}
+        >
+          {withIcon && (
+            <CloseIcon 
+              color="primary" 
+              onClick={onClose}
+            />
+          )}
+          {children}
+          {withButtons && (
+            <ButtonsWrapper>
+              <Button 
+                onClick={onConfirmClick} 
+                buttonTitle="Confirm" 
+                color={color}
+                fontColor="#fff"
+                margin={10}
+              />
+              <Button 
+                onClick={() => onClose && onClose()} 
+                buttonTitle="Cancel" 
+                margin={10}
+              />
+          </ButtonsWrapper>
+        )}
+      </DrawerContent>
+    </>
+  );
+}
 
 Drawer.defaultProps = {
-  color: 'primary',
+  color: 'secondary',
   isOpen: false,
   placement: 'right',
   size: 'medium',
-  transitionDuration: '0.2s',
+  transitionDuration: 0.2,
 };
 
 export default Drawer;

@@ -1,4 +1,4 @@
-import { COLOR_ALTO, COLOR_BLACK } from '../../../constants/colors';
+import { COLOR_ALTO, COLOR_BLACK } from '../../../common/constants/colors';
 
 export const getProgressBarLabelTopPosition = (position: string, barHeight: number) => {
   const offset = 5;

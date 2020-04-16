@@ -4,17 +4,22 @@ export interface CloseIcon {
   height?: string;
   width?: string;
   color?: any;
+  topPosition?: number;
+  rightPosition?: number;
+  iconColor?: string;
+  visibility?: string;
 }
 
 const CloseIcon = styled.a<CloseIcon>`
   position: absolute;
-  right: 24px;
-  top: 24px;
+  right: ${({ rightPosition }) => `${rightPosition}px`};
+  top: ${({ topPosition }) => `${topPosition}px`};
   width: 24px;
   height: 24px;
   opacity: 1;
-  transition: opacity .3s;
+  transition: all .3s;
   cursor: pointer;
+  visibility: ${({ visibility }) => visibility};
   
   &:before, &:after {
     position: absolute;
@@ -22,7 +27,7 @@ const CloseIcon = styled.a<CloseIcon>`
     content: ' ';
     height: ${({ height }) => (height || '12px')};
     width: ${({ width }) => (width || '2px')};
-    background-color: ${({ theme, color }) => (theme.colors[color].base)};
+    background-color: ${({ theme, color, iconColor }) => iconColor ? iconColor : (theme.colors[color].base)};
   }
   
   &:before {
@@ -33,5 +38,13 @@ const CloseIcon = styled.a<CloseIcon>`
     transform: rotate(-45deg);
   }
 `;
+
+const defaultProps = {
+  topPosition: 24,
+  rightPosition: 24,
+  visibility: 'visible',
+};
+
+CloseIcon.defaultProps = defaultProps;
 
 export default CloseIcon;

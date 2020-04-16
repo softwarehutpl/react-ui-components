@@ -9,22 +9,18 @@ import { Dropdown } from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
+import Modal from './components/molecules/Modal/Modal';
+import CloseIcon from './common/icons/CloseIcon/CloseIcon';
+import items from './common/mocks/breadcrumbsItems';
+import { COLOR_RUBY } from './common/constants/colors';
+import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
-
-const items = [{
-  name: 'Home', link: 'link',
-  }, {
-    name: 'Products', link: 'link-2',
-  }, {
-    name: 'Collection', link: 'link-3',
-  }, {
-    name: 'Product Details', link: 'link-4',
-  }];
 
 function App() {
   const [value, setValue] = useState('');
   const [progress, setProgress] = useState(0);
+  const [showModal, handleShowModal] = useState(false);
 
   useEffect(() => {
     styleReorder();
@@ -56,9 +52,9 @@ function App() {
       </Dropdown>
       <div className="App">
         <Button
-          buttonTitle="some button"
+          buttonTitle="Show modal"
           onClick={() => {
-            console.log('clicked!');
+            handleShowModal(!showModal);
           }}
         />
         <Input
@@ -72,6 +68,27 @@ function App() {
           label="test12e"
           width={250}
         />
+        <Modal
+          isOpen={showModal}
+          rootId="modal-root"
+          showTransitionEffect
+          ownCloseButtonIcon={<CloseIcon
+            color={'error'}
+            onClick={() => handleShowModal(false)}
+            topPosition={0}
+            rightPosition={0}
+            visibility={showModal ? 'visible' : 'hidden'}
+            height={`${fontSizes.fontSizeLarge}px`}
+            iconColor={COLOR_RUBY}
+          />}
+          closeButtonOutside
+          transitionEffect='mid'
+          onClose={() => handleShowModal(false)}
+        >
+          <>
+            Some modal here
+          </>
+        </Modal>
         <Breadcrumbs
           items={items}
           showOnlyBorderItems
