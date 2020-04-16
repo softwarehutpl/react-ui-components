@@ -5,7 +5,7 @@ export const COLOR_OPTIONS = {
   warning: 'warning',
   info: 'info',
   success: 'success',
-  disabled: 'disabled'
+  disabled: 'disabled',
 };
 
 export const TRANSITION_EFFECT_OPTIONS = {

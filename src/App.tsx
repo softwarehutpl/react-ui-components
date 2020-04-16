@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
@@ -11,6 +11,7 @@ import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
 import Accordion from './components/molecules/Accordion/Accordion';
 import accordionItems from './common/mocks/accordionItems';
+import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 
 const items = [{
@@ -87,6 +88,12 @@ function App() {
         <Accordion
           items={accordionItems}
           width={500}
+        />
+        <span id="tooltip_target">Hover me, I am a tooltip target</span>
+        <Tooltip
+          targetElementId="tooltip_target"
+          tooltipText="tooltip"
+          position="right"
         />
       </div>
     </ThemeProvider>
