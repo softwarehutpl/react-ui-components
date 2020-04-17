@@ -8,6 +8,16 @@ import theme from '../../../common/theme';
 import {DropdownToggle} from './DropdownToggle';
 
 describe('Dropdown component', () => {
+  it('should render correctly', () => {
+    const tree = create(
+      <ThemeProvider theme={theme}>
+        <Dropdown title="title">
+          <DropdownItem>item</DropdownItem>
+        </Dropdown>
+      </ThemeProvider>
+    ).toJSON();
+    expect(tree).toMatchSnapshot()
+  })
   it('should render dropdown with passed title', () => {
     const tree = create(
       <ThemeProvider theme={theme}>
