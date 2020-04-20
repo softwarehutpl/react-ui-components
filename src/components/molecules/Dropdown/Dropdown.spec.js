@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import Dropdown from './Dropdown';
 import DropdownItem from '../../atoms/DropdownItem/DropdownItem';
 import theme from '../../../common/theme';
-import {DropdownToggle} from './DropdownToggle';
+import { DropdownToggle } from './DropdownToggle';
 
 describe('Dropdown component', () => {
   it('should render correctly', () => {
@@ -74,7 +74,7 @@ describe('Dropdown component', () => {
       </ThemeProvider>
     );
     const dropdown = tree.toJSON().children[0];
-    expect(dropdown).toHaveStyleRule('width', '200px');
+    expect(dropdown).toHaveStyleRule('width', '100%');
     expect(dropdown).toHaveStyleRule('background-color', '#000000');
     expect(dropdown).toHaveStyleRule('padding', '15px');
     expect(dropdown).toHaveStyleRule('color', '#ffffff');
@@ -83,13 +83,12 @@ describe('Dropdown component', () => {
   it('should render dropdown with custom style', () => {
     const tree = create(
       <ThemeProvider theme={theme}>
-        <Dropdown title="title" width={300} backgroundColor="red" padding={10} fontColor="red" margin={10}>
+        <Dropdown title="title" backgroundColor="red" padding={10} fontColor="red" margin={10}>
           <DropdownItem>item</DropdownItem>
         </Dropdown>
       </ThemeProvider>
     );
     const dropdown = tree.toJSON().children[0];
-    expect(dropdown).toHaveStyleRule('width', '300px');
     expect(dropdown).toHaveStyleRule('background-color', 'red');
     expect(dropdown).toHaveStyleRule('padding', '10px');
     expect(dropdown).toHaveStyleRule('color', 'red');

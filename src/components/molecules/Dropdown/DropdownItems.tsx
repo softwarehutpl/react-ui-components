@@ -24,5 +24,6 @@ export const DropdownOptions = styled.div<IDropdownOptions>`
     padding: '5px 0',
     'box-shadow': '0 4px 10px 4px rgba(217,217,217,0.6)',
     'background-color': itemsBackgroundColor || theme.colors[color].light,
+    width: '100%',
   })}
 `;

@@ -6,7 +6,6 @@ import { ThemeProvider } from 'styled-components';
 import DropdownItem from './DropdownItem';
 import theme from '../../../common/theme';
 import Dropdown from '../../molecules/Dropdown/Dropdown';
-import {DropdownToggle} from '../../molecules/Dropdown/DropdownToggle';
 
 describe('DropdownItem component', () => {
   it('shoud render correctly', () => {

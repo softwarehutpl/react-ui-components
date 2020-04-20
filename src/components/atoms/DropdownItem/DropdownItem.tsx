@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { mapTextPositionToFlexJustify } from '../../../helpers/styleHelperMethods';
 import DropdownContext from '../../../context/dropdownContext';
-import { COLOR_ALTO } from '../../../constants/colors';
+import { COLOR_ALTO } from '../../../common/constants/colors';
 
 interface IDropdownItemProps {
   children?: React.ReactNode;
@@ -22,7 +22,6 @@ interface IDropdownItemStyleProps {
   dividerColor?: string;
   dropdownColor?: string;
   disabled?: boolean;
-  dropdownItemWidth?: number;
 }
 
 const DropdownItem = ({ children, className, divider, onClick, defaultOnDropdownItemClick }: IDropdownItemProps) => {
@@ -74,20 +73,18 @@ const StyledDropdownItem = styled(DropdownItem)<IDropdownItemStyleProps>`
     divider = defaultProps.divider,
     dividerColor = defaultProps.dividerColor,
     disabled = defaultProps.disabled,
-    dropdownItemWidth,
   }) => {
     if (divider) {
       return {
         height: '1px',
         'background-color': dividerColor,
-        width: `${dropdownItemWidth}px`,
       };
     }
     return {
       color: dropdownItemFontColor || theme.colors[dropdownColor].base,
       'background-color': dropdownItemBackgroundColor || theme.colors[dropdownColor].light,
-      width: `${dropdownItemWidth}px`,
       height: `${height}px`,
+      width: '100%',
       padding: `0 ${padding}px`,
       'box-sizing': 'border-box',
       display: 'flex',
@@ -110,14 +107,13 @@ type DropdownItemProps = IDropdownItemStyleProps & IDropdownItemProps;
 const withDropdownContext = (WrappedComponent: React.ComponentType<DropdownItemProps>) => (
   props: DropdownItemProps
 ) => {
-  const { dropdownColor, dropdownWidth, itemsBackgroundColor, itemsFontColor, onDropdownItemClick } = useContext(
+  const { dropdownColor, itemsBackgroundColor, itemsFontColor, onDropdownItemClick } = useContext(
     DropdownContext
   );
   return (
     <WrappedComponent
       {...props}
       dropdownColor={dropdownColor}
-      dropdownItemWidth={dropdownWidth}
       dropdownItemFontColor={itemsFontColor}
       dropdownItemBackgroundColor={itemsBackgroundColor}
       defaultOnDropdownItemClick={onDropdownItemClick}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import Input from '../components/atoms/Input/Input';
-import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../constants/storybook_options';
+import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../common/constants/storybook_options';
 
 const stories = storiesOf('Input', module);
 stories.addDecorator(withKnobs);
@@ -42,16 +42,16 @@ stories
       />
       );
     })
-	.add('Placeholder On Focus', () => {
+  .add('Placeholder On Focus', () => {
     const [value, setValue] = useState('');
     return (
       <Input
         placeholder="Test input"
         value={value}
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
-				showPlaceholderOnFocus={boolean('Show placeholder on focus', true)}
-			/>
-		);
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
+        showPlaceholderOnFocus={boolean('Show placeholder on focus', true)}
+      />
+    );
   })
   .add('Show label', () => {
     const [value, setValue] = useState('');

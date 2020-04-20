@@ -15,10 +15,12 @@ interface IDropdown extends IDropdownToggle {
   itemsFontColor?: string;
   caretSize?: number;
   openingDirection?: 'down' | 'up';
+  width?: number;
 }
 
 interface IStyledDropdown {
   margin?: number;
+  width?: number;
 }
 
 const arrowStyle = (size?: number) => ({
@@ -69,7 +71,6 @@ const Dropdown = ({
     <DropdownContext.Provider
       value={{
         dropdownColor: color,
-        dropdownWidth: width,
         itemsBackgroundColor,
         itemsFontColor,
         onDropdownItemClick: closeDropdown,
@@ -80,7 +81,6 @@ const Dropdown = ({
           ref={toggleRef}
           onClick={toggleDropdown}
           color={color}
-          width={width}
           backgroundColor={backgroundColor}
           padding={padding}
           fontColor={fontColor}
@@ -121,9 +121,10 @@ export const defaultProps = {
 Dropdown.defaultProps = defaultProps;
 
 const StyledDropdown = styled(Dropdown)<IStyledDropdown>`
-  ${({ margin = defaultProps.margin }) => ({
+  ${({ margin = defaultProps.margin, width = defaultProps.width }) => ({
     margin: `${margin}px`,
     position: 'relative',
+    width: `${width}px`,
   })}
 `;
 

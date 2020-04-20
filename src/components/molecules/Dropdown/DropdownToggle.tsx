@@ -3,7 +3,6 @@ import { defaultProps } from './Dropdown';
 
 export interface IDropdownToggle {
   color?: string;
-  width?: number;
   disabled?: boolean;
   backgroundColor?: string;
   padding?: number;
@@ -14,7 +13,6 @@ export const DropdownToggle = styled.div<IDropdownToggle>`
   ${({
     theme,
     color = defaultProps.color,
-    width = defaultProps.width,
     backgroundColor,
     padding = defaultProps.padding,
     fontColor,
@@ -25,7 +23,7 @@ export const DropdownToggle = styled.div<IDropdownToggle>`
       dropdownColor = 'disabled';
     }
     return {
-      width: `${width}px`,
+      width: '100%',
       'background-color': backgroundColor || theme.colors[dropdownColor].base,
       padding: `${padding}px`,
       color: fontColor || theme.colors[dropdownColor].light,
