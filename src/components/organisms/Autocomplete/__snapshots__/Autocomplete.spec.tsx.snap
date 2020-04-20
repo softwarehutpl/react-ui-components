@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Autocomplete /> should render corectly 1`] = `
+.c1 {
+  background-color: #FFF;
+  color: #000;
+  border: solid;
+  border-color: #f6f6f6;
+  border-width: 1px;
+  border-radius: 5px;
+  margin: 0px;
+  padding: 15px;
+  width: 200px;
+  outline: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.c1:hover {
+  border-color: #f6f6f6;
+  background-color: #ffffff;
+  border-width: 2px;
+}
+
+.c1:focus {
+  border-width: 2px;
+  border-color: #f6f6f6;
+  background-color: #ffffff;
+}
+
+.c1:focus::-webkit-input-placeholder {
+  font-size: .75em;
+  display: none;
+  position: relative;
+  top: -15px;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.c1::-webkit-input-placeholder {
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  width: 200px;
+}
+
+<div
+  className=""
+>
+  <div
+    className="c0"
+    direction="column"
+    width={200}
+  >
+    <input
+      className="c1"
+      color="primary"
+      direction="column"
+      disabled={false}
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      value=""
+      width={200}
+    />
+  </div>
+</div>
+`;

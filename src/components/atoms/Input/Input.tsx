@@ -17,6 +17,7 @@ interface InputLabelProps {
 
 interface InputProps extends InputContainerProps, InputLabelProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   color?: string;
   value: string;
   className?: string;

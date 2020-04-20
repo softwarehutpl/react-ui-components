@@ -15,7 +15,18 @@ import items from './common/mocks/breadcrumbsItems';
 import { COLOR_RUBY } from './common/constants/colors';
 import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
+import Autocomplete from './components/organisms/Autocomplete/Autocomplete';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
+
+const options = [
+  'Papaya',
+  'Persimmon',
+  'Paw Paw',
+  'Prickly Pear',
+  'Peach',
+  'Pomegranate',
+  'Pineapple'
+];
 
 function App() {
   const [value, setValue] = useState('');
@@ -107,6 +118,14 @@ function App() {
           position="right"
         />
       </div>
+      <div style={{marginLeft: '150px'}}>
+        <p>Autocomplete</p>
+        <Autocomplete 
+          options={options} 
+          placeholder="Search"
+        />
+      </div>
+
     </ThemeProvider>
   );
 }
