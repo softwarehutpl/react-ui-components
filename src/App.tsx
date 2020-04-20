@@ -5,7 +5,7 @@ import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
 import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
-import { Dropdown } from './components/molecules/Dropdown/Dropdown';
+import Dropdown from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
@@ -41,19 +41,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Dropdown>
-        <DropdownItem heading disabled>
-          item
-        </DropdownItem>
-        <DropdownItem divider dividerColor="blue" />
-        <DropdownItem
-          onClick={() => {
-            console.log('dropdown item clicked');
-          }}
-        >
-          abc
-        </DropdownItem>
-      </Dropdown>
       <div className="App">
         <Input
           placeholder="test"
@@ -120,6 +107,19 @@ function App() {
           }}
         />
       )}
+      <Dropdown title="Dropdown" margin={10} color="secondary">
+        <DropdownItem heading disabled>
+          item
+        </DropdownItem>
+        <DropdownItem divider dividerColor="black" />
+        <DropdownItem
+          onClick={() => {
+            console.log('dropdown item clicked');
+          }}
+        >
+          abc
+        </DropdownItem>
+      </Dropdown>
     </ThemeProvider>
   );
 }

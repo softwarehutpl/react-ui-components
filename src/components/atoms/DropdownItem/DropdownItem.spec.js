@@ -1,8 +1,11 @@
 import React from 'react';
 import { create, act } from 'react-test-renderer';
+import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
+import { ThemeProvider } from 'styled-components';
 import DropdownItem from './DropdownItem';
 import theme from '../../../common/theme';
+import Dropdown from '../../molecules/Dropdown/Dropdown';
 
 describe('DropdownItem component', () => {
   it('shoud render correctly', () => {
@@ -28,35 +31,73 @@ describe('DropdownItem component', () => {
     expect(dropdownItem.props.className).toEqual(expect.stringContaining('test-class'));
   });
 
-  it('should render dropdown item with custom colors', () => {
-    const component = create(<DropdownItem fontColor="blue" backgroundColor="gray" theme={theme}>item</DropdownItem>);
-    const dropdownItem = component.toJSON();
-    expect(dropdownItem).toHaveStyleRule('color', 'blue');
-    expect(dropdownItem).toHaveStyleRule('background-color', 'gray');
+  it('should render dropdown item with color context from dropdown after dropdown toggle click', () => {
+    const { getByText } = render(
+      <ThemeProvider theme={theme}>
+        <Dropdown title="title" color="secondary">
+          <DropdownItem>item</DropdownItem>
+        </Dropdown>
+      </ThemeProvider>
+    );
+    const dropdownToggle = getByText('title');
+    fireEvent.click(dropdownToggle);
+    const dropdownItem = getByText('item');
+    expect(dropdownItem).toHaveStyle('background-color: #bbdefb')
+    expect(dropdownItem).toHaveStyle('color: #2196f3');
+  });
+
+  it('should render dropdown item with custom colors after dropdown toggle click', () => {
+    const { getByText } = render(
+      <ThemeProvider theme={theme}>
+        <Dropdown title="title" itemsBackgroundColor="yellow" itemsFontColor="red">
+          <DropdownItem>item</DropdownItem>
+        </Dropdown>
+      </ThemeProvider>
+    );
+    const dropdownToggle = getByText('title');
+    fireEvent.click(dropdownToggle);
+    const dropdownItem = getByText('item');
+    expect(dropdownItem).toHaveStyle('background-color: yellow');
+    expect(dropdownItem).toHaveStyle('color: red');
   });
 
   it('should render dropdown item with custom height', () => {
-    const component = create(<DropdownItem theme={theme} height={40}>item</DropdownItem>);
+    const component = create(
+      <DropdownItem theme={theme} height={40}>
+        item
+      </DropdownItem>
+    );
     const dropdownItem = component.toJSON();
     expect(dropdownItem).toHaveStyleRule('height', '40px');
   });
 
   it('should render dropdown item with custom padding', () => {
-    const component = create(<DropdownItem theme={theme} padding={30}>item</DropdownItem>);
+    const component = create(
+      <DropdownItem theme={theme} padding={30}>
+        item
+      </DropdownItem>
+    );
     const dropdownItem = component.toJSON();
     expect(dropdownItem).toHaveStyleRule('padding', '0 30px');
   });
 
   it('should render dropdown item with given text placement', () => {
-    const component = create(<DropdownItem theme={theme} textAlignment="right">item</DropdownItem>);
+    const component = create(
+      <DropdownItem theme={theme} textAlignment="right">
+        item
+      </DropdownItem>
+    );
     const dropdownItem = component.toJSON();
     expect(dropdownItem).toHaveStyleRule('justify-content', 'flex-end');
   });
 
   it('should render dropdown item with style proper for heading', () => {
-    const component = create(<DropdownItem theme={theme} heading>item</DropdownItem>);
+    const component = create(
+      <DropdownItem theme={theme} heading>
+        item
+      </DropdownItem>
+    );
     const dropdownItem = component.toJSON();
-    expect(dropdownItem).toHaveStyleRule('font-weight', 'bold');
     expect(dropdownItem).toHaveStyleRule('text-transform', 'uppercase');
   });
 
