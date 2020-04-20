@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import {COLOR_BLACK, COLOR_WHITE} from '../../../constants/colors';
+import { COLOR_BLACK, COLOR_WHITE } from '../../../common/constants/colors';
 
 interface IToastProps {
   message: string;

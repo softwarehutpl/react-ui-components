@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { mapTextPositionToFlexJustify } from '../../../helpers/styleHelperMethods';
 import DropdownContext from '../../../context/dropdownContext';
-import { COLOR_ALTO } from '../../../constants/colors';
+import { COLOR_ALTO } from '../../../common/constants/colors';
 
 interface IDropdownItemProps {
   children?: React.ReactNode;
