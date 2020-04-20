@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { ORIENTATION } from '../../../common/consts/consts';
+import { ORIENTATION } from '../../../common/constants/consts';
 
 export interface WrapperProps {
   color?: string;
@@ -38,7 +38,7 @@ const createBorderCSSProp = (orientation: string) => {
   }
   return borderSide;
 };
- 
+
 export const Wrapper = styled.div<WrapperProps>`
   width: 100%;
   cursor: pointer;

@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, select } from '@storybook/addon-knobs';
 import DropdownItem from '../components/atoms/DropdownItem/DropdownItem';
-import { COLOR_OPTIONS, TEXT_ALIGNMENT_OPTIONS } from '../common/constants/storybook_options';
+import { COLOR_OPTIONS, TEXT_ALIGNMENT_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('DropdownItem', module);
 stories.addDecorator(withKnobs);
