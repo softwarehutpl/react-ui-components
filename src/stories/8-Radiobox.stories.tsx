@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import RadioBox from '../components/atoms/RadioBox/RadioBox';
-import { COLOR_OPTIONS } from '../common/colorOptions';
+import { COLOR_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('Radio', module);
 stories.addDecorator(withKnobs);
@@ -31,8 +31,8 @@ const DISPLAY = {
 stories.add('Default', () => {
   const [value, setValue] = React.useState('');
   return (
-    <RadioBox 
-      name="test" 
+    <RadioBox
+      name="test"
       onChange={() => setValue('test')}
       checked={value === "test"}
       color={select('Color', COLOR_OPTIONS , 'primary')}
@@ -41,8 +41,8 @@ stories.add('Default', () => {
 })
 .add('With label', () => {
   return (
-    <RadioBox 
-      name="test" 
+    <RadioBox
+      name="test"
       checked
       color={select('Color', COLOR_OPTIONS , 'primary')}
     >
@@ -54,8 +54,8 @@ stories.add('Default', () => {
   const [value, setValue] = React.useState('');
   return (
     <div style={{display: 'flex',flexDirection: select('Display', DISPLAY, 'column')}}>
-      {RADIOBOXES.map(({ name, label }) => ( 
-        <RadioBox 
+      {RADIOBOXES.map(({ name, label }) => (
+        <RadioBox
           name={name}
           checked={name === value}
           onChange={() => setValue(name)}

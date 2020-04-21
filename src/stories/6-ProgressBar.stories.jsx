@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select, number } from '@storybook/addon-knobs';
 import ProgressBar from '../components/atoms/ProgressBar/ProgressBar';
-import { COLOR_OPTIONS } from '../common/constants/storybook_options';
+import { COLOR_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('ProgressBar', module);
 stories.addDecorator(withKnobs);

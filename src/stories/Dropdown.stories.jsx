@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import DropdownItem from '../components/atoms/DropdownItem/DropdownItem';
 import Dropdown from '../components/molecules/Dropdown/Dropdown';
-import { COLOR_OPTIONS } from '../common/constants/storybook_options';
+import { COLOR_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('Dropdown', module);
 stories.addDecorator(withKnobs);
