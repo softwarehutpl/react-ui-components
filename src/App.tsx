@@ -16,9 +16,11 @@ import { COLOR_RUBY } from './common/constants/colors';
 import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
+import Select from './components/atoms/Select/Select';
 
 function App() {
   const [value, setValue] = useState('');
+  const [selectValue, setSelectValue] = useState('');
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
 
@@ -32,8 +34,10 @@ function App() {
         setProgress(progress + 10);
       }
     }, 500);
-    return () => {clearInterval(interval)};
-  }, [progress])
+    return () => {
+      clearInterval(interval);
+    };
+  }, [progress]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -72,41 +76,47 @@ function App() {
           isOpen={showModal}
           rootId="modal-root"
           showTransitionEffect
-          ownCloseButtonIcon={<CloseIcon
-            color={'error'}
-            onClick={() => handleShowModal(false)}
-            topPosition={0}
-            rightPosition={0}
-            visibility={showModal ? 'visible' : 'hidden'}
-            height={`${fontSizes.fontSizeLarge}px`}
-            iconColor={COLOR_RUBY}
-          />}
+          ownCloseButtonIcon={
+            <CloseIcon
+              color="error"
+              onClick={() => handleShowModal(false)}
+              topPosition={0}
+              rightPosition={0}
+              visibility={showModal ? 'visible' : 'hidden'}
+              height={`${fontSizes.fontSizeLarge}px`}
+              iconColor={COLOR_RUBY}
+            />
+          }
           closeButtonOutside
-          transitionEffect='mid'
+          transitionEffect="mid"
           onClose={() => handleShowModal(false)}
         >
-          <>
-            Some modal here
-          </>
+          <>Some modal here</>
         </Modal>
         <Breadcrumbs
           items={items}
           showOnlyBorderItems
           activeBreadcrumbClassName="active"
           firstBreadcrumbClassName="active"
-          itemClassName='breadcrumbsItem'
-          wrapperClassName='breadcrumbsWrapper'
+          itemClassName="breadcrumbsItem"
+          wrapperClassName="breadcrumbsWrapper"
           noBorder
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
-        <Tooltip
-          targetElementId="tooltip_target"
-          tooltipText="tooltip"
-          position="right"
-        />
+        <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>
+      <Select
+        options={[
+          { label: 'one', value: '1' },
+          { label: 'two', value: '2' },
+        ]}
+        value={selectValue}
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+          setSelectValue(e.target.value);
+        }}
+      />
     </ThemeProvider>
   );
 }
