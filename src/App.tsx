@@ -5,7 +5,7 @@ import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
 import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
-import { Dropdown } from './components/molecules/Dropdown/Dropdown';
+import Dropdown from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
@@ -16,13 +16,18 @@ import { COLOR_RUBY } from './common/constants/colors';
 import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
+import Toast from './components/atoms/Toast/Toast';
 import Select from './components/atoms/Select/Select';
 
 function App() {
   const [value, setValue] = useState('');
-  const [selectValue, setSelectValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState<{
+    label: string;
+    value: string | number;
+  } | null>(null);
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     styleReorder();
@@ -41,26 +46,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Dropdown>
-        <DropdownItem heading disabled>
-          item
-        </DropdownItem>
-        <DropdownItem divider dividerColor="blue" />
-        <DropdownItem
-          onClick={() => {
-            console.log('dropdown item clicked');
-          }}
-        >
-          abc
-        </DropdownItem>
-      </Dropdown>
       <div className="App">
-        <Button
-          buttonTitle="Show modal"
-          onClick={() => {
-            handleShowModal(!showModal);
-          }}
-        />
         <Input
           placeholder="test"
           value={value}
@@ -107,14 +93,34 @@ function App() {
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
         <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>
+      <Button
+        buttonTitle="Show toast"
+        onClick={() => {
+          setShowToast(true);
+        }}
+      />
+      {showToast && (
+        <Toast
+          message="Halvah jelly beans chocolate cake topping jelly-o tootsie roll toffee."
+          title="Toast header"
+          onClose={() => {
+            setShowToast(false);
+          }}
+          color="secondary"
+          onClick={() => {
+            setShowToast(false);
+          }}
+        />
+      )}
       <Select
         options={[
           { label: 'one', value: '1' },
           { label: 'two', value: '2' },
         ]}
-        value={selectValue}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-          setSelectValue(e.target.value);
+        selectedOption={selectedOption}
+        margin={10}
+        onChange={(option) => {
+          setSelectedOption(option);
         }}
       />
     </ThemeProvider>

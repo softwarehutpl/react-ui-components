@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ORIENTATION } from '../../../common/consts/consts';
+import { ORIENTATION } from '../../../common/constants/consts';
 
 type Orientation = 'horizontal' | 'vertical';
 
@@ -10,7 +10,7 @@ export interface TabProps {
 };
 
 export interface WrapperProps {
-  orientation?: Orientation; 
+  orientation?: Orientation;
   margin?: number;
 };
 
@@ -53,7 +53,7 @@ const Tabs: React.StatelessComponent<TabsProps> = ({
   content,
   orientation,
 }) => (
-  <Wrapper 
+  <Wrapper
     className={className}
     orientation={orientation}
   >

@@ -1,68 +1,115 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { DownArrow } from '@styled-icons/boxicons-solid/DownArrow';
+import useOutsideClick from '../../../common/hooks/clickOutside';
+import { ISelectToggle, SelectToggle } from './SelectToggle';
+import { SelectOptions } from './SelectOptions';
+import SelectOption from './SelectOption';
 
-interface ICommonSelectProps {
-  padding?: number;
+interface ISelect extends ISelectToggle {
+  options: { label: string; value: string | number }[];
+  selectedOption: { label: string; value: string | number } | null;
+  onChange: (option: { label: string; value: string | number }) => void;
+  className?: string;
+  width?: number;
+  placeholder?: string;
+  color?: string;
+  optionsBackgroundColor?: string;
+  optionsFontColor?: string;
 }
 
-interface ISelectContainerProps extends ICommonSelectProps {
+interface IStyledSelect {
+  margin?: number;
   width?: number;
 }
 
-interface ISelectOptionProps extends ICommonSelectProps {}
+const arrowStyle = () => ({
+  width: `15px`,
+  marginLeft: '10px',
+});
 
-interface ISelect extends ISelectContainerProps {
-  className?: string;
-  placeholder?: string;
-  options: { label: string; value: string }[];
-  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  value: string;
-}
+const Select = ({
+  options,
+  color,
+  className,
+  selectedOption,
+  onChange,
+  placeholder,
+  backgroundColor,
+  fontColor,
+  padding,
+  optionsBackgroundColor,
+  optionsFontColor,
+}: ISelect) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [toggleHeight, setToggleHeight] = useState(0);
+  const toggleRef = React.useRef<HTMLDivElement>(null);
+  const selectRef = React.useRef<HTMLDivElement>(null);
 
-const SelectContainer = styled.select<ISelectContainerProps>`
-  ${({ width, padding }) => ({
-    width: `${width}px`,
-    padding: `${padding}px`,
-    appearance: 'none',
-    '-webkit-appearance': 'none',
-  })}
-`;
+  const toggleSelect = () => {
+    setIsOpen(!isOpen);
+  };
 
-const SelectOption = styled.option<ISelectOptionProps>`
-  ${({ padding }) => ({
-    padding: `${padding}px`,
-    'line-height': '40px',
-    height: '40px',
-    '-webkit-appearance': 'none',
-    '&:hover': {
-      'background-color': 'red',
-      color: 'green'
+  const closeSelect = () => {
+    setIsOpen(false);
+  };
+
+  useOutsideClick(selectRef, closeSelect);
+
+  useEffect(() => {
+    if (toggleRef && toggleRef.current) {
+      const { height } = toggleRef.current.getBoundingClientRect();
+      setToggleHeight(height);
     }
-  })}
-`;
+  }, []);
 
-const Select = ({ className, placeholder, options, onChange, value, width, padding }: ISelect) => (
-  <SelectContainer
-    className={className}
-    placeholder={placeholder}
-    onChange={onChange}
-    value={value}
-    width={width}
-    padding={padding}
-  >
-    {options.map((option) => (
-      <SelectOption key={option.label} value={option.value} padding={padding}>
-        {option.label}
-      </SelectOption>
-    ))}
-  </SelectContainer>
-);
+  return (
+    <div className={className} ref={selectRef}>
+      <SelectToggle
+        ref={toggleRef}
+        onClick={toggleSelect}
+        backgroundColor={backgroundColor}
+        fontColor={fontColor}
+        padding={padding}
+      >
+        {selectedOption ? selectedOption.label : placeholder}
+        <DownArrow style={arrowStyle()} />
+      </SelectToggle>
+      {isOpen && (
+        <SelectOptions toggleHeight={toggleHeight} color={color}>
+          {options.map((option) => (
+            <SelectOption
+              key={option.label}
+              option={option}
+              padding={padding}
+              color={color}
+              selectOnChange={onChange}
+              optionsFontColor={optionsFontColor}
+              optionsBackgroundColor={optionsBackgroundColor}
+            />
+          ))}
+        </SelectOptions>
+      )}
+    </div>
+  );
+};
 
-const defaultProps = {
+export const defaultProps = {
+  color: 'primary',
   width: 200,
+  margin: 0,
+  placeholder: 'select value',
   padding: 15,
 };
 
 Select.defaultProps = defaultProps;
 
-export default Select;
+const StyledSelect = styled(Select)<IStyledSelect>`
+  ${({ margin = defaultProps.margin, width = defaultProps.width }) => ({
+    margin: `${margin}px`,
+    position: 'relative',
+    width: `${width}px`,
+  })}
+`;
+
+export default StyledSelect;

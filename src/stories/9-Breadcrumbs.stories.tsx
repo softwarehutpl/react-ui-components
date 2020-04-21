@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import breadcrumbsItems from '../common/mocks/breadcrumbsItems';
 import Breadcrumbs from '../components/atoms/Breadcrumbs/Breadcrumbs';
-import { BOX_SHADOW_OPTIONS } from '../common/constants/storybook_options';
+import { BOX_SHADOW_OPTIONS } from '../common/constants/consts';
 import './styles.scss';
 
 const stories = storiesOf('Breadcrumbs', module);
@@ -19,7 +19,7 @@ stories
   })
   .add('Only border items and no border', () => {
     return (
-      <Breadcrumbs 
+      <Breadcrumbs
         items={breadcrumbsItems}
         showOnlyBorderItems
         noBorder={boolean('No border', true)}
@@ -28,7 +28,7 @@ stories
   })
   .add('Own classnames for items', () => {
     return (
-      <Breadcrumbs 
+      <Breadcrumbs
         items={breadcrumbsItems}
         activeBreadcrumbClassName='active'
         firstBreadcrumbClassName='active'
@@ -38,7 +38,7 @@ stories
   })
   .add('Box shadow effects', () => {
     return (
-      <Breadcrumbs 
+      <Breadcrumbs
         items={breadcrumbsItems}
         boxShadowEffect={select('Box Shadow Effect', BOX_SHADOW_OPTIONS, 'roundedShadow')}
         noBorder
@@ -47,7 +47,7 @@ stories
   })
   .add('Own separator', () => {
     return (
-      <Breadcrumbs 
+      <Breadcrumbs
         items={breadcrumbsItems}
         separator={text('Separator', '/')}
       />

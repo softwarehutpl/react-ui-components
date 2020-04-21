@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import Input from '../components/atoms/Input/Input';
-import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../common/constants/storybook_options';
+import { COLOR_OPTIONS, TRANSITION_EFFECT_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('Input', module);
 stories.addDecorator(withKnobs);
@@ -21,7 +21,7 @@ stories
   .add('Casual', () => {
     const [value, setValue] = useState('');
     return (
-      <Input 
+      <Input
         placeholder='Casual input'
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         color={select('Color', COLOR_OPTIONS, 'primary')}
@@ -33,7 +33,7 @@ stories
   .add('Error input with own background on focus', () => {
     const [value, setValue] = useState('');
     return (
-      <Input 
+      <Input
         placeholder='Warn input'
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         color={select('Color', COLOR_OPTIONS, 'error')}

@@ -41,11 +41,11 @@ const Tooltip = ({
   const [isVisible, setIsVisible] = useState(false);
   const [targetDomRect, setTargetDomRect] = useState({});
   const [tooltipSize, setTooltipSize] = useState({});
-  const testRef = React.useRef<HTMLSpanElement>(null);
+  const tooltipRef = React.useRef<HTMLSpanElement>(null);
 
   const getTooltipSize = () => {
-    if (testRef && testRef.current) {
-      const { width, height } = testRef.current.getBoundingClientRect();
+    if (tooltipRef && tooltipRef.current) {
+      const { width, height } = tooltipRef.current.getBoundingClientRect();
       setTooltipSize({ width, height });
     }
   };
@@ -82,7 +82,7 @@ const Tooltip = ({
       fontColor={fontColor}
       targetDomRect={targetDomRect}
       position={position}
-      ref={testRef}
+      ref={tooltipRef}
       tooltipSize={tooltipSize}
       opacity={opacity}
     >
