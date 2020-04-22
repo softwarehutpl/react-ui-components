@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, number } from '@storybook/addon-knobs';
+import { withKnobs, select } from '@storybook/addon-knobs';
 import Tooltip from '../components/atoms/Tooltip/Tooltip';
-import { COLOR_OPTIONS } from '../constants/storybook_options';
+import { COLOR_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('Tooltip', module);
 stories.addDecorator(withKnobs);

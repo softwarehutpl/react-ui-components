@@ -1,6 +1,6 @@
 import React from 'react';
 import styled  from 'styled-components';
-import { TRANSFORMS } from '../../../common/consts/consts';
+import { TRANSFORMS } from '../../../common/constants/consts';
 import CloseIcon from '../../../common/icons/CloseIcon/CloseIcon';
 import Button from '../../atoms/Button/Button';
 
@@ -119,7 +119,7 @@ const Drawer: React.StatelessComponent<DrawerProps> = ({
 
     return (
       <>
-        <DrawerOverlay 
+        <DrawerOverlay
           isOpen={isOpen}
           onClick={onClose}
         />
@@ -134,24 +134,24 @@ const Drawer: React.StatelessComponent<DrawerProps> = ({
           fontColor={fontColor}
         >
           {withIcon && (
-            <CloseIcon 
-              color="primary" 
+            <CloseIcon
+              color="primary"
               onClick={onClose}
             />
           )}
           {children}
           {withButtons && (
             <ButtonsWrapper>
-              <Button 
-                onClick={onConfirmClick} 
-                buttonTitle="Confirm" 
+              <Button
+                onClick={onConfirmClick}
+                buttonTitle="Confirm"
                 color={color}
                 fontColor="#fff"
                 margin={10}
               />
-              <Button 
-                onClick={() => onClose && onClose()} 
-                buttonTitle="Cancel" 
+              <Button
+                onClick={() => onClose && onClose()}
+                buttonTitle="Cancel"
                 margin={10}
               />
           </ButtonsWrapper>

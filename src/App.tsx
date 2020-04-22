@@ -15,19 +15,8 @@ import items from './common/mocks/breadcrumbsItems';
 import { COLOR_RUBY } from './common/constants/colors';
 import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
-import Autocomplete from './components/organisms/Autocomplete/Autocomplete';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
-
-const options = [
-  'Papaya',
-  'Persimmon',
-  'Paw Paw',
-  'Prickly Pear',
-  'Peach',
-  'Pomegranate',
-  'Pineapple'
-];
 
 function App() {
   const [value, setValue] = useState('');
@@ -131,12 +120,6 @@ function App() {
           abc
         </DropdownItem>
       </Dropdown>
-      <div style={{marginLeft: '150px', width: '400px'}}>
-        <p>Autocomplete</p>
-        <Autocomplete 
-          options={options} 
-        />
-      </div>
     </ThemeProvider>
   );
 }

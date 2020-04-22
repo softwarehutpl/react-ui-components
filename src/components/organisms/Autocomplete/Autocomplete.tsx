@@ -1,7 +1,7 @@
 import React, { useState, useRef }from 'react';
 import styled from 'styled-components';
 import Input from '../../atoms/Input/Input';
-import { KEY_CODES } from '../../../common/consts/consts';
+import { KEY_CODES } from '../../../common/constants/consts';
 import useOutsideClick from '../../../common/hooks/clickOutside';
 import AutocompleteOptions from './AutocompleteOptions';
 import styles from './Autocomplete.module.scss';

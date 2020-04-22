@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, number, text, color } from '@storybook/addon-knobs';
 import Toast from '../components/atoms/Toast/Toast';
-import { COLOR_OPTIONS } from '../common/constants/storybook_options';
+import { COLOR_OPTIONS } from '../common/constants/consts';
 
 const stories = storiesOf('Toast', module);
 stories.addDecorator(withKnobs);

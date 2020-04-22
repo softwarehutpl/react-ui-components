@@ -4,7 +4,7 @@ import { withKnobs, select, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Drawer from '../components/molecules/Drawer/Drawer';
 import Button from '../components/atoms/Button/Button';
-import { COLOR_OPTIONS } from '../common/colorOptions';
+import { COLOR_OPTIONS } from '../common/constants/consts';
 import './styles.scss';
 
 const stories = storiesOf('Drawer', module);
@@ -32,15 +32,15 @@ stories.add('Common', () => {
     <div className='drawerWrapper'>
       {['left', 'right', 'top', 'bottom'].map(anchor => (
         <div key={anchor}>
-          <Button 
-            onClick={() => toggleDrawer(anchor, true)}  
+          <Button
+            onClick={() => toggleDrawer(anchor, true)}
             buttonTitle={anchor}
             margin={10}
             className="drawerButton"
-           
+
           />
-          <Drawer 
-            isOpen={opened[anchor]} 
+          <Drawer
+            isOpen={opened[anchor]}
             placement={anchor}
             onClose={() => toggleDrawer(anchor, false)}
             withIcon={boolean('withIcon', true)}

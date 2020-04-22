@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { isNotEmptyArray } from '../../../common/helpers/helpers';
+import { isNotEmptyArray } from '../../../helpers/helpers';
 import BreadcrumbsItem from './BreadcrumbsItem';
 
 type Item = {

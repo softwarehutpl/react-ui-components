@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text, number } from '@storybook/addon-knobs';
-import { TRANSITION_EFFECT_OPTIONS } from '../common/constants/storybook_options';
+import { TRANSITION_EFFECT_OPTIONS } from '../common/constants/consts';
 import Modal from '../components/molecules/Modal/Modal';
 
 const stories = storiesOf('Modal', module);
@@ -32,4 +32,3 @@ stories
       </>
      );
   })
-  
