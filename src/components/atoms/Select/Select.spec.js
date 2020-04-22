@@ -4,8 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import 'jest-styled-components';
 import theme from '../../../common/theme';
 import Select from './Select';
-import {SelectToggle} from './SelectToggle';
-import SelectOption from './SelectOption';
+import { SelectToggle } from './SelectToggle';
+import { SelectOption } from './SelectOption';
 
 describe('Select component', () => {
   it('should render select toggle with given placeholder', () => {
@@ -34,7 +34,7 @@ describe('Select component', () => {
     const toggle = instance.findByType(SelectToggle);
     act(() => {
       toggle.props.onClick();
-    })
+    });
     const options = instance.findAllByType(SelectOption);
     const optionOne = options[0].findByType('div');
     const optionTwo = options[1].findByType('div');
@@ -46,33 +46,26 @@ describe('Select component', () => {
     const mockOnChange = jest.fn();
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[
-            { label: 'one', value: 1 },
-          ]}
-          onChange={mockOnChange}
-        />
+        <Select options={[{ label: 'one', value: 1 }]} onChange={mockOnChange} />
       </ThemeProvider>
     );
     const instance = component.root;
     const toggle = instance.findByType(SelectToggle);
     act(() => {
       toggle.props.onClick();
-    })
+    });
     const selectOption = instance.findByType(SelectOption);
     const option = selectOption.findByType('div');
     act(() => {
       option.props.onClick();
-    })
+    });
     expect(mockOnChange.mock.calls.length).toEqual(1);
   });
 
   it('should render select with default style', () => {
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[]}
-        />
+        <Select options={[]} />
       </ThemeProvider>
     );
     const select = component.toJSON();
@@ -83,11 +76,7 @@ describe('Select component', () => {
   it('should render select with custom style', () => {
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[]}
-          width={400}
-          margin={10}
-        />
+        <Select options={[]} width={400} margin={10} />
       </ThemeProvider>
     );
     const select = component.toJSON();
@@ -98,9 +87,7 @@ describe('Select component', () => {
   it('should render select toggle with default style for default primary color', () => {
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[]}
-        />
+        <Select options={[]} />
       </ThemeProvider>
     );
     const select = component.toJSON();
@@ -108,17 +95,12 @@ describe('Select component', () => {
     expect(selectToggle).toHaveStyleRule('background-color', '#000000');
     expect(selectToggle).toHaveStyleRule('color', '#ffffff');
     expect(selectToggle).toHaveStyleRule('padding', '15px');
-  })
+  });
 
   it('should render select toggle with custom style', () => {
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[]}
-          fontColor="red"
-          backgroundColor="blue"
-          padding={10}
-        />
+        <Select options={[]} fontColor="red" backgroundColor="blue" padding={10} />
       </ThemeProvider>
     );
     const select = component.toJSON();
@@ -126,36 +108,31 @@ describe('Select component', () => {
     expect(selectToggle).toHaveStyleRule('background-color', 'blue');
     expect(selectToggle).toHaveStyleRule('color', 'red');
     expect(selectToggle).toHaveStyleRule('padding', '10px');
-  })
+  });
 
   it('should render select option with default style for default primary color', () => {
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[
-            { label: 'one', value: 1 },
-          ]}
-        />
+        <Select options={[{ label: 'one', value: 1 }]} />
       </ThemeProvider>
     );
     const instance = component.root;
     const toggle = instance.findByType(SelectToggle);
     act(() => {
       toggle.props.onClick();
-    })
+    });
     const option = component.toJSON().children[1].children[0];
     expect(option).toHaveStyleRule('background-color', '#ffffff');
     expect(option).toHaveStyleRule('color', '#000000');
     expect(option).toHaveStyleRule('padding', '7.5px 15px');
-  })
+    expect(option).toHaveStyleRule('font-weight', '400');
+  });
 
   it('should render select option with custom style', () => {
     const component = create(
       <ThemeProvider theme={theme}>
         <Select
-          options={[
-            { label: 'one', value: 1 },
-          ]}
+          options={[{ label: 'one', value: 1 }]}
           optionsBackgroundColor="red"
           optionsFontColor="blue"
           padding={20}
@@ -166,10 +143,68 @@ describe('Select component', () => {
     const toggle = instance.findByType(SelectToggle);
     act(() => {
       toggle.props.onClick();
-    })
+    });
     const option = component.toJSON().children[1].children[0];
     expect(option).toHaveStyleRule('background-color', 'red');
     expect(option).toHaveStyleRule('color', 'blue');
     expect(option).toHaveStyleRule('padding', '10px 20px');
+  });
+
+  it('should render selected option with different default background color and font weight', () => {
+    const component = create(
+      <ThemeProvider theme={theme}>
+        <Select
+          options={[{ label: 'one', value: 1 }]}
+          selectedOption={{ label: 'one', value: 1 }}
+        />
+      </ThemeProvider>
+    );
+    const instance = component.root;
+    const toggle = instance.findByType(SelectToggle);
+    act(() => {
+      toggle.props.onClick();
+    });
+    const option = component.toJSON().children[1].children[0];
+    expect(option).toHaveStyleRule('background-color', '#f6f6f6');
+    expect(option).toHaveStyleRule('font-weight', '600');
+  });
+
+  it('should render selected option with given background color', () => {
+    const component = create(
+      <ThemeProvider theme={theme}>
+        <Select
+          options={[{ label: 'one', value: 1 }]}
+          selectedOption={{ label: 'one', value: 1 }}
+          selectedOptionBackgroundColor="red"
+        />
+      </ThemeProvider>
+    );
+    const instance = component.root;
+    const toggle = instance.findByType(SelectToggle);
+    act(() => {
+      toggle.props.onClick();
+    });
+    const option = component.toJSON().children[1].children[0];
+    expect(option).toHaveStyleRule('background-color', 'red');
+  });
+
+  it('should not open select options when select is disabled', () => {
+    const component = create(
+      <ThemeProvider theme={theme}>
+        <Select
+          options={[
+            { label: 'one', value: '1' },
+            { label: 'two', value: '2' },
+          ]}
+          disabled
+        />
+      </ThemeProvider>
+    );
+    const instance = component.root;
+    const toggle = instance.findByType(SelectToggle);
+    act(() => {
+      toggle.props.onClick();
+    });
+    expect(component.toJSON().children.length).toEqual(1);
   })
 });

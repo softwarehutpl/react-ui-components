@@ -4,18 +4,28 @@ import { DownArrow } from '@styled-icons/boxicons-solid/DownArrow';
 import useOutsideClick from '../../../common/hooks/clickOutside';
 import { ISelectToggle, SelectToggle } from './SelectToggle';
 import { SelectOptions } from './SelectOptions';
-import SelectOption from './SelectOption';
+import { SelectOption } from './SelectOption';
+import MultipleSelectChip from './MultipleSelectChip';
+
+const isEqual = require('lodash.isequal');
+
+export interface IOption {
+  label: string;
+  value: string | number;
+}
 
 interface ISelect extends ISelectToggle {
-  options: { label: string; value: string | number }[];
-  selectedOption: { label: string; value: string | number } | null;
-  onChange: (option: { label: string; value: string | number }) => void;
+  options: IOption[];
+  selectedOptions?: IOption[];
+  onChange: (option?: IOption[]) => void;
   className?: string;
   width?: number;
   placeholder?: string;
-  color?: string;
+  multiple?: boolean;
+  caretSize?: number;
   optionsBackgroundColor?: string;
   optionsFontColor?: string;
+  selectedOptionBackgroundColor?: string;
 }
 
 interface IStyledSelect {
@@ -23,16 +33,15 @@ interface IStyledSelect {
   width?: number;
 }
 
-const arrowStyle = () => ({
-  width: `15px`,
-  marginLeft: '10px',
+const arrowStyle = (size?: number) => ({
+  width: `${size}px`,
 });
 
 const Select = ({
   options,
   color,
   className,
-  selectedOption,
+  selectedOptions,
   onChange,
   placeholder,
   backgroundColor,
@@ -40,6 +49,10 @@ const Select = ({
   padding,
   optionsBackgroundColor,
   optionsFontColor,
+  multiple,
+  caretSize,
+  selectedOptionBackgroundColor,
+  disabled,
 }: ISelect) => {
   const [isOpen, setIsOpen] = useState(false);
   const [toggleHeight, setToggleHeight] = useState(0);
@@ -47,7 +60,9 @@ const Select = ({
   const selectRef = React.useRef<HTMLDivElement>(null);
 
   const toggleSelect = () => {
-    setIsOpen(!isOpen);
+    if (!disabled) {
+      setIsOpen(!isOpen);
+    }
   };
 
   const closeSelect = () => {
@@ -63,30 +78,76 @@ const Select = ({
     }
   }, []);
 
+  const handleOnClick = (option: IOption, previousSelectedOption?: IOption[]) => {
+    if (multiple) {
+      const newOptions = previousSelectedOption ? [...previousSelectedOption] : [];
+      // don't duplicate selected options
+      if (newOptions.includes(option)) {
+        return;
+      }
+      newOptions.push(option);
+      onChange(newOptions);
+    } else {
+      onChange([option]);
+      closeSelect();
+    }
+  };
+
+  const removeFromMultipleOptions = (option: IOption, previousSelectedOption: IOption[]) => {
+    const newOptions = previousSelectedOption.filter((i) => i !== option);
+    onChange(newOptions);
+  };
+
   return (
     <div className={className} ref={selectRef}>
       <SelectToggle
         ref={toggleRef}
         onClick={toggleSelect}
+        color={color}
         backgroundColor={backgroundColor}
         fontColor={fontColor}
         padding={padding}
+        disabled={disabled}
       >
-        {selectedOption ? selectedOption.label : placeholder}
-        <DownArrow style={arrowStyle()} />
+        {!selectedOptions && placeholder}
+        <div>
+          {selectedOptions &&
+            selectedOptions.map((option) =>
+              multiple ? (
+                <MultipleSelectChip
+                  key={option.label}
+                  onDelete={() => {
+                    removeFromMultipleOptions(option, selectedOptions);
+                  }}
+                  option={option}
+                  color={color}
+                />
+              ) : (
+                option.label
+              )
+            )}
+        </div>
+        <DownArrow style={arrowStyle(caretSize)} />
       </SelectToggle>
       {isOpen && (
         <SelectOptions toggleHeight={toggleHeight} color={color}>
           {options.map((option) => (
             <SelectOption
               key={option.label}
-              option={option}
               padding={padding}
               color={color}
-              selectOnChange={onChange}
+              onClick={() => {
+                handleOnClick(option, selectedOptions);
+              }}
               optionsFontColor={optionsFontColor}
               optionsBackgroundColor={optionsBackgroundColor}
-            />
+              isSelected={
+                selectedOptions ? !!selectedOptions.find((i) => isEqual(option, i)) : false
+              }
+              selectedOptionBackgroundColor={selectedOptionBackgroundColor}
+            >
+              {option.label}
+            </SelectOption>
           ))}
         </SelectOptions>
       )}
@@ -100,6 +161,9 @@ export const defaultProps = {
   margin: 0,
   placeholder: 'select value',
   padding: 15,
+  multiple: false,
+  caretSize: 15,
+  disabled: false,
 };
 
 Select.defaultProps = defaultProps;

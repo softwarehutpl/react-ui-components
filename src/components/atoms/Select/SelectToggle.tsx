@@ -6,11 +6,21 @@ export interface ISelectToggle {
   backgroundColor?: string;
   fontColor?: string;
   padding?: number;
+  disabled?: boolean;
 }
 
 export const SelectToggle = styled.div<ISelectToggle>`
-  ${({ theme, color = defaultProps.color, backgroundColor, fontColor, padding }) => ({
-    'background-color': backgroundColor || theme.colors[color].base,
+  ${({
+    theme,
+    color = defaultProps.color,
+    backgroundColor,
+    fontColor,
+    padding,
+    disabled = defaultProps.disabled,
+  }) => ({
+    'background-color': disabled
+      ? theme.colors.disabled.base
+      : backgroundColor || theme.colors[color].base,
     color: fontColor || theme.colors[color].light,
     width: '100%',
     padding: `${padding}px`,

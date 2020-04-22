@@ -4,8 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
-import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
-import Dropdown from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
@@ -17,14 +15,13 @@ import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
-import Select from './components/atoms/Select/Select';
+import Select, { IOption } from './components/atoms/Select/Select';
+import selectItems from './common/mocks/selectItems';
 
 function App() {
   const [value, setValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState<{
-    label: string;
-    value: string | number;
-  } | null>(null);
+  const [selectedOption, setSelectedOption] = useState<IOption[]>();
+  const [multipleSelectOptions, setMultipleSelectOption] = useState<IOption[]>()
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -113,14 +110,21 @@ function App() {
         />
       )}
       <Select
-        options={[
-          { label: 'one', value: '1' },
-          { label: 'two', value: '2' },
-        ]}
-        selectedOption={selectedOption}
+        options={selectItems}
+        selectedOptions={selectedOption}
         margin={10}
         onChange={(option) => {
           setSelectedOption(option);
+        }}
+        className="firstSelect"
+      />
+      <Select
+        options={selectItems}
+        multiple
+        selectedOptions={multipleSelectOptions}
+        margin={10}
+        onChange={(option) => {
+          setMultipleSelectOption(option);
         }}
       />
     </ThemeProvider>
