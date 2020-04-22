@@ -18,8 +18,10 @@ interface InputLabelProps {
 interface InputProps extends InputContainerProps, InputLabelProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   color?: string;
   value: string;
+  containerClassName?: string;
   className?: string;
   labelClassName?: string;
   placeholder?: string;
@@ -95,7 +97,11 @@ export const InputLabel = styled.label<InputLabelProps>`
 `;
 
 const Input = (props: InputProps) => (
-  <InputContainer width={props.width} direction={props.direction}>
+  <InputContainer 
+    width={props.width} 
+    direction={props.direction} 
+    className={props.containerClassName}
+  >
     {props.label && (<InputLabel
       labelPosition={props.labelPosition}
       className={props.labelClassName}

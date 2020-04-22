@@ -9,26 +9,36 @@ interface IDropdownItemProps {
   className?: string;
   divider?: boolean;
   onClick?: () => void;
+  defaultOnDropdownItemClick?: () => void;
 }
 
 interface IDropdownItemStyleProps {
-  fontColor?: string;
-  backgroundColor?: string;
+  dropdownItemFontColor?: string;
+  dropdownItemBackgroundColor?: string;
   height?: number;
   padding?: number;
   textAlignment?: 'left' | 'center' | 'right';
   heading?: boolean;
   dividerColor?: string;
-  color?: string;
+  dropdownColor?: string;
   disabled?: boolean;
 }
 
-const DropdownItem = ({ children, className, divider, onClick }: IDropdownItemProps) => {
+const DropdownItem = ({ children, className, divider, onClick, defaultOnDropdownItemClick }: IDropdownItemProps) => {
   if (divider) {
     return <div className={className} />;
   }
+  const handleClick = () => {
+    if (defaultOnDropdownItemClick) {
+      defaultOnDropdownItemClick();
+    }
+    if (onClick) {
+      onClick();
+    }
+  }
+
   return (
-    <div className={className} onClick={onClick}>
+    <div className={className} onClick={handleClick}>
       {children}
     </div>
   );
@@ -44,7 +54,7 @@ const defaultProps = {
   heading: false,
   divider: false,
   dividerColor: COLOR_ALTO,
-  color: 'error',
+  dropdownColor: 'primary',
   disabled: false,
 };
 
@@ -53,9 +63,9 @@ DropdownItem.defaultProps = defaultProps;
 const StyledDropdownItem = styled(DropdownItem)<IDropdownItemStyleProps>`
   ${({
     theme,
-    color = defaultProps.color,
-    fontColor,
-    backgroundColor,
+    dropdownColor = defaultProps.dropdownColor,
+    dropdownItemFontColor,
+    dropdownItemBackgroundColor,
     height = defaultProps.height,
     padding = defaultProps.padding,
     textAlignment = defaultProps.textAlignment,
@@ -71,21 +81,21 @@ const StyledDropdownItem = styled(DropdownItem)<IDropdownItemStyleProps>`
       };
     }
     return {
-      color: fontColor || theme.colors[color].base,
-      'background-color': backgroundColor || theme.colors[color].light,
-      width: '100%',
+      color: dropdownItemFontColor || theme.colors[dropdownColor].base,
+      'background-color': dropdownItemBackgroundColor || theme.colors[dropdownColor].light,
       height: `${height}px`,
+      width: '100%',
       padding: `0 ${padding}px`,
       'box-sizing': 'border-box',
       display: 'flex',
       'align-items': 'center',
       'justify-content': mapTextPositionToFlexJustify(textAlignment),
       'font-size': heading ? '0.75em' : '1em',
-      'font-weight': heading ? 'bold' : 'bolder',
+      'font-weight': '600',
       'text-transform': heading ? 'uppercase' : 'capitalize',
       '&:hover': {
         cursor: 'pointer',
-        'background-color': theme.colors[color].dark,
+        'background-color': theme.colors[dropdownColor].dark,
       },
       'pointer-events': disabled ? 'none' : 'auto',
     };
@@ -97,10 +107,18 @@ type DropdownItemProps = IDropdownItemStyleProps & IDropdownItemProps;
 const withDropdownContext = (WrappedComponent: React.ComponentType<DropdownItemProps>) => (
   props: DropdownItemProps
 ) => {
-  const { dropdownColor } = useContext(DropdownContext);
-  const { color } = props;
-  // if color is passed to item, render item with given color, if not, take color from dropdown
-  return <WrappedComponent {...props} color={color || dropdownColor} />;
+  const { dropdownColor, itemsBackgroundColor, itemsFontColor, onDropdownItemClick } = useContext(
+    DropdownContext
+  );
+  return (
+    <WrappedComponent
+      {...props}
+      dropdownColor={dropdownColor}
+      dropdownItemFontColor={itemsFontColor}
+      dropdownItemBackgroundColor={itemsBackgroundColor}
+      defaultOnDropdownItemClick={onDropdownItemClick}
+    />
+  );
 };
 
 export default withDropdownContext(StyledDropdownItem);

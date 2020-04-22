@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast component should render correctly 1`] = `
+.c0 {
+  width: 300px;
+  background-color: #fff;
+  color: #000;
+  position: fixed;
+  bottom: 50px;
+  top: auto;
+  left: calc(50vw - 150px);
+  padding: 15px;
+  border-radius: 5px;
+  border-top: 7px solid #000000;
+  box-shadow: 0px 4px 10px 4px rgba(217,217,217,0.6);
+}
+
+.c0 h4 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  text-align: left;
+}
+
+.c0 p {
+  font-size: 0.8em;
+  line-height: 1.5em;
+  margin: 0;
+  text-align: justify;
+}
+
+<div
+  className="c0"
+>
+  <h4 />
+  <p>
+    Lorem ipsum
+  </p>
+</div>
+`;

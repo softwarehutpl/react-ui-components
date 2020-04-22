@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Autocomplete /> should render corectly 1`] = `
-.c1 {
+.c2 {
   background-color: #FFF;
   color: #000;
   border: solid;
@@ -16,19 +16,19 @@ exports[`<Autocomplete /> should render corectly 1`] = `
   transition: none;
 }
 
-.c1:hover {
+.c2:hover {
   border-color: #f6f6f6;
   background-color: #ffffff;
   border-width: 2px;
 }
 
-.c1:focus {
+.c2:focus {
   border-width: 2px;
   border-color: #f6f6f6;
   background-color: #ffffff;
 }
 
-.c1:focus::-webkit-input-placeholder {
+.c2:focus::-webkit-input-placeholder {
   font-size: .75em;
   display: none;
   position: relative;
@@ -37,12 +37,12 @@ exports[`<Autocomplete /> should render corectly 1`] = `
   transition: 0.2s ease-out;
 }
 
-.c1::-webkit-input-placeholder {
+.c2::-webkit-input-placeholder {
   -webkit-transition: 0.2s ease-out;
   transition: 0.2s ease-out;
 }
 
-.c0 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,21 +61,34 @@ exports[`<Autocomplete /> should render corectly 1`] = `
   width: 200px;
 }
 
+.c0 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
 <div
-  className=""
+  className="c0"
 >
   <div
-    className="c0"
+    className="c1 InputContainer"
     direction="column"
     width={200}
   >
     <input
-      className="c1"
+      className="c2 Input"
       color="primary"
       direction="column"
       disabled={false}
       onChange={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
+      placeholder="Search"
       value=""
       width={200}
     />

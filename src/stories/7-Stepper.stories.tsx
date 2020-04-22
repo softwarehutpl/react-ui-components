@@ -37,22 +37,26 @@ const items = [
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
     return (
-      <>
+      <div style={{width: '60%', margin: 'auto'}}>
         <Stepper 
-            items={items}
-            activeIndex={activeStep}
-            color={select('Colors', colorOpions, 'primary')}
+          items={items}
+          activeIndex={activeStep}
+          color={select('Colors', colorOpions, 'primary')}
         />
-        <Button
-          buttonTitle="Prev"
-          onClick={handlePrev}
-          disabled={activeStep === 0}
-        />
-        <Button
-          buttonTitle="Next"
-          onClick={handleNext}
-          disabled={activeStep === items.length - 1}
-        />
-      </>
+        <div className="buttonsWrapper">
+          <Button
+            buttonTitle="Prev"
+            onClick={handlePrev}
+            disabled={activeStep === 0}
+            margin={10}
+          />
+          <Button
+            buttonTitle="Next"
+            onClick={handleNext}
+            disabled={activeStep === items.length - 1}
+            margin={10}
+          />
+        </div>
+      </div>
     );
  });
