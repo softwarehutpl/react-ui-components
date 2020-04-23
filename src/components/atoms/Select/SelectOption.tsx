@@ -30,5 +30,6 @@ export const SelectOption = styled.div<ISelectOption>`
     '&:hover': {
       'background-color': theme.colors[color].dark,
     },
+    'text-align': 'left',
   })}
 `;

@@ -4,10 +4,25 @@ import { ThemeProvider } from 'styled-components';
 import 'jest-styled-components';
 import theme from '../../../common/theme';
 import Select from './Select';
-import { SelectToggle } from './SelectToggle';
+import SelectToggle from './SelectToggle';
 import { SelectOption } from './SelectOption';
 
 describe('Select component', () => {
+  it('should render correctly', () => {
+    const tree = create(
+      <ThemeProvider theme={theme}>
+        <Select
+          placeholder="foo"
+          options={[
+            { label: 'one', value: '1' },
+            { label: 'two', value: '2' },
+          ]}
+        />
+      </ThemeProvider>
+    ).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render select toggle with given placeholder', () => {
     const component = create(
       <ThemeProvider theme={theme}>
@@ -15,7 +30,7 @@ describe('Select component', () => {
       </ThemeProvider>
     );
     const instance = component.root;
-    const selectToggle = instance.findByType(SelectToggle);
+    const selectToggle = instance.findByType(SelectToggle).findByType('div');
     expect(selectToggle.props.children[0]).toBe('foo');
   });
 
@@ -31,7 +46,7 @@ describe('Select component', () => {
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
@@ -50,7 +65,7 @@ describe('Select component', () => {
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
@@ -117,7 +132,7 @@ describe('Select component', () => {
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
@@ -140,7 +155,7 @@ describe('Select component', () => {
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
@@ -153,14 +168,11 @@ describe('Select component', () => {
   it('should render selected option with different default background color and font weight', () => {
     const component = create(
       <ThemeProvider theme={theme}>
-        <Select
-          options={[{ label: 'one', value: 1 }]}
-          selectedOption={{ label: 'one', value: 1 }}
-        />
+        <Select options={[{ label: 'one', value: 1 }]} value={{ label: 'one', value: 1 }} />
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
@@ -174,13 +186,13 @@ describe('Select component', () => {
       <ThemeProvider theme={theme}>
         <Select
           options={[{ label: 'one', value: 1 }]}
-          selectedOption={{ label: 'one', value: 1 }}
+          value={{ label: 'one', value: 1 }}
           selectedOptionBackgroundColor="red"
         />
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
@@ -201,10 +213,10 @@ describe('Select component', () => {
       </ThemeProvider>
     );
     const instance = component.root;
-    const toggle = instance.findByType(SelectToggle);
+    const toggle = instance.findByType(SelectToggle).findByType('div');
     act(() => {
       toggle.props.onClick();
     });
     expect(component.toJSON().children.length).toEqual(1);
-  })
+  });
 });

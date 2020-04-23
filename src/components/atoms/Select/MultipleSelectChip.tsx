@@ -8,6 +8,8 @@ interface IMultipleSelectChip {
   option: IOption;
   color?: string;
   className?: string;
+  backgroundColor?: string;
+  fontColor?: string;
 }
 
 const MultipleSelectChip = ({ onDelete, option, className }: IMultipleSelectChip) => {
@@ -20,11 +22,12 @@ const MultipleSelectChip = ({ onDelete, option, className }: IMultipleSelectChip
 };
 
 export default styled(MultipleSelectChip)<IMultipleSelectChip>`
-  ${({ theme, color = defaultProps.color }) => ({
+  ${({ theme, color = defaultProps.color, backgroundColor, fontColor }) => ({
     padding: '5px',
-    backgroundColor: theme.colors[color].light,
-    color: theme.colors[color].base,
-    'margin-right': '5px',
+    backgroundColor: fontColor || theme.colors[color].light,
+    color: backgroundColor || theme.colors[color].base,
+    margin: '2px 5px 2px 0',
     'font-size': '0.75em',
+    display: 'inline-block',
   })}
 `;

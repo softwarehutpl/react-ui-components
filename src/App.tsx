@@ -15,13 +15,13 @@ import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
-import Select, { IOption } from './components/atoms/Select/Select';
+import Select from './components/atoms/Select/Select';
 import selectItems from './common/mocks/selectItems';
 
 function App() {
   const [value, setValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState<IOption[]>();
-  const [multipleSelectOptions, setMultipleSelectOption] = useState<IOption[]>()
+  const [selectedOption, setSelectedOption] = useState();
+  const [multipleSelectOptions, setMultipleSelectOption] = useState();
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -111,7 +111,7 @@ function App() {
       )}
       <Select
         options={selectItems}
-        selectedOptions={selectedOption}
+        value={selectedOption}
         margin={10}
         onChange={(option) => {
           setSelectedOption(option);
@@ -121,7 +121,7 @@ function App() {
       <Select
         options={selectItems}
         multiple
-        selectedOptions={multipleSelectOptions}
+        multipleValue={multipleSelectOptions}
         margin={10}
         onChange={(option) => {
           setMultipleSelectOption(option);

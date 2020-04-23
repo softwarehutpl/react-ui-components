@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { DownArrow } from '@styled-icons/boxicons-solid/DownArrow';
 import useOutsideClick from '../../../common/hooks/clickOutside';
-import { ISelectToggle, SelectToggle } from './SelectToggle';
+import SelectToggle from './SelectToggle';
 import { SelectOptions } from './SelectOptions';
 import { SelectOption } from './SelectOption';
-import MultipleSelectChip from './MultipleSelectChip';
-
-const isEqual = require('lodash.isequal');
+import { checkIfIsSelected } from './helpers';
 
 export interface IOption {
   label: string;
   value: string | number;
 }
 
-interface ISelect extends ISelectToggle {
+interface ISelect {
+  value?: IOption;
+  multipleValue?: IOption[];
+  onChange: (newValue: IOption | IOption[]) => void;
   options: IOption[];
-  selectedOptions?: IOption[];
-  onChange: (option?: IOption[]) => void;
-  className?: string;
-  width?: number;
   placeholder?: string;
   multiple?: boolean;
+  color?: string;
+  className?: string;
+  disabled?: boolean;
+  backgroundColor?: string;
+  fontColor?: string;
+  padding?: number;
   caretSize?: number;
+  width?: number;
   optionsBackgroundColor?: string;
   optionsFontColor?: string;
   selectedOptionBackgroundColor?: string;
@@ -33,15 +36,12 @@ interface IStyledSelect {
   width?: number;
 }
 
-const arrowStyle = (size?: number) => ({
-  width: `${size}px`,
-});
-
 const Select = ({
   options,
   color,
   className,
-  selectedOptions,
+  value,
+  multipleValue,
   onChange,
   placeholder,
   backgroundColor,
@@ -69,66 +69,62 @@ const Select = ({
     setIsOpen(false);
   };
 
-  useOutsideClick(selectRef, closeSelect);
-
-  useEffect(() => {
+  const countToggleHeigh = () => {
     if (toggleRef && toggleRef.current) {
       const { height } = toggleRef.current.getBoundingClientRect();
       setToggleHeight(height);
     }
+  };
+
+  useOutsideClick(selectRef, closeSelect);
+
+  useEffect(() => {
+    countToggleHeigh();
   }, []);
 
-  const handleOnClick = (option: IOption, previousSelectedOption?: IOption[]) => {
-    if (multiple) {
-      const newOptions = previousSelectedOption ? [...previousSelectedOption] : [];
-      // don't duplicate selected options
-      if (newOptions.includes(option)) {
-        return;
-      }
-      newOptions.push(option);
-      onChange(newOptions);
-    } else {
-      onChange([option]);
-      closeSelect();
+  const singleSelectOnChange = (option: IOption) => {
+    onChange(option);
+    closeSelect();
+  };
+
+  const multipleSelectOnChange = (option: IOption, selectedOptions?: IOption[]) => {
+    const newSelectedOptions = selectedOptions ? [...selectedOptions] : [];
+    if (!newSelectedOptions.includes(option)) {
+      newSelectedOptions.push(option);
+      onChange(newSelectedOptions);
+      setTimeout(countToggleHeigh, 100);
     }
   };
 
-  const removeFromMultipleOptions = (option: IOption, previousSelectedOption: IOption[]) => {
-    const newOptions = previousSelectedOption.filter((i) => i !== option);
-    onChange(newOptions);
+  const onMultipleOptionDelete = (option: IOption, selectedOptions?: IOption[]) => {
+    if (selectedOptions) {
+      const newOptions = selectedOptions.filter((opt) => opt !== option);
+      onChange(newOptions);
+      setTimeout(countToggleHeigh, 100);
+    }
   };
 
   return (
     <div className={className} ref={selectRef}>
       <SelectToggle
         ref={toggleRef}
-        onClick={toggleSelect}
+        toggle={toggleSelect}
         color={color}
         backgroundColor={backgroundColor}
         fontColor={fontColor}
         padding={padding}
         disabled={disabled}
-      >
-        {!selectedOptions && placeholder}
-        <div>
-          {selectedOptions &&
-            selectedOptions.map((option) =>
-              multiple ? (
-                <MultipleSelectChip
-                  key={option.label}
-                  onDelete={() => {
-                    removeFromMultipleOptions(option, selectedOptions);
-                  }}
-                  option={option}
-                  color={color}
-                />
-              ) : (
-                option.label
-              )
-            )}
-        </div>
-        <DownArrow style={arrowStyle(caretSize)} />
-      </SelectToggle>
+        onChange={(newOptions: IOption[]) => {
+          onChange(newOptions);
+        }}
+        onMultipleOptionDelete={(option: IOption) => {
+          onMultipleOptionDelete(option, multipleValue);
+        }}
+        value={value}
+        placeholder={placeholder}
+        multipleValue={multipleValue}
+        caretSize={caretSize}
+      />
       {isOpen && (
         <SelectOptions toggleHeight={toggleHeight} color={color}>
           {options.map((option) => (
@@ -136,14 +132,16 @@ const Select = ({
               key={option.label}
               padding={padding}
               color={color}
-              onClick={() => {
-                handleOnClick(option, selectedOptions);
-              }}
               optionsFontColor={optionsFontColor}
               optionsBackgroundColor={optionsBackgroundColor}
-              isSelected={
-                selectedOptions ? !!selectedOptions.find((i) => isEqual(option, i)) : false
-              }
+              onClick={() => {
+                if (multiple) {
+                  multipleSelectOnChange(option, multipleValue);
+                } else {
+                  singleSelectOnChange(option);
+                }
+              }}
+              isSelected={checkIfIsSelected(option, multiple, value, multipleValue)}
               selectedOptionBackgroundColor={selectedOptionBackgroundColor}
             >
               {option.label}

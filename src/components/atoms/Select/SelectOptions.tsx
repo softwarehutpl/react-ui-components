@@ -14,5 +14,8 @@ export const SelectOptions = styled.div<ISelectOptions>`
     'box-shadow': '0 4px 10px 4px rgba(217,217,217,0.6)',
     'max-height': '200px',
     'overflow-y': 'scroll',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    }
   })}
 `;
