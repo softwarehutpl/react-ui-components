@@ -14,7 +14,7 @@ export const TRANSITION_EFFECT_OPTIONS = {
   slow: 'slow',
 };
 
-export const TEXT_ALIGNMENT_OPTIONS = {
+export const CONTAINER_TEXT_ALIGNMENT_OPTIONS = {
   left: 'left',
   right: 'right',
   center: 'center',
@@ -37,3 +37,24 @@ export const TRANSFORMS = {
   bottom: 'translateY(100%)',
   left: 'translateX(-100%)'
 } as any;
+
+export const TEXT_ALIGNMENT_OPTIONS = {
+  left: 'left',
+  right: 'right',
+  center: 'center',
+  justify: 'justify',
+};
+
+export const FONT_WEIGHT_OPTIONS = {
+  normal: 'normal',
+  bold: 'bold',
+  '100': '100',
+  '200': '200',
+  '300': '300',
+  '400': '400',
+  '500': '500',
+  '600': '600',
+  '700': '700',
+  '800': '800',
+  '900': '900',
+}
