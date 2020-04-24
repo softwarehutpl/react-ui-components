@@ -9,6 +9,8 @@ import Dropdown from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
+import Accordion from './components/molecules/Accordion/Accordion';
+import accordionItems from './common/mocks/accordionItems';
 import Modal from './components/molecules/Modal/Modal';
 import CloseIcon from './common/icons/CloseIcon/CloseIcon';
 import items from './common/mocks/breadcrumbsItems';
@@ -85,6 +87,10 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
+        <Accordion
+          items={accordionItems}
+          width={500}
+        />
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
         <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>
