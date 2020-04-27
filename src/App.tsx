@@ -19,6 +19,8 @@ import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
+import Card from './components/organisms/Card/Card';
+import mockProductDetails from './common/mocks/productDetails';
 
 function App() {
   const [value, setValue] = useState('');
@@ -126,6 +128,7 @@ function App() {
           abc
         </DropdownItem>
       </Dropdown>
+      <Card productDetails={mockProductDetails} />
     </ThemeProvider>
   );
 }
