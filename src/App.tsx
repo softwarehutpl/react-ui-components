@@ -59,22 +59,22 @@ function App() {
           isOpen={showModal}
           rootId="modal-root"
           showTransitionEffect
-          ownCloseButtonIcon={<CloseIcon
-            color={'error'}
-            onClick={() => handleShowModal(false)}
-            topPosition={0}
-            rightPosition={0}
-            visibility={showModal ? 'visible' : 'hidden'}
-            height={`${fontSizes.fontSizeLarge}px`}
-            iconColor={COLOR_RUBY}
-          />}
+          ownCloseButtonIcon={
+            <CloseIcon
+              color="error"
+              onClick={() => handleShowModal(false)}
+              topPosition={0}
+              rightPosition={0}
+              visibility={showModal ? 'visible' : 'hidden'}
+              height={`${fontSizes.fontSizeLarge}px`}
+              iconColor={COLOR_RUBY}
+            />
+          }
           closeButtonOutside
-          transitionEffect='mid'
+          transitionEffect="mid"
           onClose={() => handleShowModal(false)}
         >
-          <>
-            Some modal here
-          </>
+          <>Some modal here</>
         </Modal>
         <Breadcrumbs
           items={items}
@@ -87,10 +87,7 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
-        <Accordion
-          items={accordionItems}
-          width={500}
-        />
+        <Accordion items={accordionItems} width={500} />
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
         <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>

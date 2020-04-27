@@ -37,3 +37,11 @@ export const TRANSFORMS = {
   bottom: 'translateY(100%)',
   left: 'translateX(-100%)'
 } as any;
+
+export const OBJECT_FIT_OPTIONS = {
+  fill: 'fill',
+  contain: 'contain',
+  cover: 'cover',
+  none: 'none',
+  'scale-down': 'scale-down',
+}
