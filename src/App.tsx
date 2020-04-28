@@ -4,8 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
-import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
-import Dropdown from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
@@ -19,9 +17,13 @@ import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
+import Select from './components/atoms/Select/Select';
+import selectItems from './common/mocks/selectItems';
 
 function App() {
   const [value, setValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState();
+  const [multipleSelectOptions, setMultipleSelectOption] = useState();
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -110,19 +112,24 @@ function App() {
           }}
         />
       )}
-      <Dropdown title="Dropdown" margin={10} color="secondary">
-        <DropdownItem heading disabled>
-          item
-        </DropdownItem>
-        <DropdownItem divider dividerColor="black" />
-        <DropdownItem
-          onClick={() => {
-            console.log('dropdown item clicked');
-          }}
-        >
-          abc
-        </DropdownItem>
-      </Dropdown>
+      <Select
+        options={selectItems}
+        value={selectedOption}
+        margin={10}
+        onChange={(option) => {
+          setSelectedOption(option);
+        }}
+        className="firstSelect"
+      />
+      <Select
+        options={selectItems}
+        multiple
+        multipleValue={multipleSelectOptions}
+        margin={10}
+        onChange={(option) => {
+          setMultipleSelectOption(option);
+        }}
+      />
     </ThemeProvider>
   );
 }

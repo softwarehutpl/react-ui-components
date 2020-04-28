@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component should render correctly 1`] = `
+.c0 {
+  color: #000000;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
+  text-align: justify;
+}
+
+<p
+  className="c0"
+>
+  some text
+</p>
+`;
