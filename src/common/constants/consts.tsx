@@ -37,3 +37,9 @@ export const TRANSFORMS = {
   bottom: 'translateY(100%)',
   left: 'translateX(-100%)'
 } as any;
+
+export const KEY_CODES = {
+  ENTER_KEY: 13,
+  ARROW_UP: 38,
+  ARROW_DOWN: 40,
+};
