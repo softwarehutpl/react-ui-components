@@ -58,3 +58,11 @@ export const FONT_WEIGHT_OPTIONS = {
   '800': '800',
   '900': '900',
 }
+
+export const OBJECT_FIT_OPTIONS = {
+  fill: 'fill',
+  contain: 'contain',
+  cover: 'cover',
+  none: 'none',
+  'scale-down': 'scale-down',
+}

@@ -89,10 +89,7 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
-        <Accordion
-          items={accordionItems}
-          width={500}
-        />
+        <Accordion items={accordionItems} width={500} />
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
         <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>
