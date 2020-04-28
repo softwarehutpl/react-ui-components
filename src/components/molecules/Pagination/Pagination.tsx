@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { Heart } from '@styled-icons/boxicons-solid/Heart';
+import React from 'react';
 import { Cart } from '@styled-icons/boxicons-solid/Cart';
 import styled from 'styled-components';
-import { isNotEmptyArray } from '../../../common/helpers/helpers';
+import { isNotEmptyArray } from '../../../helpers/helpers';
 
 interface PaginationProps {
   width?: number;
   height?: number;
   wrapperBackgroundColor?: string;
-  goToFirstPage: any;
-  goToLastPage: any;
+  activePage: number;
   changePage: any;
   pagesNumber: number;
-  buttonPageBackground?: string;
-  buttonPageColor?: string;
+  buttonPageNumberBackground?: string;
+  buttonPageNumberColor?: string;
+  buttonPageNumberHoverColor?: string;
+  buttonPageNumberHoverBackground?: string;
+  transitionEffect?: string;
   showAllPageButtons?: boolean;
   children?: any;
   items?: any;
@@ -36,14 +37,25 @@ interface PaginationWrapperProps {
   wrapperBackgroundColor?: string;
 }
 
+interface PaginationItemProps {
+  noShadow?: boolean;
+  itemWidth?: number;
+  borderRadius?: number;
+  borderColor?: string;
+}
+
 interface PageButtonProps {
-  buttonPageBackground?: string;
   buttonPageColor?: string;
   buttonBorderColor?: string;
+  transitionEffect?: string;
+  buttonPageNumberBackground?: string;
+  buttonPageNumberColor?: string;
+  buttonPageNumberHoverColor?: string;
+  buttonPageNumberHoverBackground?: string;
   isActive?: boolean;
 }
 
-export const PaginationItem = styled.div<any>`
+export const PaginationItem = styled.div<PaginationItemProps>`
   width: ${({ itemWidth }) => itemWidth ? `${itemWidth}px` : '300px'};
   display: flex;
   flex-direction: column;
@@ -71,13 +83,14 @@ const PaginationButtons = styled.div`
   justify-content: center;
 `;
 
-export const Button = styled.button<any>`
+export const Button = styled.button<PageButtonProps>`
   cursor: pointer;
   background-color: transparent;
   padding: 5px;
   &:focus {
     outline: none;
-  }
+  };
+  transition: ${({ transitionEffect, theme }) => transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out'}; 
 `;
 
 export const PageNumber = styled.button<PageButtonProps>`
@@ -86,10 +99,16 @@ export const PageNumber = styled.button<PageButtonProps>`
   cursor: pointer;
   font-weight: ${({ isActive }) => isActive ? '700' : '400'};
   border: ${({ buttonBorderColor }) => buttonBorderColor ? `1px solid ${buttonBorderColor}` : 'none'};
-  background-color: ${({ buttonPageBackground }) => buttonPageBackground ? buttonPageBackground : 'transparent'};
+  background-color: ${({ buttonPageNumberBackground }) => buttonPageNumberBackground ? buttonPageNumberBackground : 'transparent'};
+  color: ${({ buttonPageNumberColor }) => buttonPageNumberColor ? buttonPageNumberColor : '#000'};
+  transition: ${({ transitionEffect, theme }) => transitionEffect ? theme.transitions.all[transitionEffect] : '0.2s ease-out'};  
   &:focus {
     outline: none;
-  }
+  };
+  &:hover {
+    background-color: ${({ buttonPageNumberHoverBackground }) => buttonPageNumberHoverBackground ? buttonPageNumberHoverBackground : 'transparent'};
+    color: ${({ buttonPageNumberHoverColor }) => buttonPageNumberHoverColor ? buttonPageNumberHoverColor : '#000'};
+  };
 `;
 
 const PaginationItemsContent = styled.div`
@@ -141,15 +160,6 @@ export const IconComponent = styled.button`
 `;
 
 const Pagination = (props: PaginationProps) => {
-  const [activePage, handleActivePage] = useState(1);
-
-  const onHandleActivePage = (activePageNumber: number) => {
-    if (activePageNumber === 1) {
-      props.changePage(1);
-    }
-    handleActivePage(activePageNumber);
-    props.changePage(activePageNumber);
-  }
 
   return (
     <PaginationWrapper
@@ -160,29 +170,44 @@ const Pagination = (props: PaginationProps) => {
           borderColor={props.itemBorder}
           noShadow={props.noCardItemShadow}
           itemWidth={props.itemWidth}
+          key={item.id}
           borderRadius={props.cardBorderRadius}>
           <PaginationImage src={item.avatar} borderRadius={props.cardBorderRadius} />
           <DescriptionWrapper>
-            <PaginationItemName descriptionAlignment={props.descriptionAlignment}>{item.name}</PaginationItemName>
-            <PaginationItemDescription descriptionAlignment={props.descriptionAlignment}>{item.description}</PaginationItemDescription>
+            <PaginationItemName
+              descriptionAlignment={props.descriptionAlignment}>
+                {item.name}
+            </PaginationItemName>
+            <PaginationItemDescription
+              descriptionAlignment={props.descriptionAlignment}>
+                {item.description}
+            </PaginationItemDescription>
             {props.showAddToCartIcon && <IconComponent onClick={() => props.onAddToCart(item.id)}>
               <Cart style={{ color: (isNotEmptyArray(props.itemsInCart) &&
-                props.itemsInCart.includes(item.id)) ? props.itemInCartIconColor : props.itemNotInCartIconColor }} />
+                props.itemsInCart.includes(item.id)) ?
+                props.itemInCartIconColor : props.itemNotInCartIconColor }} />
             </IconComponent>}
           </DescriptionWrapper>
         </PaginationItem>)): props.children}
         </PaginationItemsContent>
         <PaginationButtons>
-          {activePage > 2 && <Button buttonBorderColor={props.buttonBorderColor}
-            onClick={() => onHandleActivePage(1)}>First</Button>}
+          {props.activePage > 2 && <Button
+            onClick={() => props.changePage(1)}>First</Button>}
             {Array.from({ length: props.pagesNumber }).map((number, index) => {
-             if(props.showAllPageButtons || (index + 1 === activePage) || (index === activePage) || ((index + 2) === activePage)) {
-             return <PageNumber isActive={(index + 1 === activePage)} buttonBorderColor={props.buttonBorderColor} onClick={() => onHandleActivePage(index + 1)}>{index+1}</PageNumber>
-             }
+             if (props.showAllPageButtons || (index + 1 === props.activePage) ||
+                (index === props.activePage) || ((index + 2) === props.activePage)) {
+             return <PageNumber
+               isActive={(index + 1 === props.activePage)}
+               buttonBorderColor={props.buttonBorderColor}
+               buttonPageNumberBackground={props.buttonPageNumberBackground}
+               buttonPageNumberColor={props.buttonPageNumberColor}
+               buttonPageNumberHoverColor={props.buttonPageNumberHoverColor}
+               buttonPageNumberHoverBackground={props.buttonPageNumberHoverBackground}
+               onClick={() => props.changePage(index + 1)}>{index+1}</PageNumber>
+             } else return null;
              })}
-          {(activePage < props.pagesNumber - 1) && <Button
-            buttonBorderColor={props.buttonBorderColor}
-            onClick={() => onHandleActivePage(props.pagesNumber)}>Last</Button>}
+          {(props.activePage < props.pagesNumber - 1) && <Button
+            onClick={() => props.changePage(props.pagesNumber)}>Last</Button>}
         </PaginationButtons>
     </PaginationWrapper>
   );
@@ -196,6 +221,7 @@ const defaultProps = {
   itemNotInCartIconColor: 'white',
   cardBorderRadius: 0,
   itemWidth: 300,
+  transitionEffect: 'fast',
 };
 
 Pagination.defaultProps = defaultProps;

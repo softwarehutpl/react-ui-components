@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accodrion Component should render Accodrion correctly 1`] = `
+.c1 {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c2 {
+  width: 100%;
+  padding: 5px;
+  background-color: transparent;
+  color: #919191;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 500;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  border-bottom: 1px solid #919191;
+}
+
+.c4 {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.c3::before {
+  border-style: solid;
+  border-width: 1px 1px 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.45em;
+  left: 0;
+  position: relative;
+  top: 0.15em;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+  vertical-align: top;
+  width: 0.45em;
+}
+
+.c0 {
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div
+  className="c0"
+>
+  <button
+    className="c1"
+    onClick={[Function]}
+  >
+    <div
+      className="c2"
+    >
+      Little Prince part 1
+      <div
+        className="c3"
+      />
+    </div>
+    <div
+      className="c4"
+    >
+      Once when I was six years old I saw a magnificent picture in a book, called True
+    Stories from Nature, about the primeval forest. It was a picture of a boa constrictor
+    in the act of swallowing an animal. Here is a copy of the drawing.
+    </div>
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+  >
+    <div
+      className="c2"
+    >
+      Little Prince part 2
+      <div
+        className="c3"
+      />
+    </div>
+    <div
+      className="c4"
+    >
+      So then I chose another profession, and learned to pilot airplanes. I have flown a
+    little over all parts of the world; and it is true that geography has been very useful
+    to me. At a glance I can distinguish China from Arizona. If one gets lost in the
+    night, such knowledge is valuable.
+    </div>
+  </button>
+  <button
+    className="c1"
+    onClick={[Function]}
+  >
+    <div
+      className="c2"
+    >
+      Little Prince part 3
+      <div
+        className="c3"
+      />
+    </div>
+    <div
+      className="c4"
+    >
+      "That is a hat." Then I would never talk to that person about boa constrictors, or
+    primeval forests, or stars. I would bring myself down to his level. I would talk to
+    him about bridge, and golf, and politics, and neckties. And the grown−up would
+    be greatly pleased to have met such a sensible man.
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Accodrion Component should render AccodrionContainer correctly 1`] = `
+.c0 {
+  width: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Accodrion Component should render AccordionItem correctly 1`] = `
+.c0 {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c1 {
+  width: 100%;
+  padding: 5px;
+  background-color: transparent;
+  color: #919191;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 500;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  border-bottom: 1px solid #919191;
+}
+
+.c3 {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+.c2::before {
+  border-style: solid;
+  border-width: 1px 1px 0 0;
+  content: '';
+  display: inline-block;
+  height: 0.45em;
+  left: 0;
+  position: relative;
+  top: 0.15em;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+  vertical-align: top;
+  width: 0.45em;
+}
+
+<button
+  className="c0"
+  onClick={[Function]}
+>
+  <div
+    className="c1"
+  >
+    Little Prince part 1
+    <div
+      className="c2"
+    />
+  </div>
+  <div
+    className="c3"
+  >
+    Once when I was six years old I saw a magnificent picture in a book, called True
+    Stories from Nature, about the primeval forest. It was a picture of a boa constrictor
+    in the act of swallowing an animal. Here is a copy of the drawing.
+  </div>
+</button>
+`;
+
+exports[`Accodrion Component should render AccordionItemContainer correctly 1`] = `
+.c0 {
+  width: 100%;
+  padding: 10px;
+  border: none;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+<button
+  className="c0"
+/>
+`;
+
+exports[`Accodrion Component should render AccordionItemDescription correctly 1`] = `
+.c0 {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Accodrion Component should render AccordionItemTitle correctly 1`] = `
+.c0 {
+  width: 100%;
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-weight: 500;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  border: undefined solid undefined;
+}
+
+<div
+  className="c0"
+/>
+`;

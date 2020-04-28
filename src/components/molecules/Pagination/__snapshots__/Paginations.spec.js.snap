@@ -119,10 +119,18 @@ exports[`Pagination component should render corectly 4`] = `
   font-weight: 400;
   border: none;
   background-color: transparent;
+  color: #000;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
 }
 
 .c0:focus {
   outline: none;
+}
+
+.c0:hover {
+  background-color: transparent;
+  color: #000;
 }
 
 <button
