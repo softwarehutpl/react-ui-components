@@ -50,7 +50,7 @@ stories.add('Default', () => {
     <Tabs 
       orientation={select('Orientation', ORIENTATION , 'horizontal')}
       tabs={
-        tabs.map((item, index:number) => (
+        tabs.map((item, index: number) => (
           <Tab 
             label={item.label}
             onClick={(value) => setValue(value)}
@@ -61,7 +61,7 @@ stories.add('Default', () => {
           />
         ))}
         content={content.map((item, index) => value === index
-          && <div key={index} style={{padding: '50px'}}>{item.text}</div>)}
+          && <div key={index} style={{ padding: '50px' }}>{item.text}</div>)}
     />
   </div>
   );
@@ -70,7 +70,7 @@ stories.add('Default', () => {
 .add('with icon', () => {
   const [value, setValue] = React.useState(0);
   return (
-    <div style={{width: '600px'}}>
+    <div style={{ width: '600px' }}>
     <Tabs 
       orientation={select('Orientation', ORIENTATION , 'horizontal')}
       tabs={
@@ -86,7 +86,7 @@ stories.add('Default', () => {
           />
         ))}
         content={content.map((item, index) => value === index
-          && <div key={index} style={{padding: '50px'}}>{item.text}</div>)}
+          && <div key={index} style={{ padding: '50px' }}>{item.text}</div>)}
     />
   </div>
   );
