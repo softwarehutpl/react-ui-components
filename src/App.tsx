@@ -4,8 +4,6 @@ import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
-import DropdownItem from './components/atoms/DropdownItem/DropdownItem';
-import Dropdown from './components/molecules/Dropdown/Dropdown';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
@@ -19,14 +17,19 @@ import fontSizes from './common/constants/font_sizes';
 import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
+import Select from './components/atoms/Select/Select';
+import selectItems from './common/mocks/selectItems';
 import Card from './components/organisms/Card/Card';
 import mockProductDetails from './common/mocks/productDetails';
 
 function App() {
   const [value, setValue] = useState('');
+  const [selectedOption, setSelectedOption] = useState();
+  const [multipleSelectOptions, setMultipleSelectOption] = useState();
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
     styleReorder();
@@ -61,22 +64,22 @@ function App() {
           isOpen={showModal}
           rootId="modal-root"
           showTransitionEffect
-          ownCloseButtonIcon={<CloseIcon
-            color={'error'}
-            onClick={() => handleShowModal(false)}
-            topPosition={0}
-            rightPosition={0}
-            visibility={showModal ? 'visible' : 'hidden'}
-            height={`${fontSizes.fontSizeLarge}px`}
-            iconColor={COLOR_RUBY}
-          />}
+          ownCloseButtonIcon={
+            <CloseIcon
+              color="error"
+              onClick={() => handleShowModal(false)}
+              topPosition={0}
+              rightPosition={0}
+              visibility={showModal ? 'visible' : 'hidden'}
+              height={`${fontSizes.fontSizeLarge}px`}
+              iconColor={COLOR_RUBY}
+            />
+          }
           closeButtonOutside
-          transitionEffect='mid'
+          transitionEffect="mid"
           onClose={() => handleShowModal(false)}
         >
-          <>
-            Some modal here
-          </>
+          <>Some modal here</>
         </Modal>
         <Breadcrumbs
           items={items}
@@ -89,10 +92,7 @@ function App() {
           showBoxShadow
         />
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
-        <Accordion
-          items={accordionItems}
-          width={500}
-        />
+        <Accordion items={accordionItems} width={500} />
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
         <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>
@@ -115,20 +115,33 @@ function App() {
           }}
         />
       )}
-      <Dropdown title="Dropdown" margin={10} color="secondary">
-        <DropdownItem heading disabled>
-          item
-        </DropdownItem>
-        <DropdownItem divider dividerColor="black" />
-        <DropdownItem
-          onClick={() => {
-            console.log('dropdown item clicked');
-          }}
-        >
-          abc
-        </DropdownItem>
-      </Dropdown>
-      <Card productDetails={mockProductDetails} />
+      <Select
+        options={selectItems}
+        value={selectedOption}
+        margin={10}
+        onChange={(option) => {
+          setSelectedOption(option);
+        }}
+        className="firstSelect"
+      />
+      <Select
+        options={selectItems}
+        multiple
+        multipleValue={multipleSelectOptions}
+        margin={10}
+        onChange={(option) => {
+          setMultipleSelectOption(option);
+        }}
+      />
+      <Card
+        productDetails={mockProductDetails}
+        className="productCard"
+        onWishlistIconClick={() => {
+          console.log('wishlist icon clicked');
+          setIsFav(!isFav);
+        }}
+        isOnWishlist={isFav}
+      />
     </ThemeProvider>
   );
 }
