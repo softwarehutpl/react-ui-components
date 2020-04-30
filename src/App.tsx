@@ -19,6 +19,8 @@ import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
 import Select from './components/atoms/Select/Select';
 import selectItems from './common/mocks/selectItems';
+import Card from './components/organisms/Card/Card';
+import mockProductDetails from './common/mocks/productDetails';
 
 function App() {
   const [value, setValue] = useState('');
@@ -27,6 +29,8 @@ function App() {
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [isFav, setIsFav] = useState(false);
+  const [productCount, setProductCount] = useState(0);
 
   useEffect(() => {
     styleReorder();
@@ -129,6 +133,18 @@ function App() {
         onChange={(option) => {
           setMultipleSelectOption(option);
         }}
+      />
+      <Card
+        productDetails={mockProductDetails}
+        className="productCard"
+        onWishlistIconClick={() => {
+          setIsFav(!isFav);
+        }}
+        onCartIconClick={() => {
+          setProductCount(productCount + 1);
+        }}
+        isOnWishlist={isFav}
+        numberOfItemsInCart={productCount}
       />
     </ThemeProvider>
   );

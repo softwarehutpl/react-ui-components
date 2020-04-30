@@ -4,7 +4,7 @@ import { COLOR_OPTIONS, TEXT_ALIGNMENT_OPTIONS, FONT_WEIGHT_OPTIONS } from '../.
 
 interface IText {
   className?: string;
-  children: string;
+  children?: string;
   color?: string;
   fontColor?: string;
   fontWeight?:

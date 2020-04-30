@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should render correctly 1`] = `
+.c6 {
+  color: #000000;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: 600;
+  text-align: justify;
+}
+
+.c7 {
+  color: #000000;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: normal;
+  text-align: justify;
+}
+
+.c8 {
+  color: #000000;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: normal;
+  text-align: justify;
+}
+
+.c5 {
+  height: 40%;
+  width: 100%;
+  padding: 10px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: normal;
+  -webkit-justify-content: normal;
+  -ms-flex-pack: normal;
+  justify-content: normal;
+}
+
+.c3 {
+  display: inline-block;
+  vertical-align: -.125em;
+  overflow: hidden;
+}
+
+.c9 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.c4 {
+  color: #ffffff;
+  background-color: #000000;
+  width: 40px;
+  padding: 7px;
+  border-radius: 5px;
+  -webkit-transition: -webkit-transform .2s;
+  -webkit-transition: transform .2s;
+  transition: transform .2s;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  cursor: pointer;
+}
+
+.c2 {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.c1 {
+  height: 60%;
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c10 {
+  color: #000000;
+  width: 30px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c0:hover {
+  box-shadow: 0px 4px 10px 4px rgba(217,217,217,0.6);
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+    direction="horizontal"
+  >
+    <img
+      alt="Croissant"
+      className="c2"
+      src="https://cdn.pixabay.com/photo/2016/03/27/21/59/bread-1284438_1280.jpg"
+    />
+    <svg
+      aria-hidden="true"
+      className="c3 c4 cartIconContainer--nolabel"
+      color="primary"
+      fill="currentColor"
+      focusable="false"
+      onClick={[Function]}
+      viewBox="0 0 576 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M504.717 320H211.572l6.545 32h268.418c15.401 0 26.816 14.301 23.403 29.319l-5.517 24.276C523.112 414.668 536 433.828 536 456c0 31.202-25.519 56.444-56.824 55.994-29.823-.429-54.35-24.631-55.155-54.447-.44-16.287 6.085-31.049 16.803-41.548H231.176C241.553 426.165 248 440.326 248 456c0 31.813-26.528 57.431-58.67 55.938-28.54-1.325-51.751-24.385-53.251-52.917-1.158-22.034 10.436-41.455 28.051-51.586L93.883 64H24C10.745 64 0 53.255 0 40V24C0 10.745 10.745 0 24 0h102.529c11.401 0 21.228 8.021 23.513 19.19L159.208 64H551.99c15.401 0 26.816 14.301 23.403 29.319l-47.273 208C525.637 312.246 515.923 320 504.717 320zM408 168h-48v-40c0-8.837-7.163-16-16-16h-16c-8.837 0-16 7.163-16 16v40h-48c-8.837 0-16 7.163-16 16v16c0 8.837 7.163 16 16 16h48v40c0 8.837 7.163 16 16 16h16c8.837 0 16-7.163 16-16v-40h48c8.837 0 16-7.163 16-16v-16c0-8.837-7.163-16-16-16z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c5"
+    direction="horizontal"
+  >
+    <p
+      className="c6"
+    >
+      Croissant
+    </p>
+    <p
+      className="c7"
+    >
+      Taste our delicious croissants...
+    </p>
+    <p
+      className="c8"
+    >
+      3.00 EUR
+    </p>
+    <svg
+      aria-hidden="true"
+      className="c9 c10"
+      color="primary"
+      fill="currentColor"
+      focusable="false"
+      onClick={[Function]}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12 4.595a5.904 5.904 0 00-3.996-1.558 5.942 5.942 0 00-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412l7.332 7.332c.17.299.498.492.875.492a.99.99 0 00.792-.409l7.415-7.415c2.354-2.354 2.354-6.049-.002-8.416a5.938 5.938 0 00-4.209-1.754A5.906 5.906 0 0012 4.595zm6.791 1.61c1.563 1.571 1.564 4.025.002 5.588L12 18.586l-6.793-6.793c-1.562-1.563-1.561-4.017-.002-5.584.76-.756 1.754-1.172 2.799-1.172s2.035.416 2.789 1.17l.5.5a.999.999 0 001.414 0l.5-.5c1.512-1.509 4.074-1.505 5.584-.002z"
+      />
+    </svg>
+  </div>
+</div>
+`;

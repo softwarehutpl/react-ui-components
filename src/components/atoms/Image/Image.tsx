@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import {OBJECT_FIT_OPTIONS} from '../../../common/constants/consts';
+import { OBJECT_FIT_OPTIONS } from '../../../common/constants/consts';
 
 interface IImage {
   className?: string;
