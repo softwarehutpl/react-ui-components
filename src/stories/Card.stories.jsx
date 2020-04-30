@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions'
-import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, select, text, boolean, number } from '@storybook/addon-knobs';
 import Card from '../components/organisms/Card/Card';
-import { COLOR_OPTIONS } from '../common/constants/consts';
+import {COLOR_OPTIONS, OBJECT_FIT_OPTIONS} from '../common/constants/consts';
 import productDetails from '../common/mocks/productDetails';
 import './styles.scss';
 
@@ -15,6 +15,8 @@ const PRODUCT_DETAILS = 'Product details';
 
 stories.add('common (horizontal)', () => {
   const [isFav, setIsFav] = useState(false);
+  const [productCount, setProductCount] = useState(0);
+
   return (
     <Card
       className="cardWrapper_horizontal"
@@ -35,7 +37,13 @@ stories.add('common (horizontal)', () => {
         setIsFav(!isFav);
       }}
       onClick={action('on card click')}
-      onCartIconClick={action('on cart icon click')}
+      onCartIconClick={() => {
+        setProductCount(productCount + 1);
+      }}
+      numberOfItemsInCart={productCount}
+      imageObjectFit={select('Image object fit', OBJECT_FIT_OPTIONS, OBJECT_FIT_OPTIONS.cover)}
+      imageWidth={number('Image width', '')}
+      imageHeight={number('Image height', '')}
     />
   );
 });
@@ -45,7 +53,7 @@ stories.add('vertical', () => {
     <Card
       className="cardWrapper_vertical"
       productDetails={productDetails}
-      color={select('Color', COLOR_OPTIONS, COLOR_OPTIONS.primary)}
+      color="primary"
       direction="vertical"
     />
   );

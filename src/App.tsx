@@ -30,6 +30,7 @@ function App() {
   const [showModal, handleShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [isFav, setIsFav] = useState(false);
+  const [productCount, setProductCount] = useState(0);
 
   useEffect(() => {
     styleReorder();
@@ -137,10 +138,13 @@ function App() {
         productDetails={mockProductDetails}
         className="productCard"
         onWishlistIconClick={() => {
-          console.log('wishlist icon clicked');
           setIsFav(!isFav);
         }}
+        onCartIconClick={() => {
+          setProductCount(productCount + 1);
+        }}
         isOnWishlist={isFav}
+        numberOfItemsInCart={productCount}
       />
     </ThemeProvider>
   );

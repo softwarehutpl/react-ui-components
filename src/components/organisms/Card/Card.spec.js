@@ -4,15 +4,26 @@ import { fireEvent, render } from '@testing-library/react';
 import 'jest-styled-components';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../common/theme';
-import Card, { CartIcon, HeartIcon, FullHeartIcon } from './Card';
+import Card, { HeartIcon } from './Card';
 import CardDetails from './CardDetails';
+import { CartIcon } from './CartIconContainer';
 import mockProductDetails from '../../../common/mocks/productDetails';
 import setupIntersectionObserverMock from '../../../helpers/intersectionObserverMock';
+import Badge from '../../atoms/Badge/Badge';
 
 describe('Card component', () => {
   beforeEach(() => {
     setupIntersectionObserverMock();
   });
+
+  it('should render correctly', () => {
+    const card = create(
+      <ThemeProvider theme={theme}>
+        <Card productDetails={mockProductDetails} />
+      </ThemeProvider>
+    ).toJSON();
+    expect(card).toMatchSnapshot();
+  })
 
   it('should render card with custom class', () => {
     const card = create(
@@ -160,4 +171,15 @@ describe('Card component', () => {
     });
     expect(mockOnClick.mock.calls.length).toEqual(1);
   });
+
+  it('should show given cart product number', () => {
+    const component = create(
+      <ThemeProvider theme={theme}>
+        <Card productDetails={mockProductDetails} numberOfItemsInCart={3} />
+      </ThemeProvider>
+    );
+    const instance = component.root;
+    const badge = instance.findByType(Badge).findByType('span');
+    expect(badge.props.children).toBe(3);
+  })
 });

@@ -1,9 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
 import styled from 'styled-components';
 import CardDetails from './CardDetails';
+import CartIconContainer from './CartIconContainer';
 import Image from '../../atoms/Image/Image';
 import { ORIENTATION } from '../../../common/constants/consts';
-import { CartPlus } from '@styled-icons/fa-solid/CartPlus';
 import { Heart as FullHeart } from '@styled-icons/boxicons-solid/Heart';
 import { Heart } from '@styled-icons/boxicons-regular/Heart';
 
@@ -17,13 +17,11 @@ export interface IProductDetails {
 
 export type directionType = 'vertical' | 'horizontal'
 
-// TODO: load hover image when lazy props is passed to image
 interface ICard {
   className?: string;
   productDetails: IProductDetails;
   color?: string;
   direction?: directionType;
-  imageProps?: object;
   hideDescription?: boolean;
   hidePrice?: boolean;
   onCartIconClick?: () => void;
@@ -32,6 +30,11 @@ interface ICard {
   hideWishlistIcon?: boolean;
   onWishlistIconClick?: () => void;
   isOnWishlist?: boolean;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageObjectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  hideCartNumberLabel?: boolean;
+  numberOfItemsInCart?: number;
 }
 
 const CardImageContainer = styled.div<{ direction?: directionType }>`
@@ -39,22 +42,11 @@ const CardImageContainer = styled.div<{ direction?: directionType }>`
     height: direction === ORIENTATION.HORIZONTAL ? '60%' : '100%',
     width: direction === ORIENTATION.HORIZONTAL ? '100%' : '55%',
     position: 'relative',
+    display: 'flex',
+    'justify-content': 'center',
+    'align-items': 'center',
   })}
 `;
-
-export const CartIcon = styled(CartPlus)<{ color?: string, isActive?: boolean }>`${({ theme, color = defaultProps.color, isActive }) => ({
-  color: theme.colors[color].light,
-  'background-color': theme.colors[color].base,
-  width: '40px',
-  padding: '7px',
-  'border-radius': '5px',
-  position: 'absolute',
-  top: '15px',
-  right: '15px',
-  transition: 'transform .2s',
-  transform: isActive ? 'scale(1.2)' : 'scale(1)',
-  cursor: 'pointer',
-})}`
 
 const styleWishlistIcon = (Icon: any) => {
   return (
@@ -77,7 +69,6 @@ const Card = ({
   productDetails,
   color,
   direction,
-  imageProps,
   hideDescription,
   hidePrice,
   onCartIconClick,
@@ -86,6 +77,11 @@ const Card = ({
   hideWishlistIcon,
   isOnWishlist,
   onWishlistIconClick,
+  imageHeight,
+  imageWidth,
+  imageObjectFit,
+  hideCartNumberLabel,
+  numberOfItemsInCart
 }: ICard) => {
   const [isActive, setIsActive] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -112,16 +108,21 @@ const Card = ({
   return (
     <div className={className} ref={cardRef} onClick={onClick}>
       <CardImageContainer direction={direction}>
-        <Image {...imageProps} src={selectImageUrl()} alt={productDetails.name} />
+        <Image
+          width={imageWidth}
+          height={imageHeight}
+          objectFit={imageObjectFit}
+          src={selectImageUrl()}
+          alt={productDetails.name}
+        />
         {
           !hideCartIcon && (
-            <CartIcon
+            <CartIconContainer
               color={color}
               isActive={isActive}
-              onClick={(e: React.MouseEvent) => {
-                e.stopPropagation()
-                onCartIconClick && onCartIconClick()
-              }}
+              onCartIconClick={onCartIconClick}
+              hideCartNumberLabel={hideCartNumberLabel}
+              numberOfItemsInCart={numberOfItemsInCart}
             />
           )
         }
@@ -147,7 +148,7 @@ const Card = ({
   );
 }
 
-const defaultProps = {
+export const defaultProps = {
   color: 'primary',
   direction: 'horizontal',
   hideDescription: false,
@@ -155,6 +156,8 @@ const defaultProps = {
   hideCartIcon: false,
   hideWishlistIcon: false,
   isOnWishlist: false,
+  hideCartNumberLabel: false,
+  numberOfItemsInCart: 0,
 };
 
 Card.defaultProps = defaultProps;
