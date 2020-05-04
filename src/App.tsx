@@ -19,6 +19,9 @@ import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
 import Select from './components/atoms/Select/Select';
 import selectItems from './common/mocks/selectItems';
+import Wishlist from './components/organisms/Wishlist/Wishlist';
+import wishlistProducts from './common/mocks/wishlistProducts';
+import CartIcon from './components/molecules/CartIcon/CartIcon';
 
 function App() {
   const [value, setValue] = useState('');
@@ -128,6 +131,14 @@ function App() {
         margin={10}
         onChange={(option) => {
           setMultipleSelectOption(option);
+        }}
+      />
+      <Wishlist
+        className="wishlist"
+        products={wishlistProducts}
+        onItemClick={() => console.log('item clicked!')}
+        onDeleteIconClick={() => {
+          console.log('delete!');
         }}
       />
     </ThemeProvider>

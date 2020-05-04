@@ -1,24 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLOR_OPTIONS, TEXT_ALIGNMENT_OPTIONS, FONT_WEIGHT_OPTIONS } from '../../../common/constants/consts';
+import {
+  COLOR_OPTIONS,
+  TEXT_ALIGNMENT_OPTIONS,
+  FONT_WEIGHT_OPTIONS,
+} from '../../../common/constants/consts';
 
-interface IText {
+export type FontWeights =
+  | 'normal'
+  | 'bold'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900';
+
+export interface IText {
   className?: string;
-  children: string;
+  children?: string;
   color?: string;
   fontColor?: string;
-  fontWeight?:
-    | 'normal'
-    | 'bold'
-    | '100'
-    | '200'
-    | '300'
-    | '400'
-    | '500'
-    | '600'
-    | '700'
-    | '800'
-    | '900';
+  fontWeight?: FontWeights;
   lineHeight?: number;
   fontSize?: number;
   textAlign?: 'left' | 'right' | 'center' | 'justify';
