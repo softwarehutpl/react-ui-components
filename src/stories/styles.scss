@@ -40,3 +40,14 @@
 .drawerButton {
   width: 100px;
 }
+
+
+.capture-class {
+  background-color: white;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 40px;
+  border-radius: 20px;
+}

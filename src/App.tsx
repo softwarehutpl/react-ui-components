@@ -9,6 +9,7 @@ import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
 import Input from './components/atoms/Input/Input';
 import Accordion from './components/molecules/Accordion/Accordion';
 import accordionItems from './common/mocks/accordionItems';
+import sliderItems from './common/mocks/sliderItems';
 import Modal from './components/molecules/Modal/Modal';
 import CloseIcon from './common/icons/CloseIcon/CloseIcon';
 import items from './common/mocks/breadcrumbsItems';
@@ -18,7 +19,53 @@ import Tooltip from './components/atoms/Tooltip/Tooltip';
 import './components/atoms/Breadcrumbs/Breadcrumbs.scss';
 import Toast from './components/atoms/Toast/Toast';
 import Select from './components/atoms/Select/Select';
+import Carousel from './components/molecules/Carousel/Carousel';
 import selectItems from './common/mocks/selectItems';
+
+// const sliderItems = [{
+//   src: 'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
+//   captureComponent: <span className='capture-class'> Image first </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80',
+//   captureComponent: <span className='capture-class'> Image second </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80',
+//   captureComponent: <span className='capture-class'> Image third </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80',
+//   captureComponent: <span className='capture-class'>Image 4th </span>,
+// },  {
+//   src: 'https://images.unsplash.com/photo-1452827073306-6e6e661baf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2167&q=8',
+//   captureComponent: <span className='capture-class'> Image 5th</span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1533907650686-70576141c030?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6000&q=80',
+//   captureComponent: <span className='capture-class'> some capyture </span>,
+// },  {
+//   src: 'https://images.unsplash.com/photo-1474401915596-3c5adf84ef01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
+//   captureComponent: <span className='capture-class'> some capyture </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
+//   captureComponent: <span className='capture-class'> Image first </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80',
+//   captureComponent: <span className='capture-class'> Image second </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80',
+//   captureComponent: <span className='capture-class'> Image third </span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80',
+//   captureComponent: <span className='capture-class'>Image 4th </span>,
+// },  {
+//   src: 'https://images.unsplash.com/photo-1452827073306-6e6e661baf57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2167&q=8',
+//   captureComponent: <span className='capture-class'> Image 5th</span>,
+// }, {
+//   src: 'https://images.unsplash.com/photo-1533907650686-70576141c030?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=6000&q=80',
+//   captureComponent: <span className='capture-class'> some capyture </span>,
+// },  {
+//   src: 'https://images.unsplash.com/photo-1474401915596-3c5adf84ef01?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
+//   captureComponent: <span className='capture-class'> some capyture </span>,
+// }
+// ];
 
 function App() {
   const [value, setValue] = useState('');
@@ -130,6 +177,7 @@ function App() {
           setMultipleSelectOption(option);
         }}
       />
+      <Carousel slides={sliderItems} changeTime={7000} />
     </ThemeProvider>
   );
 }
