@@ -5,7 +5,7 @@ import 'jest-styled-components';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../common/theme';
 import Wishlist from './Wishlist';
-import WishlistItem, {StyledWishlistDeleteIcon} from './WishlistItem';
+import WishlistItem, { StyledWishlistDeleteIcon } from './WishlistItem';
 import wishlistProducts from '../../../common/mocks/wishlistProducts';
 import setupIntersectionObserverMock from '../../../helpers/intersectionObserverMock';
 import Text from '../../atoms/Text/Text';
@@ -14,6 +14,15 @@ describe('Wishlist component', () => {
   beforeEach(() => {
     setupIntersectionObserverMock();
   });
+
+  it('should render correctly', () => {
+    const tree = create(
+      <ThemeProvider theme={theme}>
+        <Wishlist products={wishlistProducts} />
+      </ThemeProvider>
+    ).toJSON();
+    expect(tree).toMatchSnapshot()
+  })
 
   it('should render wishlist item with proper product data', () => {
     const item = create(
@@ -82,22 +91,6 @@ describe('Wishlist component', () => {
     const deleteIcon = instance.findAllByType(StyledWishlistDeleteIcon)[0];
     act(() => {
       deleteIcon.props.onClick(e);
-    })
-    expect(mockFn.mock.calls.length).toEqual(1);
-  })
-
-  it('should call onCartIconClick function', () => {
-    const mockFn = jest.fn();
-    const e = { stopPropagation: jest.fn() };
-    const wishlist = create(
-      <ThemeProvider theme={theme}>
-        <Wishlist products={wishlistProducts} onCartIconClick={mockFn} />
-      </ThemeProvider>
-    )
-    const instance = wishlist.root;
-    const cartIcon = instance.findAllByType(CartIcon)[0];
-    act(() => {
-      cartIcon.props.onClick(e);
     })
     expect(mockFn.mock.calls.length).toEqual(1);
   })

@@ -3,71 +3,127 @@ import styled from 'styled-components';
 import { CartPlus } from '@styled-icons/fa-solid/CartPlus';
 import Badge from '../../atoms/Badge/Badge';
 import { COLOR_OPTIONS } from '../../../common/constants/consts';
+import './cartIcon.scss';
 
-interface ICartIcon {
+interface ICartIconContainerStyle {
+  width?: number;
+  hideCartNumberLabel?: boolean;
+}
+
+interface ICartIcon extends ICartIconContainerStyle {
   color?: string;
   isActive?: boolean;
   backgroundColor?: string;
   fontColor?: string;
-  width?: number;
+  scaleOnHover?: boolean;
 }
 
-interface ICartIconContainer extends ICartIcon {
+export interface ICartIconContainer extends ICartIcon {
   className?: string;
-  onCartIconClick?: () => void;
-  hideCartNumberLabel?: boolean;
+  onCartIconClick?: (product?: any) => void;
   numberOfItemsInCart?: number;
 }
 
-export const CartIcon = styled(CartPlus)<ICartIcon>`
-  ${({ theme, color = COLOR_OPTIONS.primary, isActive, fontColor, backgroundColor, width = 40 }) => ({
+const defaultProps = {
+  color: COLOR_OPTIONS.primary,
+  width: 40,
+  hideCartNumberLabel: false,
+  numberOfItemsInCart: 0,
+  isActive: false,
+  scaleOnHover: false,
+};
+
+export const StyledCartIcon = styled(CartPlus)<ICartIcon>`
+  ${({
+    theme,
+    color = defaultProps.color,
+    isActive,
+    fontColor,
+    backgroundColor,
+    width = defaultProps.width,
+    scaleOnHover = defaultProps.scaleOnHover,
+  }) => ({
     color: fontColor || theme.colors[color].light,
     'background-color': backgroundColor || theme.colors[color].base,
     width: `${width}px`,
     padding: '7px',
     'border-radius': '5px',
     transition: 'transform .2s',
-    transform: isActive ? 'scale(1.2)' : 'scale(1)',
+    transform: isActive && !scaleOnHover ? 'scale(1.2)' : 'scale(1)',
     cursor: 'pointer',
+    '&:hover': {
+      transform: scaleOnHover ? 'scale(1.2)' : 'scale(1)',
+    },
   })}
 `;
 
-export default ({
+const CartIconWrapper = styled.div<ICartIconContainerStyle>`
+  ${({ width = defaultProps.width, hideCartNumberLabel = defaultProps.hideCartNumberLabel }) => ({
+    height: hideCartNumberLabel ? `${width}px` : `${width + 25}px`,
+    width: hideCartNumberLabel ? `${width}px` : `${width + 25}px`,
+  })}
+`;
+
+const CartIcon = ({
   color,
-  isActive = false,
+  isActive,
   onCartIconClick,
   hideCartNumberLabel,
-  numberOfItemsInCart = 0,
+  numberOfItemsInCart,
   className,
   fontColor,
   backgroundColor,
-  width
+  width,
+  scaleOnHover,
 }: ICartIconContainer) => {
-  const handleOnCartIconClick = (e: React.MouseEvent) => {
+  const handleOnCartIconClick = (e: React.MouseEvent, product: any) => {
     e.stopPropagation();
-    onCartIconClick && onCartIconClick();
+    onCartIconClick && onCartIconClick(product);
   };
 
   if (hideCartNumberLabel || numberOfItemsInCart === 0) {
     return (
-      <div className={className}>
-        <CartIcon
+      <CartIconWrapper
+        className={className}
+        width={width}
+        hideCartNumberLabel={hideCartNumberLabel}
+      >
+        <StyledCartIcon
           color={color}
           isActive={isActive}
-          onClick={handleOnCartIconClick}
-          className={className}
+          onClick={(e: React.MouseEvent, product?: any) => {
+            handleOnCartIconClick(e, product);
+          }}
+          className="cartIconContainer--nolabel"
           fontColor={fontColor}
           backgroundColor={backgroundColor}
           width={width}
+          scaleOnHover={scaleOnHover}
         />
-      </div>
+      </CartIconWrapper>
     );
   }
   return (
-    <div className={className}>
-      <Badge badgeContent={numberOfItemsInCart} color={color}>
-        <CartIcon color={color} isActive={isActive} onClick={handleOnCartIconClick} fontColor={fontColor} backgroundColor={backgroundColor} width={width} />
-      </Badge>
-    </div>
+    <CartIconWrapper className={className} width={width}>
+      <div className="cartIconContainer--label">
+        <Badge badgeContent={numberOfItemsInCart} color={color}>
+          <StyledCartIcon
+            color={color}
+            isActive={isActive}
+            onClick={(e: React.MouseEvent, product?: any) => {
+              handleOnCartIconClick(e, product);
+            }}
+            fontColor={fontColor}
+            backgroundColor={backgroundColor}
+            width={width}
+            scaleOnHover={scaleOnHover}
+          />
+        </Badge>
+      </div>
+    </CartIconWrapper>
   );
 };
+
+CartIcon.defaultProps = defaultProps;
+
+export default CartIcon;

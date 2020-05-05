@@ -1,5 +1,5 @@
 .wishlistItem {
-  height: 100px;
+  height: 120px;
   display: flex;
   padding: 10px;
   &:hover {
@@ -9,7 +9,7 @@
 
 .wishlistItem__imageWrapper {
   height: 100%;
-  width: 100px;
+  width: 120px;
   margin-right: 10px;
 }
 
@@ -19,4 +19,10 @@
   justify-content: center;
   width: 100%;
   position: relative;
+}
+
+.wishlistItem__cartIcon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

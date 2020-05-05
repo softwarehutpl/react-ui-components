@@ -6,7 +6,7 @@ interface IWishlist extends IWishlistCommon {
   products: IWishlistProduct[];
 }
 
-const Wishlist = ({ className, products, color, nameTextProps, priceTextProps, itemClassName, onDeleteIconClick, onItemClick, deleteIconColor, hideDeleteIcon }: IWishlist) => (
+const Wishlist = ({ className, products, color, nameTextProps, priceTextProps, itemClassName, onDeleteIconClick, onItemClick, deleteIconColor, hideDeleteIcon, hideCartIcon, cartIconProps }: IWishlist) => (
   <div className={className}>
     {products.map((product, index) => (
       <WishlistItem
@@ -20,6 +20,8 @@ const Wishlist = ({ className, products, color, nameTextProps, priceTextProps, i
         onItemClick={onItemClick}
         deleteIconColor={deleteIconColor}
         hideDeleteIcon={hideDeleteIcon}
+        hideCartIcon={hideCartIcon}
+        cartIconProps={cartIconProps}
       />
     ))}
   </div>

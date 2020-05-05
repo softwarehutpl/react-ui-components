@@ -21,6 +21,7 @@ stories.add('common', () => {
       color={select('Color', COLOR_OPTIONS, COLOR_OPTIONS.primary)}
       width={number('Width', 40)}
       hideCartNumberLabel={boolean('Hide label', false)}
+      scaleOnHover={boolean('Scale on hover', false)}
     />
   );
 });

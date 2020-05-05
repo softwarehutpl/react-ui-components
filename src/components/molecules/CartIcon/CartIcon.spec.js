@@ -17,22 +17,24 @@ describe('Cart Icon component', () => {
   })
 
   it('should render icon in default theme color and default size', () => {
-    const cartIcon = create(
+    const tree = create(
       <ThemeProvider theme={theme}>
         <CartIcon />
       </ThemeProvider>
     ).toJSON();
+    const cartIcon = tree.children[0];
     expect(cartIcon).toHaveStyleRule('background-color', '#000000');
     expect(cartIcon).toHaveStyleRule('color', '#ffffff');
     expect(cartIcon).toHaveStyleRule('width', '40px');
   });
 
   it('should render icon in custom colors', () => {
-    const cartIcon = create(
+    const tree = create(
       <ThemeProvider theme={theme}>
         <CartIcon backgroundColor="red" fontColor="blue" width={30} />
       </ThemeProvider>
     ).toJSON();
+    const cartIcon = tree.children[0];
     expect(cartIcon).toHaveStyleRule('background-color', 'red');
     expect(cartIcon).toHaveStyleRule('color', 'blue');
     expect(cartIcon).toHaveStyleRule('width', '30px');

@@ -7,6 +7,9 @@
   flex-direction: column;
   align-items: flex-start;
   font-family: 'Montserrat', sans-serif;
+  * {
+    box-sizing: border-box;
+  }
 }
 
 .active {
@@ -45,4 +48,8 @@
   position: absolute;
   top: 50px;
   left: 50px;
+}
+
+.wishlist {
+  width: 50%;
 }
