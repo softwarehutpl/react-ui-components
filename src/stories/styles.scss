@@ -43,6 +43,9 @@ time, mark, audio, video {
   flex-direction: column;
   align-items: flex-start;
   font-family: 'Montserrat', sans-serif;
+  * {
+    box-sizing: border-box;
+  }
 }
 
 .active {
@@ -76,4 +79,14 @@ time, mark, audio, video {
 
 .drawerButton {
   width: 100px;
+}
+
+.cartIcon {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.wishlist {
+  width: 50%;
 }
