@@ -3,6 +3,7 @@ import './App.scss';
 import { ThemeProvider } from 'styled-components';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
+import HeroSection from './components/organisms/HeroSection/HeroSection';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
 import Button from './components/atoms/Button/Button';
 import ProgressBar from './components/atoms/ProgressBar/ProgressBar';
@@ -46,6 +47,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
+        <HeroSection width='100vw' height={'800px'} capture={{ backgroundColor: 'hotpink', title: 'Some title', titleSize: 30 }}/>
         <Input
           placeholder="test"
           value={value}
