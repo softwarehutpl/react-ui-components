@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
 import { ThemeProvider } from 'styled-components';
+import axios from 'axios';
+import { isNotEmptyArray } from './helpers/helpers';
 import theme from './common/theme';
 import { styleReorder } from './helpers/styleReorder';
 import Breadcrumbs from './components/atoms/Breadcrumbs/Breadcrumbs';
@@ -10,6 +12,7 @@ import Input from './components/atoms/Input/Input';
 import Accordion from './components/molecules/Accordion/Accordion';
 import accordionItems from './common/mocks/accordionItems';
 import Modal from './components/molecules/Modal/Modal';
+import Pagination from './components/molecules/Pagination/Pagination';
 import CloseIcon from './common/icons/CloseIcon/CloseIcon';
 import items from './common/mocks/breadcrumbsItems';
 import { COLOR_RUBY } from './common/constants/colors';
@@ -26,6 +29,9 @@ function App() {
   const [multipleSelectOptions, setMultipleSelectOption] = useState();
   const [progress, setProgress] = useState(0);
   const [showModal, handleShowModal] = useState(false);
+  const [data, setCurrentData] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [itemsInCart, handleAddToCart] = useState(['0']);
   const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
@@ -38,10 +44,25 @@ function App() {
         setProgress(progress + 10);
       }
     }, 500);
-    return () => {
-      clearInterval(interval);
-    };
+    return () => {clearInterval(interval)};
   }, [progress]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await axios(`https://5ea6988884f6290016ba6e36.mockapi.io/blogs?page=${activePage}&limit=${9}`);
+        setCurrentData(result.data);
+      } catch (error) {
+      }
+    };
+    fetchData();
+  }, [activePage])
+
+  const onHandleAddToCart = (itemId: any) => {
+    const items = [...itemsInCart, itemId];
+    // user should do here some action: send to api, state, anything
+    handleAddToCart(items);
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -91,6 +112,31 @@ function App() {
         <ProgressBar color="success" maxValue={100} progressValue={progress} />
         <Accordion items={accordionItems} width={500} />
         <span id="tooltip_target">Hover me, I am a tooltip target</span>
+        <Tooltip
+          targetElementId="tooltip_target"
+          tooltipText="tooltip"
+          position="right"
+        />
+        {isNotEmptyArray(data) && <Pagination
+          changePage={setActivePage}
+          activePage={activePage}
+          buttonPageNumberBackground='#fff'
+          buttonPageNumberColor='#000'
+          buttonPageNumberHoverColor='#fff'
+          buttonPageNumberHoverBackground='#000'
+          items={data}
+          itemsInCart={itemsInCart}
+          showAddToCartIcon
+          transitionEffect="mid"
+          onAddToCart={onHandleAddToCart}
+          descriptionAlignment='left'
+          itemInCartIconColor='hotpink'
+          itemNotInCartIconColor='white'
+          buttonBorderColor='#585858'
+          itemBorder="#000"
+          noCardItemShadow
+          cardBorderRadius={0}
+          pagesNumber={8} />}
         <Tooltip targetElementId="tooltip_target" tooltipText="tooltip" position="right" />
       </div>
       <Button
@@ -116,7 +162,7 @@ function App() {
         options={selectItems}
         value={selectedOption}
         margin={10}
-        onChange={(option) => {
+        onChange={(option: any) => {
           setSelectedOption(option);
         }}
         className="firstSelect"
@@ -126,7 +172,7 @@ function App() {
         multiple
         multipleValue={multipleSelectOptions}
         margin={10}
-        onChange={(option) => {
+        onChange={(option: any) => {
           setMultipleSelectOption(option);
         }}
       />
